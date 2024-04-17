@@ -30,3 +30,18 @@ int count_lines(std::string file_name){
     }
     return i;
 }
+
+int random_range(int lower, int upper){
+    int num = (rand() % (upper - lower + 1)) + lower;
+    return num;
+}
+
+
+int random_range_multiple_of_five(int lower, int upper)
+{
+    int value = 1;
+    while (value % 5 != 0) {
+        value = random_range(lower, upper);
+    }
+    return value;
+}

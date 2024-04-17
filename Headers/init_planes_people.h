@@ -10,5 +10,5 @@
 
 void init_passengers(Plane &plane);
 void init_plane(Airport &airport);
-
+Airport init_airport();
 #endif //PROJETO_2_INIT_PLANES_PEOPLE_H

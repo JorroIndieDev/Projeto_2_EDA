@@ -14,7 +14,7 @@
 
 int main() {
 
-    Airport airport = init_airport();
+    srand(time(0));
 
     file_data fileData;
     fileData.destino = read_files("../Data_Files/destino.txt");
@@ -24,6 +24,8 @@ int main() {
     fileData.primeiro_nome = read_files("../Data_Files/primeiro_nome.txt");
     fileData.segundo_nome = read_files("../Data_Files/segundo_nome.txt");
     fileData.voo = read_files("../Data_Files/voo.txt");
+
+    Airport airport = init_airport();
 
     dayCycle(airport);
 

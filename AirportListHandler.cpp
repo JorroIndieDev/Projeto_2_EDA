@@ -24,7 +24,7 @@ void add_arriving_plane(Airport &airport, Plane &plane){
 
     }else {
         Airport::Arrival * ptr = airport.head_arrv;
-        while (ptr->next) {
+        while (ptr->next != NULL) {
             ptr = ptr->next;
         }
         ptr->next = new_depart;
@@ -90,9 +90,9 @@ void add_ramp_plane(Airport &airport){
 }
 
 void log_departures_passengers(Airport &airport){
-    std::cout << "-------------------\n";
+    std::cout << "\n-------------------\n";
     if (!airport.head_dep) {
-        std::cout << "No departing planes.\n";
+        std::cout << "\nNo planes in departure.\n";
         return;
     }
 
@@ -105,6 +105,7 @@ void log_departures_passengers(Airport &airport){
         std::cout << "Destination: " << depart_ptr->plane.destination << "\n";
 
         Plane::passenger_in_plane * passNode = depart_ptr->plane.head_passenger;
+        if (!passNode) std::cout << "Departure Plane Empty\n";
         while (passNode) {
             std::cout << "Ticket Number: " << passNode->passenger.ticket_num << ", ";
             std::cout << "Name: " << passNode->passenger.first_name << " " << passNode->passenger.second_name << ", ";
@@ -118,15 +119,16 @@ void log_departures_passengers(Airport &airport){
 
         depart_ptr = depart_ptr->next;
         if (depart_ptr) {
-            std::cout << "-------------------\n";
+            std::cout << "\n-------------------\n";
         }
+        std::cout << "\n-------------------\n";
     }
 }
 
 void log_ramp_passengers(Airport &airport){
-    std::cout << "-------------------\n";
+    std::cout << "\n-------------------\n";
     if (!airport.head_ramp) {
-        std::cout << "No planes in ramp.\n";
+        std::cout << "\nNo planes in ramp.\n";
         return;
     }
 
@@ -139,6 +141,7 @@ void log_ramp_passengers(Airport &airport){
         std::cout << "Destination: " << ramp_ptr->plane.destination << "\n";
 
         Plane::passenger_in_plane *passNode = ramp_ptr->plane.head_passenger;
+        if (!passNode) std::cout << "Ramp Plane Empty\n";
         while (passNode) {
             std::cout << "Ticket Number: " << passNode->passenger.ticket_num << ", ";
             std::cout << "Name: " << passNode->passenger.first_name << " " << passNode->passenger.second_name << ", ";
@@ -152,15 +155,16 @@ void log_ramp_passengers(Airport &airport){
 
         ramp_ptr = ramp_ptr->next;
         if (ramp_ptr) {
-            std::cout << "-------------------\n";
+            std::cout << "\n-------------------\n";
         }
+        std::cout << "\n-------------------\n";
     }
 }
 
 void log_arrivals_passengers(Airport &airport){
-    std::cout << "-------------------\n";
+    std::cout << "\n-------------------\n";
     if (!airport.head_arrv) {
-        std::cout << "No planes arriving.\n";
+        std::cout << "\nNo planes arriving.\n";
         return;
     }
 
@@ -173,6 +177,7 @@ void log_arrivals_passengers(Airport &airport){
         std::cout << "Destination: " << arr_ptr->plane.destination << "\n";
 
         Plane::passenger_in_plane * passNode = arr_ptr->plane.head_passenger;
+        if (!passNode) std::cout << "Arrival Plane Empty\n";
         while (passNode) {
             std::cout << "Ticket Number: " << passNode->passenger.ticket_num << ", ";
             std::cout << "Name: " << passNode->passenger.first_name << " " << passNode->passenger.second_name << ", ";
@@ -186,14 +191,15 @@ void log_arrivals_passengers(Airport &airport){
 
         arr_ptr = arr_ptr->next;
         if (arr_ptr) {
-            std::cout << "-------------------\n";
+            std::cout << "\n-------------------\n";
         }
+        std::cout << "\n-------------------\n";
     }
 }
 
 void log_ramp_planes(Airport &airport){
     if (airport.head_ramp) {
-        std::cout << "Planes in Ramp:\n";
+        std::cout << "\nPlanes in Ramp:\n";
         Airport::Ramp *rampNode = airport.head_ramp;
         while (rampNode) {
             std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
@@ -203,13 +209,13 @@ void log_ramp_planes(Airport &airport){
             rampNode = rampNode->next;
         }
     } else {
-        std::cout << "No planes in the ramp.\n";
+        std::cout << "\nNo planes in the ramp.\n";
     }
 }
 
 void log_arrival_planes(Airport &airport){
     if (airport.head_arrv) {
-        std::cout << "Planes ariving:\n";
+        std::cout << "\nPlanes ariving:\n";
         Airport::Arrival *rampNode = airport.head_arrv;
         while (rampNode) {
             std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
@@ -219,13 +225,13 @@ void log_arrival_planes(Airport &airport){
             rampNode = rampNode->next;
         }
     } else {
-        std::cout << "No planes ariving.\n";
+        std::cout << "\nNo planes ariving.\n";
     }
 }
 
 void log_departure_planes(Airport &airport){
     if (airport.head_dep) {
-        std::cout << "Planes in takeOFF:\n";
+        std::cout << "\nPlanes in departure:\n";
         Airport::Depart *rampNode = airport.head_dep;
         while (rampNode) {
             std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
@@ -235,6 +241,6 @@ void log_departure_planes(Airport &airport){
             rampNode = rampNode->next;
         }
     } else {
-        std::cout << "No planes takeOFF.\n";
+        std::cout << "\nNo planes on departure\n";
     }
 }
