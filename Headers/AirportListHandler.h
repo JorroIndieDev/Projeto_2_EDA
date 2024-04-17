@@ -6,6 +6,7 @@
 #define PROJETO_2_AIRPORTLISTHANDLER_H
 
 #include "structs.h"
+#include <iostream>
 
 /*
  * Possibility of having the airport handle all of this
@@ -25,13 +26,27 @@
 void passengers_to_ramp(Airport &airport);
 
 // Add to arrival list FIFO
+void add_arriving_plane(Airport &airport, Plane &plane);
+
+// Remove from arrival FIFO
 
 // Add to depart list FIFO
 void add_departing_plane(Airport &airport);
+
 // Remove from depart list FIFO
 void remove_departing_plane(Airport &airport);
+
 // Add to ramp list FIFO
+void add_ramp_plane(Airport &airport);
 
 // Show lists
-void log_departures(Airport &airport);
+// log functions simply laod the information of the pasengers in each list
+void log_departures_passengers(Airport &airport);
+void log_ramp_passengers(Airport &airport);
+void log_arrivals_passengers(Airport &airport);
+
+void log_ramp_planes(Airport &airport);
+void log_arrival_planes(Airport &airport);
+void log_departure_planes(Airport &airport);
+
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

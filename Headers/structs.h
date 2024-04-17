@@ -6,8 +6,6 @@
 #define PROJETO_2_STRUCTS_H
 
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
 
 struct passenger{ // passenger "object"
 
@@ -26,17 +24,16 @@ struct Plane{ // plane "object"
     std::string origin;
     std::string destination;
 
-    int capacidade;
+    int capacity;
     int quantity;
 
     struct passenger_in_plane{ // node to the linked list of passengers
 
-        passenger pass;
-
-        passenger_in_plane * next_pass;
+        struct passenger passenger;
+        passenger_in_plane * next_passenger;
 
     };
-    passenger_in_plane * head_pass;
+    passenger_in_plane * head_passenger;
 };
 
 struct Nacionality{ // linked list of nacionalities
@@ -45,14 +42,14 @@ struct Nacionality{ // linked list of nacionalities
 
     struct Pass_tree{ // tree of passengers
 
-        passenger * pass;
+        struct passenger passenger;
 
         Pass_tree * left;
         Pass_tree * right;
 
     };
 
-    Pass_tree * root;
+    Pass_tree * root_passenger;
 
     struct Nacionality * next_nacionality;
 
@@ -65,7 +62,9 @@ struct Airport{ // airport "Parent"
     // pool of passengers in ramp ordered by nacionality
     struct Nacionality * nacionality_head;
 
+
     // Airport lists arr,ramp,departure FIFO's
+    // Max size -> 7
     struct Ramp{ // ramp can be planes to depart and planes arriving
         Plane plane;
         Ramp * next;
@@ -75,6 +74,7 @@ struct Airport{ // airport "Parent"
     int ramp_cap;
     int num_in_ramp;
 
+    // Max size -> 5
     struct Depart{
         Plane plane;
         Depart * next;
@@ -84,6 +84,7 @@ struct Airport{ // airport "Parent"
     int depart_cap;
     int num_in_depart;
 
+    // Max size -> 10
     struct Arrival{
         Plane plane;
         Arrival * next;
@@ -93,6 +94,8 @@ struct Airport{ // airport "Parent"
     int arrival_cap;
     int num_in_arrival;
 
+    // Emergency Status
+    bool emergency_state = false;
 };
 
 #endif //PROJETO_2_STRUCTS_H
