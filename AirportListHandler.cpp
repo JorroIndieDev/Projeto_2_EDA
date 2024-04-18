@@ -6,7 +6,7 @@
 
 void remove_departing_plane(Airport &airport){
     if (airport.head_dep == NULL)return; // if head is NULL list is empty
-
+    std::cerr << "Removing depart Plane";
     Airport::Depart * temp = airport.head_dep;
     airport.head_dep = airport.head_dep->next;
     airport.num_in_depart--;
@@ -15,11 +15,13 @@ void remove_departing_plane(Airport &airport){
 
 void add_arriving_plane(Airport &airport, Plane &plane){
 
+    std::cerr << "Adding Plane\n";
+
     Airport::Arrival * new_depart = new Airport::Arrival;
     new_depart->plane = plane;
     new_depart->next = nullptr;
 
-    if (airport.head_dep == NULL){
+    if (airport.head_arrv == NULL){
         airport.head_arrv = new_depart;
 
     }else {
@@ -30,11 +32,11 @@ void add_arriving_plane(Airport &airport, Plane &plane){
         ptr->next = new_depart;
         airport.num_in_arrival++;
     }
-
 }
 
 void add_departing_plane(Airport &airport){
     if (airport.head_ramp == NULL)return;
+    std::cerr << "Adding Depart Plane\n";
 
     // remove from ramp
     Airport::Ramp * temp = airport.head_ramp;
@@ -63,6 +65,7 @@ void add_departing_plane(Airport &airport){
 
 void add_ramp_plane(Airport &airport){
     if (airport.head_arrv == NULL)return;
+    std::cerr << "Adding Ramp Plane\n";
 
     // remove from arrival
     Airport::Arrival * temp = airport.head_arrv;

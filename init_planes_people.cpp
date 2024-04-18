@@ -8,6 +8,7 @@
 
 
 void init_plane(Airport &airport){
+    std::cerr << "InitPlane\n";
     Plane newPlane;
     newPlane.flight_name = "FlightPOOP";
     newPlane.model = "MegaPOOP";

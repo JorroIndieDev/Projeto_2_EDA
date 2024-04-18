@@ -11,7 +11,7 @@ void dayCycle(Airport &airport) {
     std::string choice;
 
     while (isWorking) {
-        std::cout << "\n(e)mergencias (o)pcoes (g)ravar ";
+        std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
         std::cin >> choice;
         switch (choice[0]) {
             case 'e': // Emergency;
@@ -30,15 +30,17 @@ void dayCycle(Airport &airport) {
                 if (airport.num_in_ramp == 7) {
                     remove_departing_plane(airport);
                 }
-
+                std::cout << "Log Arrivals" << std::endl;
                 log_arrivals_passengers(airport);
                 log_arrival_planes(airport);
 
                 add_ramp_plane(airport);
+                std::cout << "Log Ramp" << std::endl;
                 log_ramp_planes(airport);
                 log_ramp_passengers(airport);
 
                 add_departing_plane(airport);
+                std::cout << "Log Depart" << std::endl;
                 log_departure_planes(airport);
                 log_departures_passengers(airport);
 
