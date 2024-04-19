@@ -9,8 +9,7 @@
 
 struct passenger{ // passenger "object"
 
-    int ticket_num;
-
+    std::string ticket_num;
     std::string first_name;
     std::string second_name;
     std::string nacionality;
@@ -24,8 +23,7 @@ struct Plane{ // plane "object"
     std::string origin;
     std::string destination;
 
-    int capacity;
-    int quantity;
+    int capacity; //Por favor considerem a capacidade entre 5 a 15
 
     struct passenger_in_plane{ // node to the linked list of passengers
 
@@ -64,7 +62,8 @@ struct Airport{ // airport "Parent"
 
 
     // Airport lists arr,ramp,departure FIFO's
-    // Max size -> 7
+
+    // Max size -> 7 , 0 to 6
     struct Ramp{ // ramp can be planes to depart and planes arriving
         Plane plane;
         Ramp * next;

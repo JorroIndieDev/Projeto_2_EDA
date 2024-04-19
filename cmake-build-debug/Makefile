@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Users\vande\AppData\Local\JetBrains\CLion 2023.3.3\bin\cmake\win\x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
+RM = "C:\Users\vande\AppData\Local\JetBrains\CLion 2023.3.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\joaop\OneDrive\Documentos\GitHub\Projeto_2_EDA
+CMAKE_SOURCE_DIR = C:\Users\vande\Documents\GitHub\Projeto_2_EDA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\joaop\OneDrive\Documentos\GitHub\Projeto_2_EDA\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\vande\Documents\GitHub\Projeto_2_EDA\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\joaop\OneDrive\Documentos\GitHub\Projeto_2_EDA\cmake
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Users\vande\AppData\Local\JetBrains\CLion 2023.3.3\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Users\vande\AppData\Local\JetBrains\CLion 2023.3.3\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\joaop\OneDrive\Documentos\GitHub\Projeto_2_EDA\cmake-build-debug\CMakeFiles C:\Users\joaop\OneDrive\Documentos\GitHub\Projeto_2_EDA\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\vande\Documents\GitHub\Projeto_2_EDA\cmake-build-debug\CMakeFiles C:\Users\vande\Documents\GitHub\Projeto_2_EDA\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\joaop\OneDrive\Documentos\GitHub\Projeto_2_EDA\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\vande\Documents\GitHub\Projeto_2_EDA\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,6 +128,102 @@ Projeto_2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/build
 .PHONY : Projeto_2/fast
 
+AirportListHandler.obj: AirportListHandler.cpp.obj
+.PHONY : AirportListHandler.obj
+
+# target to build an object file
+AirportListHandler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/AirportListHandler.cpp.obj
+.PHONY : AirportListHandler.cpp.obj
+
+AirportListHandler.i: AirportListHandler.cpp.i
+.PHONY : AirportListHandler.i
+
+# target to preprocess a source file
+AirportListHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/AirportListHandler.cpp.i
+.PHONY : AirportListHandler.cpp.i
+
+AirportListHandler.s: AirportListHandler.cpp.s
+.PHONY : AirportListHandler.s
+
+# target to generate assembly for a file
+AirportListHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/AirportListHandler.cpp.s
+.PHONY : AirportListHandler.cpp.s
+
+Aux_functions.obj: Aux_functions.cpp.obj
+.PHONY : Aux_functions.obj
+
+# target to build an object file
+Aux_functions.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/Aux_functions.cpp.obj
+.PHONY : Aux_functions.cpp.obj
+
+Aux_functions.i: Aux_functions.cpp.i
+.PHONY : Aux_functions.i
+
+# target to preprocess a source file
+Aux_functions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/Aux_functions.cpp.i
+.PHONY : Aux_functions.cpp.i
+
+Aux_functions.s: Aux_functions.cpp.s
+.PHONY : Aux_functions.s
+
+# target to generate assembly for a file
+Aux_functions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/Aux_functions.cpp.s
+.PHONY : Aux_functions.cpp.s
+
+Menus.obj: Menus.cpp.obj
+.PHONY : Menus.obj
+
+# target to build an object file
+Menus.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/Menus.cpp.obj
+.PHONY : Menus.cpp.obj
+
+Menus.i: Menus.cpp.i
+.PHONY : Menus.i
+
+# target to preprocess a source file
+Menus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/Menus.cpp.i
+.PHONY : Menus.cpp.i
+
+Menus.s: Menus.cpp.s
+.PHONY : Menus.s
+
+# target to generate assembly for a file
+Menus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/Menus.cpp.s
+.PHONY : Menus.cpp.s
+
+init_planes_people.obj: init_planes_people.cpp.obj
+.PHONY : init_planes_people.obj
+
+# target to build an object file
+init_planes_people.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/init_planes_people.cpp.obj
+.PHONY : init_planes_people.cpp.obj
+
+init_planes_people.i: init_planes_people.cpp.i
+.PHONY : init_planes_people.i
+
+# target to preprocess a source file
+init_planes_people.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/init_planes_people.cpp.i
+.PHONY : init_planes_people.cpp.i
+
+init_planes_people.s: init_planes_people.cpp.s
+.PHONY : init_planes_people.s
+
+# target to generate assembly for a file
+init_planes_people.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_2.dir\build.make CMakeFiles/Projeto_2.dir/init_planes_people.cpp.s
+.PHONY : init_planes_people.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +257,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Projeto_2
+	@echo ... AirportListHandler.obj
+	@echo ... AirportListHandler.i
+	@echo ... AirportListHandler.s
+	@echo ... Aux_functions.obj
+	@echo ... Aux_functions.i
+	@echo ... Aux_functions.s
+	@echo ... Menus.obj
+	@echo ... Menus.i
+	@echo ... Menus.s
+	@echo ... init_planes_people.obj
+	@echo ... init_planes_people.i
+	@echo ... init_planes_people.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

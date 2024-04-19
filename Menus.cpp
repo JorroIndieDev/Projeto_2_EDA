@@ -1,13 +1,11 @@
 #include "Headers/Menus.h"
 #include "Headers/AirportListHandler.h"
-#include "Headers/structs.h"
 #include "Headers/init_planes_people.h"
 
-void dayCycle(Airport &airport) {
-    // Verifies if the airport is still working
+void dayCycle(Airport &airport, file_data fileData) {
+
     bool isWorking = true;
 
-    // Menu option choice
     std::string choice;
 
     while (isWorking) {
@@ -23,32 +21,34 @@ void dayCycle(Airport &airport) {
             // Skip day
             case 's':
 
-                if (airport.num_in_arrival < 10 && !airport.emergency_state) {
-                    init_plane(airport);
+                if (airport.num_in_ramp == 7) {
+                    add_departing_plane(airport);
                 }
 
-                if (airport.num_in_ramp == 7) {
-                    remove_departing_plane(airport);
-                }
                 std::cout << "Log Arrivals" << std::endl;
-                log_arrivals_passengers(airport);
                 log_arrival_planes(airport);
+//                log_arrivals_passengers(airport);
 
                 add_ramp_plane(airport);
                 std::cout << "Log Ramp" << std::endl;
                 log_ramp_planes(airport);
-                log_ramp_passengers(airport);
+//                log_ramp_passengers(airport);
 
-                add_departing_plane(airport);
+                if (airport.num_in_arrival < 10 && !airport.emergency_state) {
+                    init_plane(airport , fileData);
+                }
+
                 std::cout << "Log Depart" << std::endl;
                 log_departure_planes(airport);
-                log_departures_passengers(airport);
-
+//                log_departures_passengers(airport);
 
                 break;
 
+            case 'q': // quit
+                isWorking = false;
+                break;
             default:
-                std::cout << "not cool";
+                std::cerr << "Please choose a valid option";
                 break;
         }
     }

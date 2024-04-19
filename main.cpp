@@ -17,17 +17,17 @@ int main() {
     srand(time(0));
 
     file_data fileData;
-    fileData.destino = read_files("../Data_Files/destino.txt");
-    fileData.modelo = read_files("../Data_Files/modelo.txt");
-    fileData.nacionalidade = read_files("../Data_Files/nacionalidade.txt");
-    fileData.origem = read_files("../Data_Files/origem.txt");
-    fileData.primeiro_nome = read_files("../Data_Files/primeiro_nome.txt");
-    fileData.segundo_nome = read_files("../Data_Files/segundo_nome.txt");
-    fileData.voo = read_files("../Data_Files/voo.txt");
+
+    load_files_to_mem(fileData);
 
     Airport airport = init_airport();
 
-    dayCycle(airport);
+    // first run of the program initial setup
+    for (int i = 0; i < 10; ++i) {
+        init_plane(airport,fileData);
+    }
+
+    dayCycle(airport,fileData);
 
     return 0;
 }
