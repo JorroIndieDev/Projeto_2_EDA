@@ -4,11 +4,28 @@
 
 void dayCycle(Airport &airport, file_data fileData) {
 
+    remove_departing_plane(airport);
+
     bool isWorking = true;
 
     std::string choice;
 
     while (isWorking) {
+
+        std::cout << "\nLog Arrivals\n" << std::endl;
+        log_arrival_planes(airport);
+//      log_arrivals_passengers(airport);
+
+        std::cout << "\nLog Ramp\n" << std::endl;
+        log_ramp_planes(airport);
+//      log_ramp_passengers(airport);
+
+
+
+        std::cout << "\nLog Depart\n" << std::endl;
+        log_departure_planes(airport);
+//       log_departures_passengers(airport);
+
         std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
         std::cin >> choice;
         switch (choice[0]) {
@@ -25,22 +42,11 @@ void dayCycle(Airport &airport, file_data fileData) {
                     add_departing_plane(airport);
                 }
 
-                std::cout << "Log Arrivals" << std::endl;
-                log_arrival_planes(airport);
-//                log_arrivals_passengers(airport);
-
-                add_ramp_plane(airport);
-                std::cout << "Log Ramp" << std::endl;
-                log_ramp_planes(airport);
-//                log_ramp_passengers(airport);
-
                 if (airport.num_in_arrival < 10 && !airport.emergency_state) {
                     init_plane(airport , fileData);
                 }
 
-                std::cout << "Log Depart" << std::endl;
-                log_departure_planes(airport);
-//                log_departures_passengers(airport);
+                add_ramp_plane(airport);
 
                 break;
 

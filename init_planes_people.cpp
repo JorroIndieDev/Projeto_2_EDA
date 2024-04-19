@@ -16,6 +16,7 @@ void init_plane(Airport &airport, file_data fileData ){
     newPlane.origin = fileData.origem[random_range(0, fileData.origem_size - 1)];
     newPlane.destination = "AeroportoEDA";
     newPlane.capacity = random_range(5, 15);
+    newPlane.head_passenger = nullptr;
 
     init_passengers(newPlane,fileData);
     add_arriving_plane(airport, newPlane);
@@ -38,18 +39,22 @@ void init_passengers(Plane &plane , file_data fileData){
 
         if (plane.head_passenger == NULL) {
             plane.head_passenger = passNode;
-
-        } else {
+        }
+        else {
             Plane::passenger_in_plane * temp_passenger_in_plane = plane.head_passenger;
 
-            while (temp_passenger_in_plane != NULL) {
+            // Traverse to the last node of the linked list
+            while (temp_passenger_in_plane->next_passenger != NULL) {
                 temp_passenger_in_plane = temp_passenger_in_plane->next_passenger;
             }
-
-            temp_passenger_in_plane = passNode;
+            // Attach passNode to the end of the list
+            if (temp_passenger_in_plane != NULL) {
+                temp_passenger_in_plane->next_passenger = passNode;
+            }
         }
     }
 }
+
 
 Airport init_airport(){
 
