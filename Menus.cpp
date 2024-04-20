@@ -4,7 +4,6 @@
 
 void dayCycle(Airport &airport, file_data fileData) {
 
-    remove_departing_plane(airport);
 
     bool isWorking = true;
 
@@ -14,17 +13,15 @@ void dayCycle(Airport &airport, file_data fileData) {
 
         std::cout << "\nLog Arrivals\n" << std::endl;
         log_arrival_planes(airport);
-//      log_arrivals_passengers(airport);
+         log_arrivals_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\nLog Ramp\n" << std::endl;
         log_ramp_planes(airport);
-//      log_ramp_passengers(airport);
-
-
+        log_ramp_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\nLog Depart\n" << std::endl;
         log_departure_planes(airport);
-//       log_departures_passengers(airport);
+        log_departures_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
         std::cin >> choice;
@@ -38,8 +35,12 @@ void dayCycle(Airport &airport, file_data fileData) {
             // Skip day
             case 's':
 
+                if (airport.num_in_depart > 3){
+                    remove_departing_plane(airport);
+                }
+
                 if (airport.num_in_ramp == 7) {
-                    add_departing_plane(airport);
+                    add_departing_plane(airport,fileData);
                 }
 
                 if (airport.num_in_arrival < 10 && !airport.emergency_state) {

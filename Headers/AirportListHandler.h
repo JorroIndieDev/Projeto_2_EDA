@@ -6,6 +6,7 @@
 #define PROJETO_2_AIRPORTLISTHANDLER_H
 
 #include "structs.h"
+#include "Aux_functions.h"
 #include <iostream>
 
 /*
@@ -31,13 +32,13 @@ void add_arriving_plane(Airport &airport, Plane &plane);
 // Remove from arrival FIFO
 
 // Add to depart list FIFO
-void add_departing_plane(Airport &airport);
+void add_departing_plane(Airport &airport, file_data &fileData);
 
 // Remove from depart list FIFO
 void remove_departing_plane(Airport &airport);
 
 // Add to ramp list FIFO
-void add_ramp_plane(Airport &airport);
+void add_ramp_plane(Airport &airport, file_data &fileData);
 
 // Show lists
 // log functions simply laod the information of the pasengers in each list

@@ -34,7 +34,7 @@ void add_arriving_plane(Airport &airport, Plane &plane){
     }
 }
 
-void add_departing_plane(Airport &airport){
+void add_departing_plane(Airport &airport, file_data &fileData){
     if (airport.head_ramp == NULL)return;
 //    std::cerr << "Adding Depart Plane\n";
 
@@ -42,6 +42,10 @@ void add_departing_plane(Airport &airport){
     Airport::Ramp * temp = airport.head_ramp;
     airport.head_ramp = airport.head_ramp->next;
     airport.num_in_ramp--;
+
+    // change destination and origin
+    temp->plane.destination = fileData.destino[random_range(0,fileData.destino_size-1)];
+    temp->plane.origin = "AeroportoEDA";
 
     // add to depart
     Airport::Depart * new_depart = new Airport::Depart;
@@ -63,7 +67,7 @@ void add_departing_plane(Airport &airport){
     delete temp;
 }
 
-void add_ramp_plane(Airport &airport){
+void add_ramp_plane(Airport &airport, file_data &fileData){
     if (airport.head_arrv == NULL)return;
 //    std::cerr << "Adding Ramp Plane\n";
 
