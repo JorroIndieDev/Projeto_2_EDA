@@ -1,16 +1,31 @@
 #include "Headers/Menus.h"
 #include "Headers/AirportListHandler.h"
-#include "Headers/structs.h"
 #include "Headers/init_planes_people.h"
 
-void dayCycle(Airport &airport) {
-    // Verifies if the airport is still working
+void dayCycle(Airport &airport, file_data fileData) {
+
+    remove_departing_plane(airport);
+
     bool isWorking = true;
 
-    // Menu option choice
     std::string choice;
 
     while (isWorking) {
+
+        std::cout << "\nLog Arrivals\n" << std::endl;
+        log_arrival_planes(airport);
+//      log_arrivals_passengers(airport);
+
+        std::cout << "\nLog Ramp\n" << std::endl;
+        log_ramp_planes(airport);
+//      log_ramp_passengers(airport);
+
+
+
+        std::cout << "\nLog Depart\n" << std::endl;
+        log_departure_planes(airport);
+//       log_departures_passengers(airport);
+
         std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
         std::cin >> choice;
         switch (choice[0]) {
@@ -23,32 +38,23 @@ void dayCycle(Airport &airport) {
             // Skip day
             case 's':
 
-                if (airport.num_in_arrival < 10 && !airport.emergency_state) {
-                    init_plane(airport);
+                if (airport.num_in_ramp == 7) {
+                    add_departing_plane(airport);
                 }
 
-                if (airport.num_in_ramp == 7) {
-                    remove_departing_plane(airport);
+                if (airport.num_in_arrival < 10 && !airport.emergency_state) {
+                    init_plane(airport , fileData);
                 }
-                std::cout << "Log Arrivals" << std::endl;
-                log_arrivals_passengers(airport);
-                log_arrival_planes(airport);
 
                 add_ramp_plane(airport);
-                std::cout << "Log Ramp" << std::endl;
-                log_ramp_planes(airport);
-                log_ramp_passengers(airport);
-
-                add_departing_plane(airport);
-                std::cout << "Log Depart" << std::endl;
-                log_departure_planes(airport);
-                log_departures_passengers(airport);
-
 
                 break;
 
+            case 'q': // quit
+                isWorking = false;
+                break;
             default:
-                std::cout << "not cool";
+                std::cerr << "Please choose a valid option";
                 break;
         }
     }
