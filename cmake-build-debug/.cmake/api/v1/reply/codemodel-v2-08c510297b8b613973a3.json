@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Projeto_2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Projeto_2-Debug-9e67aeffc2e900e9d414.json",
+					"jsonFile" : "target-Projeto_2-Debug-af41ebea6eaf737c1bcf.json",
 					"name" : "Projeto_2",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/joaop/OneDrive/Documentos/GitHub/Projeto_2_EDA/cmake-build-debug",
-		"source" : "C:/Users/joaop/OneDrive/Documentos/GitHub/Projeto_2_EDA"
+		"build" : "C:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2/cmake-build-debug",
+		"source" : "C:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2"
 	},
 	"version" : 
 	{

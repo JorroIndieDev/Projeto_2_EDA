@@ -57,6 +57,38 @@ build CMakeFiles/Projeto_2.dir/main.cpp.obj: CXX_COMPILER__Projeto_2_unscanned_D
   TARGET_COMPILE_PDB = CMakeFiles\Projeto_2.dir\
   TARGET_PDB = Projeto_2.pdb
 
+build CMakeFiles/Projeto_2.dir/AirportListHandler.cpp.obj: CXX_COMPILER__Projeto_2_unscanned_Debug C$:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2/AirportListHandler.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles\Projeto_2.dir\AirportListHandler.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projeto_2.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Projeto_2.dir\
+  TARGET_PDB = Projeto_2.pdb
+
+build CMakeFiles/Projeto_2.dir/init_planes_people.cpp.obj: CXX_COMPILER__Projeto_2_unscanned_Debug C$:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2/init_planes_people.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles\Projeto_2.dir\init_planes_people.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projeto_2.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Projeto_2.dir\
+  TARGET_PDB = Projeto_2.pdb
+
+build CMakeFiles/Projeto_2.dir/Aux_functions.cpp.obj: CXX_COMPILER__Projeto_2_unscanned_Debug C$:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2/Aux_functions.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles\Projeto_2.dir\Aux_functions.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projeto_2.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Projeto_2.dir\
+  TARGET_PDB = Projeto_2.pdb
+
+build CMakeFiles/Projeto_2.dir/Menus.cpp.obj: CXX_COMPILER__Projeto_2_unscanned_Debug C$:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2/Menus.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles\Projeto_2.dir\Menus.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projeto_2.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Projeto_2.dir\
+  TARGET_PDB = Projeto_2.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Projeto_2
@@ -65,7 +97,7 @@ build CMakeFiles/Projeto_2.dir/main.cpp.obj: CXX_COMPILER__Projeto_2_unscanned_D
 #############################################
 # Link the executable Projeto_2.exe
 
-build Projeto_2.exe: CXX_EXECUTABLE_LINKER__Projeto_2_Debug CMakeFiles/Projeto_2.dir/main.cpp.obj
+build Projeto_2.exe: CXX_EXECUTABLE_LINKER__Projeto_2_Debug CMakeFiles/Projeto_2.dir/main.cpp.obj CMakeFiles/Projeto_2.dir/AirportListHandler.cpp.obj CMakeFiles/Projeto_2.dir/init_planes_people.cpp.obj CMakeFiles/Projeto_2.dir/Aux_functions.cpp.obj CMakeFiles/Projeto_2.dir/Menus.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Projeto_2.dir
