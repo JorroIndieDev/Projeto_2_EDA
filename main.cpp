@@ -15,9 +15,9 @@
 
 int main() {
 
-    SaveToFile("accounts.dat");
+    SaveToFile("../data/accounts.dat");
 
-    LoadFromFile("accounts.dat");
+    LoadFromFile("../data/accounts.dat");
 
    /* srand(time(0));
 

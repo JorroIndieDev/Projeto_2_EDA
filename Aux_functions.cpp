@@ -5,7 +5,9 @@
 #include "Headers/Aux_functions.h"
 
 #include <fstream>
-
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
 void load_files_to_mem(file_data &fileData){
 
     fileData.modelo_size = count_lines("../Data_Files/modelo.txt");
@@ -110,9 +112,9 @@ void LoadFromFile(std::string file_name){
         exit(1);
     }
 
-/*    while (infile.read(reinterpret_cast <char *> (&input), sizeof(struct customer)))
+    while (infile.read(reinterpret_cast <char *> (&input), sizeof(struct customer)))
         printf("Name = %10s %10s   Acct Num = %8d   Balance = %8.2f\n",
-               input.fname, input.lname, input.acct_num, input.acct_balance);*/
+               input.fname, input.lname, input.acct_num, input.acct_balance);
 
     infile.close();
     infile.clear();
