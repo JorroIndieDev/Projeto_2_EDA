@@ -7,7 +7,7 @@
 
 
 
-void init_plane(Airport &airport, file_data &fileData ){
+void init_plane(Airport &airport, file_data &fileData ) {
 
     // create new plane to add to the list of arrivals
     Plane newPlane;
@@ -30,7 +30,7 @@ void init_plane(Airport &airport, file_data &fileData ){
 
 }
 
-void init_passengers(Plane &plane , file_data fileData){
+void init_passengers(Plane &plane , file_data fileData) {
 
     for (int i = 0; i < plane.capacity; ++i) {
 
@@ -76,7 +76,7 @@ void init_passengers(Plane &plane , file_data fileData){
 }
 
 
-Airport init_airport(){
+Airport init_airport() {
 
     // function simply inits the airport to null values and sizes of the arrays
 
