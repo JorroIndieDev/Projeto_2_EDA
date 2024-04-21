@@ -7,48 +7,67 @@
 
 
 
-void init_plane(Airport &airport, file_data &fileData ){
+void init_plane(Airport &airport, file_data &fileData ) {
 
+    // create new plane to add to the list of arrivals
     Plane newPlane;
 
+    // init the plane with default params
     newPlane.flight_name = fileData.voo[random_range(0, fileData.voo_size - 1)];
     newPlane.model = fileData.modelo[random_range(0, fileData.modelo_size - 1)];
     newPlane.origin = fileData.origem[random_range(0, fileData.origem_size - 1)];
-    newPlane.destination = "AeroportoEDA";
     newPlane.capacity = random_range(5, 15);
+
+    // initiate nullptr to not get magic values
     newPlane.head_passenger = nullptr;
 
+    // all planes are initiated with AeroportoEDA as destination
+    newPlane.destination = "AeroportoEDA";
+
+    // call functions to initiate plane passengers to the plane and add them to the list
     init_passengers(newPlane,fileData);
     add_arriving_plane(airport, newPlane);
 
 }
 
-void init_passengers(Plane &plane , file_data fileData){
+void init_passengers(Plane &plane , file_data fileData) {
 
     for (int i = 0; i < plane.capacity; ++i) {
 
+        // create a passenger to be added to the plane passenger list
         passenger newPassenger;
+
+        // add number to the ticket so it always incrementes and is different
         fileData.ticket_number += i;
+
+        // init passenger
         newPassenger.ticket_num = (fileData.Ticket + std::to_string(fileData.ticket_number));
         newPassenger.first_name = fileData.primeiro_nome[random_range(0,fileData.primeiro_nome_size-1)];
         newPassenger.second_name = fileData.segundo_nome[random_range(0,fileData.segundo_nome_size-1)];
         newPassenger.nacionality = fileData.nacionalidade[random_range(0,fileData.nacionalidade_size-1)];
 
+        // init a node to the passengers in the plane
         Plane::passenger_in_plane *passNode = new Plane::passenger_in_plane;
+
+        // since its a linked list we add the passenger to its ::passenger
         passNode->passenger = newPassenger;
+        // then init ::next to null
         passNode->next_passenger = NULL;
 
+        // if "head" is null we add to the head
         if (plane.head_passenger == NULL) {
             plane.head_passenger = passNode;
-        }
+        } // else we loop and add at the end of the list
         else {
+
+            // new aux var to traverse the list without destroying it
             Plane::passenger_in_plane * temp_passenger_in_plane = plane.head_passenger;
 
-            // Traverse to the last node of the linked list
+            // loop until null
             while (temp_passenger_in_plane->next_passenger != NULL) {
                 temp_passenger_in_plane = temp_passenger_in_plane->next_passenger;
             }
-            // Attach passNode to the end of the list
+            // add node to the list
             if (temp_passenger_in_plane != NULL) {
                 temp_passenger_in_plane->next_passenger = passNode;
             }
@@ -57,11 +76,14 @@ void init_passengers(Plane &plane , file_data fileData){
 }
 
 
-Airport init_airport(){
+Airport init_airport() {
+
+    // function simply inits the airport to null values and sizes of the arrays
 
     Airport airport;
 
     airport.emergency_state = false;
+
     // Nacionality
     airport.nacionality_head = nullptr;
 
@@ -80,5 +102,6 @@ Airport init_airport(){
     airport.ramp_cap = 6;
     airport.num_in_ramp = 0;
 
+    // return initiated airport
     return airport;
 }
