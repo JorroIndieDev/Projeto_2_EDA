@@ -25,6 +25,7 @@ void dayCycle(Airport &airport, file_data fileData) {
 
         std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
         std::cin >> choice;
+
         switch (choice[0]) {
             case 'e': // Emergency;
                 break;
@@ -47,7 +48,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                     init_plane(airport , fileData);
                 }
 
-                add_ramp_plane(airport);
+                add_ramp_plane(airport,fileData);
 
                 break;
 
