@@ -32,6 +32,7 @@ void dayCycle(Airport &airport, file_data fileData) {
             case 'o': // Options;
                 break;
             case 'g': // Save;
+                SaveToFile("airport",airport);
                 break;
             // Skip day
             case 's':
