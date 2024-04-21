@@ -6,51 +6,79 @@
 
 #include <fstream>
 #include "stdlib.h"
-#include "stdio.h"
-#include "string.h"
+
 void load_files_to_mem(file_data &fileData){
 
+    // assigns the size of the arrays for the loading of the Data
     fileData.modelo_size = count_lines("../Data_Files/modelo.txt");
     fileData.nacionalidade_size = count_lines("../Data_Files/nacionalidade.txt");
     fileData.primeiro_nome_size = count_lines("../Data_Files/primeiro_nome.txt");
     fileData.segundo_nome_size = count_lines("../Data_Files/segundo_nome.txt");
     fileData.voo_size = count_lines("../Data_Files/voo.txt");
 
-    fileData.origem_size = count_lines("../Data_Files/origem.txt");
-    fileData.origem = read_files("../Data_Files/origem.txt", fileData.origem_size);
-    fileData.destino_size = count_lines("../Data_Files/destino.txt");
-    fileData.destino = read_files("../Data_Files/destino.txt", fileData.destino_size);
-
+    // loads the Data files provided to memory so it can be freely used and not request aditional mem during runtime
     fileData.modelo = read_files("../Data_Files/modelo.txt", fileData.modelo_size);
     fileData.nacionalidade = read_files("../Data_Files/nacionalidade.txt", fileData.nacionalidade_size);
     fileData.primeiro_nome = read_files("../Data_Files/primeiro_nome.txt", fileData.primeiro_nome_size);
     fileData.segundo_nome = read_files("../Data_Files/segundo_nome.txt", fileData.segundo_nome_size);
     fileData.voo = read_files("../Data_Files/voo.txt", fileData.voo_size);
 
+    // loads the same divided seperatly duo to being differnt types of file (longer lines)
+    fileData.origem_size = count_lines("../Data_Files/origem.txt");
+    fileData.origem = read_files("../Data_Files/origem.txt", fileData.origem_size);
+    fileData.destino_size = count_lines("../Data_Files/destino.txt");
+    fileData.destino = read_files("../Data_Files/destino.txt", fileData.destino_size);
+
 }
 
 std::string* read_files(std::string file_name, int size){
+
+    // create var file to aux read
     std::ifstream file;
+
+    // opens file specified
     file.open(file_name);
+
+    // creates the new array to be returned set size passed by the size @param
     std::string * string_arr = new std::string[size];
-    int i = 0;
+
+    // init index to access array
+    int index = 0;
+
+    // aux var to get the line of the file
     std::string line;
+
+    // loop until file is eof and attribute each line to array
     while(std::getline(file,line)){
-        string_arr[i] = line;
-        i++;
+        string_arr[index] = line;
+        index++;
     }
+
+    // return the array
     return string_arr;
 }
 
 int count_lines(std::string file_name){
+
+    // create var file to aux read
     std::ifstream file;
+
+    // opens file specified
     file.open(file_name);
-    int i = 0;
+
+    // init number of lines
+    int num_of_lines = 0;
+
+    // aux var to get the line of the file
     std::string line;
+
+    // loop until file is eof and increment num_of_lines
     while(std::getline(file,line)){
-        i++;
+        num_of_lines++;
     }
-    return i;
+
+    // return the number of lines in each file
+    return num_of_lines;
 }
 
 int random_range(int lower, int upper){
@@ -58,8 +86,6 @@ int random_range(int lower, int upper){
     return num;
 }
 
-
-// TODO change everything for the airport
 void SaveToFile(std::string file_name, Airport &airport) {
 
     // initialize the file with fstream
@@ -93,7 +119,7 @@ void SaveToFile(std::string file_name, Airport &airport) {
     outfile.clear();
 
 }
-// TODO change everything for the airport
+
 void LoadFromFile(std::string file_name, Airport &airport){
 
     // initialize the file with fstream
