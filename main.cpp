@@ -14,8 +14,56 @@
 
 
 int main(int argc, char *argv[]) {
+/*
+TODO Links de referencia:
+ -https://www.youtube.com/watch?v=jDM6_TnYIqE
+ -https://www.sanfoundry.com/c-program-create-balanced-binary-tree-incoming-data/
 
-    // init rand seed
+
+TODO Facam o vosso teste aqui e chamem as funcoes no AirportListHandler.cpp|.h
+     as funcoes para a arvore sao as seguintes: (se nao conseguirem deixem me mensagem - Jorro)
+
+// tree handler functions
+
+// make a node with the passenger
+Nacionality::Pass_tree * new_tree_node(struct passenger &passenger);
+
+// rotate tree to the right
+Nacionality::Pass_tree * rotate_node_to_right(Nacionality::Pass_tree * tree_node);
+
+// rotate tree to the left
+Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node);
+
+// insert node in tree
+Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger);
+
+// calculate node height
+int node_height(Nacionality::Pass_tree * tree_node);
+
+// DISCART FUNCTION
+// funcao vai dar print da arvore
+void preOrder(Nacionality::Pass_tree * root);
+
+// get node balance
+int get_node_balance(Nacionality::Pass_tree * tree_node);
+*/
+
+/***********************************************
+ *
+ * Facam aqui e testem
+ *
+ ***********************************************/
+
+
+
+
+/***********************************************
+ *
+ *
+ ***********************************************/
+
+
+    /*// init rand seed
     srand(time(0));
 
     // creating struct for holding all Data files
@@ -43,7 +91,7 @@ int main(int argc, char *argv[]) {
     }
 
     // initialize days / cylces of the airport
-    dayCycle(airport,fileData);
+    dayCycle(airport,fileData);*/
 
     return 0;
 }

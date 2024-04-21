@@ -50,4 +50,28 @@ void log_ramp_planes(Airport &airport);
 void log_arrival_planes(Airport &airport);
 void log_departure_planes(Airport &airport);
 
+// tree handler functions
+
+// make a node with the passenger
+Nacionality::Pass_tree * new_tree_node(struct passenger &passenger);
+
+// rotate tree to the right
+Nacionality::Pass_tree * rotate_node_to_right(Nacionality::Pass_tree * tree_node);
+
+// rotate tree to the left
+Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node);
+
+// insert node in tree
+Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger);
+
+// calculate node height
+int node_height(Nacionality::Pass_tree * tree_node);
+
+// DISCART FUNCTION
+// funcao vai dar print da arvore
+void preOrder(Nacionality::Pass_tree * root);
+
+// get node balance
+int get_node_balance(Nacionality::Pass_tree * tree_node);
+
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

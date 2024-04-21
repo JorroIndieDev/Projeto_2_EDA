@@ -4,7 +4,7 @@
 
 #include "Headers/AirportListHandler.h"
 
-void remove_departing_plane(Airport &airport){
+void remove_departing_plane(Airport &airport) {
     if (airport.head_dep == NULL)return; // if head is NULL list is empty
 
     // since we parse  address we create a temp var to delete it afterward so that there is no memory leak
@@ -16,7 +16,7 @@ void remove_departing_plane(Airport &airport){
     delete temp;
 }
 
-void add_arriving_plane(Airport &airport, Plane &plane){
+void add_arriving_plane(Airport &airport, Plane &plane) {
 
     // create new Arrival node to add to list
     Airport::Arrival * new_arrv = new Airport::Arrival;
@@ -37,7 +37,7 @@ void add_arriving_plane(Airport &airport, Plane &plane){
     }
 }
 
-void add_departing_plane(Airport &airport, file_data &fileData){
+void add_departing_plane(Airport &airport, file_data &fileData) {
     if (airport.head_ramp == NULL)return;
 
     // remove from ramp
@@ -69,7 +69,7 @@ void add_departing_plane(Airport &airport, file_data &fileData){
     delete temp;
 }
 
-void add_ramp_plane(Airport &airport, file_data &fileData){
+void add_ramp_plane(Airport &airport, file_data &fileData) {
     if (airport.head_arrv == NULL)return;
 
     // remove from arrival
@@ -97,7 +97,7 @@ void add_ramp_plane(Airport &airport, file_data &fileData){
     delete temp;
 }
 
-void log_departures_passengers(Airport &airport){
+void log_departures_passengers(Airport &airport) {
     std::cout << "\n---------Departing passengers----------\n";
     if (!airport.head_dep) {
         std::cout << "\nNo planes in departure.\n";
@@ -131,7 +131,7 @@ void log_departures_passengers(Airport &airport){
     }
 }
 
-void log_ramp_passengers(Airport &airport){
+void log_ramp_passengers(Airport &airport) {
     std::cout << "\n----------Ramp passengers in Plane---------\n";
     if (!airport.head_ramp) {
         std::cout << "\nNo planes in ramp.\n";
@@ -164,7 +164,7 @@ void log_ramp_passengers(Airport &airport){
     }
 }
 
-void log_arrivals_passengers(Airport &airport){
+void log_arrivals_passengers(Airport &airport) {
     std::cout << "\n---------Ariving passengers----------\n";
     if (!airport.head_arrv) {
         std::cout << "\nNo planes arriving.\n";
@@ -196,7 +196,7 @@ void log_arrivals_passengers(Airport &airport){
     }
 }
 
-void log_ramp_planes(Airport &airport){
+void log_ramp_planes(Airport &airport) {
 
     if (airport.head_ramp) {
 
@@ -217,7 +217,7 @@ void log_ramp_planes(Airport &airport){
     }
 }
 
-void log_arrival_planes(Airport &airport){
+void log_arrival_planes(Airport &airport) {
 
     if (airport.head_arrv) {
 
@@ -238,7 +238,7 @@ void log_arrival_planes(Airport &airport){
     }
 }
 
-void log_departure_planes(Airport &airport){
+void log_departure_planes(Airport &airport) {
 
     if (airport.head_dep) {
 
@@ -256,5 +256,149 @@ void log_departure_planes(Airport &airport){
         }
     } else {
         std::cout << "\nNo planes on departure\n";
+    }
+}
+
+
+/*
+ * NOTES:
+ * h = height
+ * lf = left
+ * rt = right
+ *      - tree balance factor = lf_h subTree - rt_h subTree = {-1,0,1}
+ *      -
+ *
+ */
+
+Nacionality::Pass_tree * new_tree_node(struct passenger &passenger) {
+
+    Nacionality::Pass_tree * tree_node;
+
+    tree_node->passenger = passenger;
+
+    tree_node->left = NULL;
+    tree_node->right = NULL;
+    tree_node->height = 1;
+
+    return tree_node;
+
+}
+
+Nacionality::Pass_tree * rotate_node_to_right(Nacionality::Pass_tree * tree_node) {
+
+    Nacionality::Pass_tree * aux_node = tree_node->left;
+    Nacionality::Pass_tree * temp_node = aux_node->right;
+
+    // Rotation
+    aux_node->right = tree_node;
+    tree_node->left = temp_node;
+
+    // update heights
+    tree_node->height = max(node_height(tree_node->left),
+                            node_height(tree_node->right)) + 1;
+
+    tree_node->height = max(node_height(aux_node->left),
+                            node_height(aux_node->right)) + 1;
+
+    // return new root
+    return aux_node;
+
+}
+
+Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node) {
+
+    Nacionality::Pass_tree * aux_node = tree_node->right;
+    Nacionality::Pass_tree * temp_node = aux_node->left;
+
+    // Rotation
+    aux_node->left = tree_node;
+    tree_node->right = temp_node;
+
+    // update heights
+    tree_node->height = max(node_height(tree_node->left),
+                            node_height(tree_node->right)) + 1;
+
+    aux_node->height = max(node_height(aux_node->left),
+                           node_height(aux_node->right)) + 1;
+
+    // return new root
+    return aux_node;
+
+}
+
+Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger) {
+
+    /* 1.  Perform the normal BST rotation */
+    // simple, if node is null just add the value in it
+    if (tree_node == NULL)
+        return (new_tree_node(passenger));
+
+    // orderes by first name, TODO may need to check second name as well how? no clue
+    if (passenger.first_name < tree_node->passenger.first_name)tree_node->left = insert_tree_node(tree_node->left, passenger);
+    else tree_node->right = insert_tree_node(tree_node->right, passenger);
+
+    /* 2. Update height of this ancestor node */
+    // getting the height of the node by the max value between the left and right nodes
+    tree_node->height = max(node_height(tree_node->left),
+                            node_height(tree_node->right)) + 1;
+
+    /* 3. Get the balance factor of this ancestor node to check whether
+     this node became unbalanced */
+    int balance = get_node_balance(tree_node);
+
+    // 4 cases if node is not balanced
+
+    // Left Left
+    if (balance > 1 && passenger.first_name < tree_node->left->passenger.first_name)
+        return rotate_node_to_right(tree_node);
+
+    // Right Right
+    if (balance < -1 && passenger.first_name > tree_node->right->passenger.first_name)
+        return rotate_node_to_left(tree_node);
+
+    // Left Right
+    if (balance > 1 && passenger.first_name > tree_node->left->passenger.first_name) {
+        tree_node->left = rotate_node_to_left(tree_node->left);
+        return rotate_node_to_right(tree_node);
+    }
+
+    // Right Left
+    if (balance < -1 && passenger.first_name < tree_node->right->passenger.first_name) {
+        tree_node->right = rotate_node_to_right(tree_node->right);
+        return rotate_node_to_left(tree_node);
+    }
+
+    // returns tree node
+    return tree_node;
+
+}
+
+int get_node_balance(Nacionality::Pass_tree * tree_node){
+
+    if (NULL == tree_node)return 0;
+
+    // node is inbalanced if left-right heights != 1 || 0 || -1
+    return node_height(tree_node->left) - node_height(tree_node->right);
+
+}
+
+int node_height(Nacionality::Pass_tree * tree_node) {
+
+    // seperate function for ease of debug and use
+
+    if (tree_node == NULL)return 0;
+
+    // just return the height if the node is not null
+    return tree_node->height;
+
+}
+
+void preOrder(Nacionality::Pass_tree * root) {
+
+    if (NULL != root) {
+
+        std::cout << root->passenger.first_name << std::endl;
+        preOrder(root->left);
+        preOrder(root->right);
     }
 }

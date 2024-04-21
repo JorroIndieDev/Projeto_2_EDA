@@ -61,6 +61,9 @@ std::string* read_files(std::string file_name,int size);
 int count_lines(std::string file_name);
 // random num
 int random_range(int lower, int upper);
+// max value between two
+int max(int a,int b);
+
 
 void SaveToFile(std::string file_name, Airport &airport);
 void LoadFromFile(std::string file_name, Airport &airport);
