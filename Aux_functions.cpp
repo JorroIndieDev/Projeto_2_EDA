@@ -62,17 +62,32 @@ int random_range(int lower, int upper){
 // TODO change everything for the airport
 void SaveToFile(std::string file_name, Airport &airport) {
 
+    // initialize the file with fstream
     std::ofstream outfile;
+
+    // auxiliary var to not destroy original
     struct Airport input = airport;
 
-    // open Accounts file for writing
-    outfile.open(file_name);
+    // adding file to the file PATH where airport data is stored
+    std::string FILE_PATH = "../AirportData/";
 
+    // ensure the file is .dat
+    file_name += ".dat";
+    FILE_PATH += file_name;
+
+    //open file
+    outfile.open(FILE_PATH); // by using FILE_PATH we ensure that the file is always oppened from the right dir
+
+
+    // if file is not valid cerr out and quit
     if (!outfile.is_open()) {
-        std::cout<< "\nError opening accounts.dat\n\n";
+        std::cerr << "\nFile -> { " << file_name << " } Not found\n\n";
+        outfile.close();
+        outfile.clear();
         exit(1);
     }
 
+    // write struct to file and close
     outfile.write(reinterpret_cast <char *> (&input), sizeof(struct Airport));
     outfile.close();
     outfile.clear();
@@ -81,18 +96,28 @@ void SaveToFile(std::string file_name, Airport &airport) {
 // TODO change everything for the airport
 void LoadFromFile(std::string file_name, Airport &airport){
 
+    // initialize the file with fstream
     std::ifstream infile;
 
-    //open the accounts file
-    infile.open(file_name);
+    // adding file to the file PATH where airport data is stored
+    std::string FILE_PATH = "../AirportData/";
+
+    // ensure the file is .dat
+    file_name += ".dat";
+    FILE_PATH += file_name;
+
+    // open file
+    infile.open(FILE_PATH); // by using FILE_PATH we ensure that the file is always oppened from the right dir
+
+    // if file is not valid cerr out and quit
     if (!infile.is_open()) {
-        std::cerr << "\nError opening accounts.dat\n\n";
+        std::cerr << "\nFile -> { " << file_name << " } Not found\n\n";
         infile.close();
         infile.clear();
         exit(1);
     }
+    // read struct from file and close
     infile.read(reinterpret_cast <char *> (&airport), sizeof(struct Airport));
-
     infile.close();
     infile.clear();
 }
