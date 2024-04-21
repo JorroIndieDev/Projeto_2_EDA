@@ -5,6 +5,8 @@
 #ifndef PROJETO_2_AUX_FUNCTIONS_H
 #define PROJETO_2_AUX_FUNCTIONS_H
 #include <iostream>
+#include "structs.h"
+
 struct file_data{
 
     const std::string Ticket = "TK.";
@@ -25,6 +27,30 @@ struct file_data{
     int primeiro_nome_size;
     int segundo_nome_size;
     int voo_size;
+
+    file_data(){
+        destino = nullptr;
+        modelo = nullptr;
+        nacionalidade = nullptr;
+        primeiro_nome = nullptr;
+        segundo_nome = nullptr;
+        voo = nullptr;
+
+        destino_size = 0;
+        modelo_size = 0;
+        nacionalidade_size = 0;
+        origem_size = 0;
+        primeiro_nome_size = 0;
+        segundo_nome_size = 0;
+        voo_size = 0;
+    }
+
+};
+
+struct customer {
+    char  fname[20],lname[20];
+    int   acct_num;
+    float acct_balance;
 };
 
 // reads and loads all the files to memory
@@ -33,10 +59,10 @@ void load_files_to_mem(file_data &fileData);
 std::string* read_files(std::string file_name,int size);
 // count number of lines in the file
 int count_lines(std::string file_name);
-// save to binary documents
-void saveToFile(const file_data& data, const std::string& filename);
-// load binary docs
-void loadFromFile(file_data& data, const std::string& filename);
 // random num
 int random_range(int lower, int upper);
+
+void SaveToFile(std::string file_name, Airport &airport);
+void LoadFromFile(std::string file_name, Airport &airport);
+
 #endif //PROJETO_2_AUX_FUNCTIONS_H

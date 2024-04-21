@@ -5,7 +5,9 @@
 #include "Headers/Aux_functions.h"
 
 #include <fstream>
-
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
 void load_files_to_mem(file_data &fileData){
 
     fileData.modelo_size = count_lines("../Data_Files/modelo.txt");
@@ -54,4 +56,43 @@ int count_lines(std::string file_name){
 int random_range(int lower, int upper){
     int num = (rand() % (upper - lower + 1)) + lower;
     return num;
+}
+
+
+// TODO change everything for the airport
+void SaveToFile(std::string file_name, Airport &airport) {
+
+    std::ofstream outfile;
+    struct Airport input = airport;
+
+    // open Accounts file for writing
+    outfile.open(file_name);
+
+    if (!outfile.is_open()) {
+        std::cout<< "\nError opening accounts.dat\n\n";
+        exit(1);
+    }
+
+    outfile.write(reinterpret_cast <char *> (&input), sizeof(struct Airport));
+    outfile.close();
+    outfile.clear();
+
+}
+// TODO change everything for the airport
+void LoadFromFile(std::string file_name, Airport &airport){
+
+    std::ifstream infile;
+
+    //open the accounts file
+    infile.open(file_name);
+    if (!infile.is_open()) {
+        std::cerr << "\nError opening accounts.dat\n\n";
+        infile.close();
+        infile.clear();
+        exit(1);
+    }
+    infile.read(reinterpret_cast <char *> (&airport), sizeof(struct Airport));
+
+    infile.close();
+    infile.clear();
 }
