@@ -19,6 +19,10 @@ TODO Links de referencia:
  -https://www.youtube.com/watch?v=jDM6_TnYIqE
  -https://www.sanfoundry.com/c-program-create-balanced-binary-tree-incoming-data/
 
+ Notas: as funcoes nao estao todas as necessarias, falta remover e uma funcao dedicada a ordenar
+ tecnicamente e so remover parte da insert_tree_node e temos a ordenacao mas e melhor testarmos em cunjunto, se acharem
+ que conseguem estejam a vontade, nao se esquecam de comentar as partes importantes tentei deixar tudo o que fiz e fizemos
+ comentado a explicar.
 
 TODO Facam o vosso teste aqui e chamem as funcoes no AirportListHandler.cpp|.h
      as funcoes para a arvore sao as seguintes: (se nao conseguirem deixem me mensagem - Jorro)
