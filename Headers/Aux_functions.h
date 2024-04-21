@@ -62,7 +62,7 @@ int count_lines(std::string file_name);
 // random num
 int random_range(int lower, int upper);
 
-void SaveToFile(std::string file_name);
-void LoadFromFile(std::string file_name);
+void SaveToFile(std::string file_name, Airport &airport);
+void LoadFromFile(std::string file_name, Airport &airport);
 
 #endif //PROJETO_2_AUX_FUNCTIONS_H

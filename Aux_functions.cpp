@@ -60,48 +60,28 @@ int random_range(int lower, int upper){
 
 
 // TODO change everything for the airport
-void SaveToFile(std::string file_name) {
+void SaveToFile(std::string file_name, Airport &airport) {
 
     std::ofstream outfile;
-    struct customer input;
+    struct Airport input = airport;
 
     // open Accounts file for writing
-    outfile.open("accounts.dat");
+    outfile.open(file_name);
 
     if (!outfile.is_open()) {
         std::cout<< "\nError opening accounts.dat\n\n";
         exit(1);
     }
 
-    // instructions to user
-    printf("Enter \"stop\" for First Name to end program.");
-
-    // endlessly read from keyboard and write to file
-    while (1) {
-        // prompt user
-        printf("\nFirst Name: ");
-        scanf("%s", input.fname);
-        // exit if no name provided
-        if (strcmp(input.fname, "stop") == 0)
-            break;
-        // continue reading from keyboard
-        printf("Last Name : ");
-        scanf("%s", input.lname);
-        printf("Acct Num  : ");
-        scanf("%d", &input.acct_num);
-        printf("Balance   : ");
-        scanf("%f", &input.acct_balance);
-
-        // write entire structure to Accounts file
-        outfile.write(reinterpret_cast <char *> (&input), sizeof(struct customer));
-    }
+    outfile.write(reinterpret_cast <char *> (&input), sizeof(struct Airport));
     outfile.close();
     outfile.clear();
+
 }
 // TODO change everything for the airport
-void LoadFromFile(std::string file_name){
+void LoadFromFile(std::string file_name, Airport &airport){
+
     std::ifstream infile;
-    struct customer input;
 
     //open the accounts file
     infile.open(file_name);
@@ -111,10 +91,7 @@ void LoadFromFile(std::string file_name){
         infile.clear();
         exit(1);
     }
-
-    while (infile.read(reinterpret_cast <char *> (&input), sizeof(struct customer)))
-        printf("Name = %10s %10s   Acct Num = %8d   Balance = %8.2f\n",
-               input.fname, input.lname, input.acct_num, input.acct_balance);
+    infile.read(reinterpret_cast <char *> (&airport), sizeof(struct Airport));
 
     infile.close();
     infile.clear();

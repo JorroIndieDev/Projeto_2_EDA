@@ -15,11 +15,9 @@
 
 int main() {
 
-    SaveToFile("../data/accounts.dat");
 
-    LoadFromFile("../data/accounts.dat");
 
-   /* srand(time(0));
+    srand(time(0));
 
     file_data fileData = file_data();
 
@@ -32,7 +30,15 @@ int main() {
         init_plane(airport,fileData);
     }
 
-    dayCycle(airport,fileData);*/
+    SaveToFile("..\\data\\airport.dat",airport);
+
+    Airport airport2  = init_airport();
+
+    LoadFromFile("..\\data\\airport.dat",airport2);
+
+    log_arrival_planes(airport2);
+
+//    dayCycle(airport,fileData);
 
     return 0;
 }

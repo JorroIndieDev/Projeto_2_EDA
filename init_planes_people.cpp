@@ -7,7 +7,7 @@
 
 
 
-void init_plane(Airport &airport, file_data fileData ){
+void init_plane(Airport &airport, file_data &fileData ){
 
     Plane newPlane;
 
