@@ -97,6 +97,71 @@ void add_ramp_plane(Airport &airport, file_data &fileData){
     delete temp;
 }
 
+void reverse_departing(Airport &airport) {
+
+    // aux vars to reverse the links
+    Airport::Depart * current_plane = airport.head_dep;
+    Airport::Depart * prev_plane = nullptr, * next_plane = nullptr;
+
+    // loop to "swap()"
+    while (current_plane != nullptr) {
+
+        next_plane = current_plane->next;
+        current_plane->next = prev_plane;
+
+        prev_plane = current_plane;
+        current_plane = next_plane;
+
+    }
+
+    // assign new head with links fixed to the actual head
+    airport.head_dep = prev_plane;
+
+}
+
+void reverse_ramp(Airport &airport) {
+
+    // aux vars to reverse the links
+    Airport::Ramp * current_plane = airport.head_ramp;
+    Airport::Ramp * prev_plane = nullptr, * next_plane = nullptr;
+
+    // loop to "swap()"
+    while (current_plane != nullptr) {
+
+        next_plane = current_plane->next;
+        current_plane->next = prev_plane;
+
+        prev_plane = current_plane;
+        current_plane = next_plane;
+
+    }
+
+    // assign new head with links fixed to the actual head
+    airport.head_ramp = prev_plane;
+
+}
+
+void reverse_arrival(Airport &airport) {
+
+    // aux vars to reverse the links
+    Airport::Arrival * current_plane = airport.head_arrv;
+    Airport::Arrival * prev_plane = nullptr, * next_plane = nullptr;
+
+    // loop to "swap()"
+    while (current_plane != nullptr) {
+
+        next_plane = current_plane->next;
+        current_plane->next = prev_plane;
+
+        prev_plane = current_plane;
+        current_plane = next_plane;
+    }
+
+    // assign new head with links fixed to the actual head
+    airport.head_arrv = prev_plane;
+
+}
+
 void log_departures_passengers(Airport &airport){
     std::cout << "\n---------Departing passengers----------\n";
     if (!airport.head_dep) {

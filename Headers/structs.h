@@ -53,8 +53,6 @@ struct Nacionality{ // linked list of nacionalities
 
 };
 
-
-
 struct Airport{ // airport "Parent"
 
     // pool of passengers in ramp ordered by nacionality

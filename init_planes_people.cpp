@@ -75,7 +75,6 @@ void init_passengers(Plane &plane , file_data fileData) {
     }
 }
 
-
 Airport init_airport() {
 
     // function simply inits the airport to null values and sizes of the arrays
