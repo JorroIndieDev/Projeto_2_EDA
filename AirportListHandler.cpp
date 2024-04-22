@@ -97,6 +97,46 @@ void add_ramp_plane(Airport &airport, file_data &fileData){
     delete temp;
 }
 
+void reverse_departing(Airport &airport) {
+    // Departing
+    Airport::Depart *current = airport.head_dep;
+    Airport::Depart *prev = nullptr, *next = nullptr;
+    while (current != nullptr) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    airport.head_dep = prev;
+}
+
+void reverse_ramp(Airport &airport) {
+    // Initialize current, previous and next pointers
+    Airport::Ramp *current = airport.head_ramp;
+    Airport::Ramp *prev = nullptr, *next = nullptr;
+    while (current != nullptr) {
+        // Store next
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    airport.head_ramp = prev;
+}
+
+void reverse_arrival(Airport &airport) {
+    // Initialize current, previous and next pointers
+    Airport::Arrival *current = airport.head_arrv;
+    Airport::Arrival *prev = nullptr, *next = nullptr;
+    while (current != nullptr) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    airport.head_arrv = prev;
+}
+
 void log_departures_passengers(Airport &airport){
     std::cout << "\n---------Departing passengers----------\n";
     if (!airport.head_dep) {

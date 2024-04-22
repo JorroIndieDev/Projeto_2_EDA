@@ -50,4 +50,9 @@ void log_ramp_planes(Airport &airport);
 void log_arrival_planes(Airport &airport);
 void log_departure_planes(Airport &airport);
 
+// Reverse the airport
+void reverse_departing(Airport &airport);
+void reverse_ramp(Airport &airport);
+void reverse_arrival(Airport &airport);
+
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H
