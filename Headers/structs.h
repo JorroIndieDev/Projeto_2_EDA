@@ -62,7 +62,7 @@ struct Airport{ // airport "Parent"
 
 
     // Airport lists arr,ramp,departure FIFO's
-
+    // estas "listas" abaixo podem ser redizidas a um node abstraido para os avioes, TODO separar as listas
     // Max size -> 7 , 0 to 6
     struct Ramp{ // ramp can be planes to depart and planes arriving
         Plane plane;
