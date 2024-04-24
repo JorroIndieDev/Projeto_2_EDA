@@ -31,7 +31,7 @@ void load_files_to_mem(file_data &fileData){
 
 }
 
-std::string* read_files(std::string file_name, int size){
+std::string * read_files(std::string file_name, int size){
 
     // create var file to aux read
     std::ifstream file;
