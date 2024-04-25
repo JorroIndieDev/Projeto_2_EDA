@@ -13,6 +13,11 @@
 #include "Headers/Aux_functions.h"
 
 
+/*
+Grupo 19: Rodrigo Oliveira - 2044423, Vanderlan - , joao ,  joao, Afonso
+*/
+
+
 int main(int argc, char *argv[]) {
 
     // init rand seed
