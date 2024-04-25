@@ -14,7 +14,7 @@
 
 
 /*
-Grupo 19: Rodrigo Oliveira - 2044423, Vanderlan - , joao ,  joao, Afonso
+Grupo 19: Rodrigo Oliveira - 2044423, Vanderlan Silva - 2019523, joao ,  joao, Afonso
 */
 
 
