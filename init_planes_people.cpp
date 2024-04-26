@@ -30,18 +30,15 @@ void init_plane(Airport &airport, file_data &fileData ) {
 
 }
 
-void init_passengers(Plane &plane , file_data fileData) {
-
-    for (int i = 0; i < plane.capacity; ++i) {
+void init_passengers(Plane &plane , file_data &fileData) {
+    int i;
+    for (i = 0; i < plane.capacity; ++i) {
 
         // create a passenger to be added to the plane passenger list
         passenger newPassenger;
 
-        // add number to the ticket so it always incrementes and is different
-        fileData.ticket_number += i;
-
         // init passenger
-        newPassenger.ticket_num = (fileData.Ticket + std::to_string(fileData.ticket_number));
+        newPassenger.ticket_num = (fileData.Ticket + std::to_string(fileData.ticket_number + i));
         newPassenger.first_name = fileData.primeiro_nome[random_range(0,fileData.primeiro_nome_size-1)];
         newPassenger.second_name = fileData.segundo_nome[random_range(0,fileData.segundo_nome_size-1)];
         newPassenger.nacionality = fileData.nacionalidade[random_range(0,fileData.nacionalidade_size-1)];
@@ -73,6 +70,7 @@ void init_passengers(Plane &plane , file_data fileData) {
             }
         }
     }
+    fileData.ticket_number = fileData.ticket_number + i;
 }
 
 Airport init_airport() {

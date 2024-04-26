@@ -322,4 +322,5 @@ void log_departure_planes(Airport &airport){
     } else {
         std::cout << "\nNo planes on departure\n";
     }
+
 }

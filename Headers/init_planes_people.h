@@ -9,7 +9,7 @@
 #include <iostream>
 #include "Aux_functions.h"
 
-void init_passengers(Plane &plane, file_data fileData );
+void init_passengers(Plane &plane, file_data &fileData );
 void init_plane(Airport &airport, file_data &fileData);
 Airport init_airport();
 #endif //PROJETO_2_INIT_PLANES_PEOPLE_H
