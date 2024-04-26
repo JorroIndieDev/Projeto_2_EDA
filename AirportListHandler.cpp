@@ -267,7 +267,7 @@ void log_departure_planes(Airport &airport) {
  * rt = right
  *      - tree balance factor = lf_h subTree - rt_h subTree = {-1,0,1}
  *      -
- *
+ * TODO CHANGE TREE TO DSW
  */
 
 Nacionality::Pass_tree * new_tree_node(struct passenger &passenger) {
@@ -385,7 +385,6 @@ int get_node_balance(Nacionality::Pass_tree * tree_node){
 int node_height(Nacionality::Pass_tree * tree_node) {
 
     // seperate function for ease of debug and use
-
     if (tree_node == NULL)return 0;
 
     // just return the height if the node is not null
