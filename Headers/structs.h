@@ -53,41 +53,31 @@ struct Nacionality{ // linked list of nacionalities
 
 };
 
+struct llnode{
+    Plane plane;
+    llnode * next;
+};
+
 struct Airport{ // airport "Parent"
 
     // pool of passengers in ramp ordered by nacionality
     struct Nacionality * nacionality_head;
 
-
     // Airport lists arr,ramp,departure FIFO's
     // estas "listas" abaixo podem ser redizidas a um node abstraido para os avioes, TODO separar as listas
     // Max size -> 7 , 0 to 6
-    struct Ramp{ // ramp can be planes to depart and planes arriving
-        Plane plane;
-        Ramp * next;
-    };
 
-    Ramp * head_ramp;
+    llnode * head_ramp;
     int ramp_cap;
     int num_in_ramp;
 
     // Max size -> 5
-    struct Depart{
-        Plane plane;
-        Depart * next;
-    };
-
-    Depart * head_dep;
+   llnode * head_dep;
     int depart_cap;
     int num_in_depart;
 
     // Max size -> 10
-    struct Arrival{
-        Plane plane;
-        Arrival * next;
-    };
-
-    Arrival * head_arrv;
+   llnode * head_arrv;
     int arrival_cap;
     int num_in_arrival;
 
