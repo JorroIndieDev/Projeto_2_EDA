@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/joaop/CLionProjects/Projeto_2_EDA
+# Install script for directory: C:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/joaop/CLionProjects/Projeto_2_EDA/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/goliv/Documents/__UMA-Projetos_e_Trabalhos/EDA/Projeto_2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
