@@ -328,50 +328,6 @@ Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node)
 
 Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger) {
 
-    /* 1.  Perform the normal BST rotation */
-    // simple, if node is null just add the value in it
-/*
-    if (tree_node == NULL)
-        return new_tree_node(passenger);
-    std::cout << tree_node->passenger.first_name;
-    // orderes by first name, TODO may need to check second name as well how? no clue
-    if (passenger.first_name > tree_node->passenger.first_name)
-        tree_node->left = insert_tree_node(tree_node->left, passenger);
-    else
-        tree_node->right = insert_tree_node(tree_node->right, passenger);
-
-*/
-
-    //    // 2. Update height of this ancestor node
-//    // getting the height of the node by the max value between the left and right nodes
-//    tree_node->height = max(node_height(tree_node->left),
-//                            node_height(tree_node->right)) + 1;
-//
-//    // 3. Get the balance factor of this ancestor node to check whether
-//     //this node became unbalanced */
-//    int balance = get_node_balance(tree_node);
-//
-//    // 4 cases if node is not balanced
-//
-//    // Left Left
-//    if (balance > 1 && passenger.first_name < tree_node->left->passenger.first_name)
-//        return rotate_node_to_right(tree_node);
-//
-//    // Right Right
-//    if (balance < -1 && passenger.first_name > tree_node->right->passenger.first_name)
-//        return rotate_node_to_left(tree_node);
-//
-//    // Left Right
-//    if (balance > 1 && passenger.first_name > tree_node->left->passenger.first_name) {
-//        tree_node->left = rotate_node_to_left(tree_node->left);
-//        return rotate_node_to_right(tree_node);
-//    }
-//
-//    // Right Left
-//    if (balance < -1 && passenger.first_name < tree_node->right->passenger.first_name) {
-//        tree_node->right = rotate_node_to_right(tree_node->right);
-//        return rotate_node_to_left(tree_node);
-//    }
 // If the current node is NULL, create a new node with the given passenger
     if (tree_node == nullptr) {
         return new_tree_node(passenger);
