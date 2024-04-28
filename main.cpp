@@ -58,9 +58,25 @@ int get_node_balance(Nacionality::Pass_tree * tree_node);
  *
  ***********************************************/
 
+    srand(time(0));
+    file_data fileData = file_data();
 
+    load_files_to_mem(fileData);
 
+    Airport airport = init_airport();
 
+    airport.nacionality_head->nacionality = ' ';
+    airport.nacionality_head->next_nacionality = nullptr;
+    airport.nacionality_head->root_passenger = nullptr;
+    init_plane(airport,fileData);
+    Plane::passenger_in_plane * temp = airport.head_arrv->plane.head_passenger;
+    while (temp != NULL){
+        airport.nacionality_head->root_passenger = insert_tree_node(airport.nacionality_head->root_passenger,
+                                                                    temp->passenger);
+        temp = temp->next_passenger;
+    }
+
+    preOrder(airport.nacionality_head->root_passenger);
 /***********************************************
  *
  *

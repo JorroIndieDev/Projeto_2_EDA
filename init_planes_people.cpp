@@ -85,7 +85,7 @@ Airport init_airport() {
     airport.emergency_state = false;
 
     // Nacionality
-    airport.nacionality_head = nullptr;
+    airport.nacionality_head = new Nacionality;;
 
     // Arrival
     airport.head_arrv = nullptr;
