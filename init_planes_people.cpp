@@ -30,9 +30,10 @@ void init_plane(Airport &airport, file_data &fileData ) {
 
 }
 
-void init_passengers(Plane &plane , file_data &fileData) {
+void init_passengers(Plane &plane , file_data &fileData, int num_of_passengers) {
     int i;
-    for (i = 0; i < plane.capacity; ++i) {
+    if (num_of_passengers == 0) num_of_passengers=plane.capacity;
+    for (i = 0; i < num_of_passengers; ++i) {
 
         // create a passenger to be added to the plane passenger list
         passenger newPassenger;
