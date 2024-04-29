@@ -326,16 +326,22 @@ void reverse_arrival(Airport &airport) {
 
 }
 
+void remove_passengers(Airport &airport){
 
+    llnode * aux = new llnode;
 
+    aux->plane.head_passenger = airport.head_arrv->plane.head_passenger;
+
+    while (aux->plane.head_passenger != NULL) {
+
+        aux->plane.head_passenger = aux->plane.head_passenger->next_passenger;
+
+    }
+    airport.head_arrv->plane.head_passenger = aux->plane.head_passenger;
+
+}
 /*
- * NOTES:
- * h = height
- * lf = left
- * rt = right
- *      - tree balance factor = lf_h subTree - rt_h subTree = {-1,0,1}
- *      -
- * TODO CHANGE TREE TO DSW
+ * Tree
  */
 
 Nacionality::Pass_tree * new_tree_node(struct passenger &passenger) {
@@ -444,7 +450,7 @@ void print2DUtil(Nacionality::Pass_tree* root, int level) {
 
 
     print2DUtil(root->right, level + 1);
-std::cout << std::endl;
+    std::cout << std::endl;
     for (int i = 0; i <level; ++i)
         std::cout << "   ";
 
