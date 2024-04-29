@@ -462,3 +462,22 @@ void print2DUtil(Nacionality::Pass_tree* root, int level) {
 
     print2DUtil(root->left, level + 1);
 }
+
+void arriving_foreigners(Airport &airport) {
+    std::string home_nationality = "Portuguese";
+    Airport *aux = new Airport;
+    aux->head_arrv = airport.head_arrv;
+
+    Nacionality *second_aux = airport->nacionality_head;
+    while(aux->head_arrv->plane.head_passenger->next_passenger != NULL) {
+        if (aux->head_arrv->plane.head_passenger->passenger.nacionality == home_nationality) {
+            aux->head_arrv->plane.head_passenger = aux->head_arrv->plane.head_passenger->next_passenger;
+        }
+        else {
+            //while ()
+            //insert_tree_node(, aux->head_arrv->plane.head_passenger->passenger);
+            pass;
+        }
+        aux->head_arrv->plane.head_passenger = aux->head_arrv->plane.head_passenger->next_passenger;
+    }
+}
