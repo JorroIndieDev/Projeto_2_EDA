@@ -33,15 +33,6 @@ void dayCycle(Airport &airport, file_data fileData) {
             case 'e': // Emergency;
                 break;
             case 'o': // Options;
-
-                print2DUtil(airport.nacionality_head->root_passenger,0);
-                std::cout << "Name? ";
-                std::cin >> name;
-
-                airport.nacionality_head->root_passenger = delete_node(
-                        airport.nacionality_head->root_passenger,name);
-                print2DUtil(airport.nacionality_head->root_passenger,0);
-
                 break;
             case 'g': // Save;
                 SaveToFile("airport",airport);

@@ -49,16 +49,7 @@ int main(int argc, char *argv[]) {
         }
 
     }
-    Plane::passenger_in_plane * temp;
 
-    temp = airport.head_arrv->plane.head_passenger;
-    airport.nacionality_head->root_passenger = insert_tree_node(
-            airport.nacionality_head->root_passenger,temp->passenger);
-    while (temp != NULL) {
-        airport.nacionality_head->root_passenger = insert_tree_node(
-                airport.nacionality_head->root_passenger,temp->passenger);
-        temp = temp->next_passenger;
-    }
     // initialize days / cylces of the airport
     dayCycle(airport,fileData);
 
