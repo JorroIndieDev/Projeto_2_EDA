@@ -64,7 +64,6 @@ Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node)
 // insert node in tree
 Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger);
 
-// get node balance
 int make_spine(Nacionality::Pass_tree * root);
 
 void compressTree(Nacionality::Pass_tree * root, int num_of_nodes);
@@ -72,6 +71,10 @@ void compressTree(Nacionality::Pass_tree * root, int num_of_nodes);
 Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root);
 
 void print2DUtil(Nacionality::Pass_tree* root, int space);
+
+Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string name);
+
+Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::string name);
 
 // Reverse the airport
 void reverse_departing(Airport &airport);

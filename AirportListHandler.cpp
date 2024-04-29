@@ -443,6 +443,82 @@ Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root){
     return newRoot->right;
 }
 
+Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string name){
+
+    if(root==NULL)return root;
+
+    Nacionality::Pass_tree * aux = root;
+
+    if (name < aux->passenger.first_name){
+
+        aux->left = delete_node(aux->left,name);
+
+        return aux;
+    }
+
+    if (name > aux->passenger.first_name){
+
+        aux->right = delete_node(aux->right,name);
+
+        return aux;
+    }
+
+    // If the current root is the node to be deleted
+    if (aux->passenger.first_name == name) {
+        // If the node has no children or only one child
+        if (aux->left == nullptr) {
+            Nacionality::Pass_tree *temp = aux->right;
+            delete aux;
+            return temp;
+        } else if (aux->right == nullptr) {
+            Nacionality::Pass_tree *temp = aux->left;
+            delete aux;
+            return temp;
+        }
+
+        // If the node has two children, find its inorder successor
+        Nacionality::Pass_tree *parent_successor = aux;
+        Nacionality::Pass_tree *successor = aux->right;
+        while (successor->left != nullptr) {
+            parent_successor = successor;
+            successor = successor->left;
+        }
+
+        // Copy the successor's data to the current root
+        aux->passenger = successor->passenger;
+
+        // Delete the successor node from its original position
+        if (parent_successor->left == successor) {
+            parent_successor->left = successor->right;
+        } else {
+            parent_successor->right = successor->right;
+        }
+        delete successor;
+    }
+
+    return aux;
+
+}
+
+Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::string name){
+    if (root == NULL)return root;
+
+    Nacionality::Pass_tree * temp;
+
+    if (name == root->passenger.first_name){
+        return root;
+    }else if (name < root->passenger.first_name){
+        temp = search_namesTree(root->left,name);
+        return temp;
+    }else if (name > root->passenger.first_name){
+        temp = search_namesTree(root->right,name);
+        return temp;
+    }
+
+    return temp;
+
+}
+
 // Function to print the binary tree structure recursively
 void print2DUtil(Nacionality::Pass_tree* root, int level) {
     if (root == nullptr)
