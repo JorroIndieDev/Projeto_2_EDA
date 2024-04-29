@@ -147,3 +147,7 @@ void LoadFromFile(std::string file_name, Airport &airport){
     infile.close();
     infile.clear();
 }
+
+int max(int a, int b){
+    return (a < b) ? a : b;
+}
