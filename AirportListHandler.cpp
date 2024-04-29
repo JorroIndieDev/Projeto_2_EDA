@@ -3,6 +3,7 @@
 //
 
 #include "Headers/AirportListHandler.h"
+#include <bits/stdc++.h>
 
 void remove_departing_plane(Airport &airport) {
     if (airport.head_dep == NULL)return; // if head is NULL list is empty
@@ -278,105 +279,113 @@ Nacionality::Pass_tree * new_tree_node(struct passenger &passenger) {
 
     tree_node->left = NULL;
     tree_node->right = NULL;
-    tree_node->height = 1;
 
     return tree_node;
-
-}
-
-Nacionality::Pass_tree * rotate_node_to_right(Nacionality::Pass_tree * tree_node) {
-
-    Nacionality::Pass_tree * aux_node = tree_node->left;
-    Nacionality::Pass_tree * temp_node = aux_node->right;
-
-    // Rotation
-    aux_node->right = tree_node;
-    tree_node->left = temp_node;
-
-    // update heights
-    tree_node->height = max(node_height(tree_node->left),
-                            node_height(tree_node->right)) + 1;
-
-    tree_node->height = max(node_height(aux_node->left),
-                            node_height(aux_node->right)) + 1;
-
-    // return new root
-    return aux_node;
-
-}
-
-Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node) {
-
-    Nacionality::Pass_tree * aux_node = tree_node->right;
-    Nacionality::Pass_tree * temp_node = aux_node->left;
-
-    // Rotation
-    aux_node->left = tree_node;
-    tree_node->right = temp_node;
-
-    // update heights
-    tree_node->height = max(node_height(tree_node->left),
-                            node_height(tree_node->right)) + 1;
-
-    aux_node->height = max(node_height(aux_node->left),
-                           node_height(aux_node->right)) + 1;
-
-    // return new root
-    return aux_node;
 
 }
 
 Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger) {
 
-// If the current node is NULL, create a new node with the given passenger
-    if (tree_node == nullptr) {
-        return new_tree_node(passenger);
-    }
+    // if root is null add passenger to the root
+    if (tree_node == nullptr)return new_tree_node(passenger);
 
-    // Compare the first names of the passengers
+    // compare the name of the root and the next passenger
     int comparison_result = passenger.first_name.compare(tree_node->passenger.first_name);
 
-    // Insert the new node based on the comparison result
+    // gets comparision result and acts accordingly
     if (comparison_result < 0) {
-        // The new passenger's first name is less than the current node's first name
-        // Insert the new node in the left subtree
+
+        // add to the left if less than original
         tree_node->left =insert_tree_node(tree_node->left, passenger);;
+
     } else if (comparison_result > 0) {
-        // The new passenger's first name is greater than the current node's first name
-        // Insert the new node in the right subtree
+
+        // add right if more than original
         tree_node->right = insert_tree_node(tree_node->right, passenger); ;
     }
-    // If the first names are equal, you may need additional logic to handle this case
 
-    // Return the modified tree node
-    return tree_node;
-
-}
-
-int get_node_balance(Nacionality::Pass_tree * tree_node){
-
-    if (NULL == tree_node)return 0;
-
-    // node is inbalanced if left-right heights != 1 || 0 || -1
-    return node_height(tree_node->left) - node_height(tree_node->right);
+    // returns the root again but modified
+    return (tree_node);
 
 }
 
-int node_height(Nacionality::Pass_tree * tree_node) {
+int make_spine(Nacionality::Pass_tree  * root){
 
-    // seperate function for ease of debug and use
-    if (tree_node == NULL)return 0;
+    int count = 0;
+    Nacionality::Pass_tree * temp = root->right;
 
-    // just return the height if the node is not null
-    return tree_node->height;
+    while (temp){
 
-}
+        if (temp->left){
 
-void preOrder(Nacionality::Pass_tree * root) {
+            Nacionality::Pass_tree * OldTemp = temp;
+            temp = temp->left;
+            OldTemp->left = temp->right;
+            temp->right = OldTemp;
+            root->right = temp;
+        }else{
+            count++;
+            root = temp;
+            temp = temp->right;
+        }
 
-    if (root != NULL) {
-        std::cout << root->passenger.first_name << std::endl;
-        preOrder(root->left);
-        preOrder(root->right);
     }
+    return count;
+}
+
+void compressTree(Nacionality::Pass_tree * root, int num_of_nodes){
+    Nacionality::Pass_tree * temp = root->right;
+
+    for (int i = 0; i < num_of_nodes; ++i) {
+        Nacionality::Pass_tree * OldTemp = temp;
+        temp = temp->right;
+        root->right = temp;
+        OldTemp->right = temp->left;
+        temp->left = OldTemp;
+        root = temp;
+        temp = temp->right;
+    }
+}
+
+Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root){
+
+    Nacionality::Pass_tree * newRoot = new Nacionality::Pass_tree;
+    newRoot->left = NULL;
+    newRoot->right = NULL;
+
+    newRoot->right = root;
+
+    int numOfRot = make_spine(newRoot);
+
+    int height = log2(numOfRot + 1);
+
+    int num_nodes = pow(2,height) - 1;
+
+    compressTree(newRoot,numOfRot - num_nodes);
+
+    for ( num_nodes = num_nodes/2; num_nodes > 0 ; num_nodes /= 2) {
+        compressTree(newRoot,num_nodes);
+    }
+
+    return newRoot->right;
+}
+
+// Function to print the binary tree structure recursively
+void print2DUtil(Nacionality::Pass_tree* root, int level) {
+    if (root == nullptr)
+        return;
+
+
+    print2DUtil(root->right, level + 1);
+std::cout << std::endl;
+    for (int i = 0; i <level; ++i)
+        std::cout << "   ";
+
+    std::cout<< level << " " << root->passenger.first_name << std::endl;
+
+    // Print vertical branches
+    for (int i = 0; i < level; i++)
+        std::cout << " ";
+
+    print2DUtil(root->left, level + 1);
 }

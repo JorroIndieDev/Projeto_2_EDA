@@ -70,13 +70,21 @@ int get_node_balance(Nacionality::Pass_tree * tree_node);
     airport.nacionality_head->root_passenger = nullptr;
     init_plane(airport,fileData);
     Plane::passenger_in_plane * temp = airport.head_arrv->plane.head_passenger;
+    airport.nacionality_head->root_passenger = insert_tree_node(airport.nacionality_head->root_passenger,
+                                                                temp->passenger);
     while (temp != NULL){
         airport.nacionality_head->root_passenger = insert_tree_node(airport.nacionality_head->root_passenger,
                                                                     temp->passenger);
         temp = temp->next_passenger;
     }
 
-    preOrder(airport.nacionality_head->root_passenger);
+    print2DUtil(airport.nacionality_head->root_passenger,0);
+    std::cout << "SPINE\n";
+    make_spine(airport.nacionality_head->root_passenger);
+    print2DUtil(airport.nacionality_head->root_passenger,0);
+    std::cout << "BALENCED\n";
+    airport.nacionality_head->root_passenger = balance_tree(airport.nacionality_head->root_passenger);
+    print2DUtil(airport.nacionality_head->root_passenger,0);
 /***********************************************
  *
  *

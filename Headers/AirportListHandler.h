@@ -64,14 +64,13 @@ Nacionality::Pass_tree * rotate_node_to_left(Nacionality::Pass_tree * tree_node)
 // insert node in tree
 Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger);
 
-// calculate node height
-int node_height(Nacionality::Pass_tree * tree_node);
-
-// DISCART FUNCTION
-// funcao vai dar print da arvore
-void preOrder(Nacionality::Pass_tree * root);
-
 // get node balance
-int get_node_balance(Nacionality::Pass_tree * tree_node);
+int make_spine(Nacionality::Pass_tree * root);
+
+void compressTree(Nacionality::Pass_tree * root, int num_of_nodes);
+
+Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root);
+
+void print2DUtil(Nacionality::Pass_tree* root, int space);
 
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

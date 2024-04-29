@@ -45,8 +45,6 @@ struct Nacionality{ // linked list of nacionalities
         Pass_tree * left;
         Pass_tree * right;
 
-        int height;
-
     };
 
     Pass_tree * root_passenger;
