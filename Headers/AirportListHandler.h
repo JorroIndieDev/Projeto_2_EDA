@@ -81,6 +81,8 @@ void reverse_departing(Airport &airport);
 void reverse_ramp(Airport &airport);
 void reverse_arrival(Airport &airport);
 
+void emergency_handler(Airport &airport,file_data &fileData);
+
 void remove_passengers(Airport &airport);
 
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

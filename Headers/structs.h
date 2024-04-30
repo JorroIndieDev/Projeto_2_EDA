@@ -83,6 +83,9 @@ struct Airport{ // airport "Parent"
 
     // Emergency Status
     bool emergency_state = false;
+
+    bool closed = false;
+    int cycles_closed = 0;
 };
 
 #endif //PROJETO_2_STRUCTS_H

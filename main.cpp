@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     } else { // if not proceed as normal
         
         // first run of the program initial setup
-        for (int i = 0; i < 9; ++i) {
+        for (int i = 0; i < 10; ++i) {
             init_plane(airport, fileData);
         }
 

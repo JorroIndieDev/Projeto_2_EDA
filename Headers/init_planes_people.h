@@ -11,5 +11,6 @@
 
 void init_passengers(Plane &plane, file_data &fileData,int num_of_passengers = 0);
 void init_plane(Airport &airport, file_data &fileData);
+
 Airport init_airport();
 #endif //PROJETO_2_INIT_PLANES_PEOPLE_H
