@@ -30,6 +30,7 @@ void dayCycle(Airport &airport, file_data fileData) {
             case 'e': // Emergency;
                 break;
             case 'o': // Options;
+                menu(airport,fileData);
                 break;
             case 'g': // Save;
                 SaveToFile("airport",airport);
@@ -53,6 +54,51 @@ void dayCycle(Airport &airport, file_data fileData) {
 
                 break;
 
+            case 'q': // quit
+                isWorking = false;
+                break;
+            default:
+                std::cerr << "Please choose a valid option";
+                break;
+        }
+    }
+}
+
+void menu(Airport &airport, file_data fileData){
+    bool isWorking = true;
+
+    std::string choice , sec_choice;
+
+    std:: cout << "(a)Show passengers on ramp\n(b)Search passenger\n(c)Edit nationality\n(q)uit\n";
+    std:: cin >> choice;
+
+
+    while (isWorking) {
+
+        switch (choice[0]) {
+            case 'a':
+
+                std::cout << "Show passengers (a)lphabetically or (v)isually or (q)uit?\n";
+                std:: cin >> sec_choice;
+
+                if(sec_choice == "a"){ // function order alphabetically
+
+                }
+                if(sec_choice == "v"){ // function order visually
+
+                }
+                if(sec_choice == "q"){
+                    isWorking = false;
+                }
+                else{
+                    std:: cout << "Invalid option";
+                }
+                break;
+            case 'b':
+
+                break;
+            case 'c':
+                break;
             case 'q': // quit
                 isWorking = false;
                 break;
