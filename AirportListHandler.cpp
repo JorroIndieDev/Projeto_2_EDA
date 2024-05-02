@@ -589,3 +589,121 @@ void print2DUtil(Nacionality::Pass_tree* root, int level) {
 
     print2DUtil(root->left, level + 1);
 }
+
+// Joao Aziado
+void option(Airport &airport) {
+    int choice;
+    std::cout << "Mostrar todos os passageiros em pista (1), ordenados(2): \n"
+                 "Pesquisar passageiro nas chegadas e partidas (3)\n"
+                 "Editar nacionalidade de um passageiro num voo das chegadas (4)\n"
+                 "Escolha uma das opçoes anteriores: ";
+    std::cin >> choice;
+
+    switch (choice) {
+        case 1:
+            inserirNacionalidade(*airport.nacionality_head, "Jamaican");
+            inserirNacionalidade(*airport.nacionality_head, "Icelandic");
+            inserirNacionalidade(*airport.nacionality_head, "Malaysian");
+            inserirNacionalidade(*airport.nacionality_head, "Kenyan");
+            inserirNacionalidade(*airport.nacionality_head, "Swiss");
+            inserirNacionalidade(*airport.nacionality_head, "Peruvian");
+            inserirNacionalidade(*airport.nacionality_head, "Vietnamese");
+            inserirNacionalidade(*airport.nacionality_head, "Greek");
+            inserirNacionalidade(*airport.nacionality_head, "Lebanese");
+            inserirNacionalidade(*airport.nacionality_head, "Irish");
+            inserirNacionalidade(*airport.nacionality_head, "Moroccan");
+            inserirNacionalidade(*airport.nacionality_head, "Australian");
+            inserirNacionalidade(*airport.nacionality_head, "Ukrainian");
+            inserirNacionalidade(*airport.nacionality_head, "Brazilian");
+            inserirNacionalidade(*airport.nacionality_head, "Cambodian");
+            inserirNacionalidade(*airport.nacionality_head, "Dutch");
+            inserirNacionalidade(*airport.nacionality_head, "Nigerian");
+            inserirNacionalidade(*airport.nacionality_head, "Finnish");
+            bubbleSort(&airport.nacionality_head, 17);
+
+            /*Nacionality *aux = airport.nacionality_head;
+
+            while (aux != nullptr) {
+                std::cout << aux->nacionality << "->";
+                aux = aux->next_nacionality;
+            }*/
+            std::cout << "Ordenados alfabeticamente(1) ou arvor binaria(2): ";
+            std::cin >> choice;
+            if (choice == 1) {
+                Nacionality *aux_nacionality = new Nacionality;
+                aux_nacionality = airport.nacionality_head;
+                while (aux_nacionality != nullptr) {
+                    std::cout << "Nacionalidade: ";
+                    std::cout << aux_nacionality->nacionality << std::endl;
+                    travessiaInfixa(aux_nacionality->root_passenger);
+                    std::cout << std::endl << std::endl;
+                    aux_nacionality = aux_nacionality->next_nacionality;
+                    //std::cout << aux_nacionality->nacionality;
+                }
+            }
+
+            std::cout << "\n--------------- END ---------------";
+            break;
+    }
+}
+
+// Teste
+Nacionality *inserirNacionalidade(Nacionality &nacionalidade, std::string nat) {
+    Nacionality *novo = new Nacionality;
+    novo->nacionality = nat;
+    novo->next_nacionality = nullptr;
+
+    Nacionality *temp = &nacionalidade;
+    while (temp->next_nacionality != nullptr) {
+        temp = temp->next_nacionality;
+    }
+    temp->next_nacionality = novo;
+    return novo;
+}
+
+Nacionality* swap(Nacionality* ptr1, Nacionality* ptr2)
+{
+    Nacionality* tmp = ptr2->next_nacionality;
+    ptr2->next_nacionality = ptr1;
+    ptr1->next_nacionality = tmp;
+    return ptr2;
+}
+
+/* Function to sort the list */
+void bubbleSort(Nacionality** head, int count)
+{
+    Nacionality** h;
+    int i, j, swapped;
+    for (i = 0; i < count; i++) {
+        h = head;
+        swapped = 0;
+        for (j = 0; j < count - i - 1; j++) {
+            Nacionality* p1 = *h;
+            Nacionality* p2 = p1->next_nacionality;
+
+            if (p1->nacionality > p2->nacionality) {
+                /* update the link after swapping */
+                *h = swap(p1, p2);
+                swapped = 1;
+            }
+            h = &(*h)->next_nacionality;
+        }
+        /* break if the loop ended without any swap */
+        if (swapped == 0)
+            break;
+    }
+}
+
+void travessiaInfixa(Nacionality &nacionality) {
+    if (nacionality.root_passenger == nullptr) return;
+    travessiaInfixa(*nacionality.root_passenger->left);
+    log_passenger(&nacionality.root_passenger->passenger);
+    travessiaInfixa(*nacionality.root_passenger->right);
+}
+
+void log_passenger(passenger *passageiro) {
+    std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
+    std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
+    std::cout << "Nacionalidade: " << passageiro->nacionality << std::endl;
+    std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
+}

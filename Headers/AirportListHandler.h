@@ -41,7 +41,7 @@ void remove_departing_plane(Airport &airport);
 void add_ramp_plane(Airport &airport, file_data &fileData);
 
 // Show lists
-// log functions simply laod the information of the pasengers in each list
+// log functions simply load the information of the pasengers in each list
 void log_departures_passengers(Airport &airport);
 void log_ramp_passengers(Airport &airport);
 void log_arrivals_passengers(Airport &airport);
@@ -84,5 +84,13 @@ void reverse_arrival(Airport &airport);
 void emergency_handler(Airport &airport,file_data &fileData);
 
 void remove_passengers(Airport &airport);
+
+// Joao - Changes
+void option(Airport &airport);
+Nacionality *inserirNacionalidade(Nacionality &nacionalidade, std::string nat);
+Nacionality* swap(Nacionality* ptr1, Nacionality* ptr2);
+void bubbleSort(Nacionality** head, int count);
+void travessiaInfixa(Nacionality &nacionality);
+void log_passenger(passenger *passageiro);
 
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

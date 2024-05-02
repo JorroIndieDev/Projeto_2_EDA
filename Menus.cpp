@@ -13,15 +13,15 @@ void dayCycle(Airport &airport, file_data fileData) {
 
         std::cout << "\nLog Arrivals\n" << std::endl;
 //        log_arrival_planes(airport);
-        log_arrivals_passengers(airport); // change passenger data when moving from list to list
+        //log_arrivals_passengers(airport); // change passenger data when moving from list to list
         
         std::cout << "\nLog Ramp\n" << std::endl;
 //        log_ramp_planes(airport);
-        log_ramp_passengers(airport); // change passenger data when moving from list to list
+        //log_ramp_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\nLog Depart\n" << std::endl;
 //        log_departure_planes(airport);
-        log_departures_passengers(airport); // change passenger data when moving from list to list
+        //log_departures_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
         std::cin >> choice;
@@ -34,6 +34,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                 emergency_handler(airport,fileData);
                 break;
             case 'o': // Options;
+                option(airport);
                 break;
             case 'g': // Save;
                 SaveToFile("airport",airport);
