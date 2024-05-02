@@ -589,3 +589,37 @@ void print2DUtil(Nacionality::Pass_tree* root, int level) {
 
     print2DUtil(root->left, level + 1);
 }
+
+void sortAlphabetically(Nacionality::Pass_tree *root){
+
+    if(root == NULL)
+        return;
+    Nacionality::Pass_tree *aux = root;
+//    aux->passenger = root->passenger;
+//    aux->right = root->right;
+//    aux->left = root->left;
+//
+    int i = 0;
+
+    passenger * T_array = new passenger [50]; // preguica de achar o tamanho :P
+
+    if( aux->left != NULL){
+        sortAlphabetically(aux->left);
+    }
+    else{
+        T_array[i] = aux->passenger;
+        i++;
+        if(aux->right != NULL){
+            sortAlphabetically(aux->right);
+        }
+        else{
+            T_array[i] = aux->passenger;
+            i++;
+        }
+    }
+
+    for (int k = 0; k != i; k++){
+        std::cout << T_array[k].first_name << " , ";
+    }
+
+}

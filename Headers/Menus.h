@@ -8,5 +8,6 @@
 #include "Aux_functions.h"
 
 void dayCycle(Airport &airport, file_data fileData);
+void menu(Airport &airport, file_data fileData);
 
 #endif //PROJETO_2_MENUS_H

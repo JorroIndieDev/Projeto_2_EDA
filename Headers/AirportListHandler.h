@@ -85,4 +85,6 @@ void emergency_handler(Airport &airport,file_data &fileData);
 
 void remove_passengers(Airport &airport);
 
+void sortAlphabetically(Nacionality::Pass_tree *root);
+
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H
