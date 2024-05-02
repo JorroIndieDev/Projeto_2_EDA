@@ -325,7 +325,7 @@ void reverse_arrival(Airport &airport) {
     airport.head_arrv = prev_plane;
 
 }
-
+//Eu e João Aziado
 void remove_passengers(Airport &airport){
 
     llnode * aux = new llnode;
@@ -468,15 +468,17 @@ void arriving_foreigners(Airport &airport) {
     Airport *aux = new Airport;
     aux->head_arrv = airport.head_arrv;
 
-    Nacionality *second_aux = airport->nacionality_head;
+    Nacionality::Pass_tree * linkedlist_AUX = new Nacionality::Pass_tree;
+
+    Nacionality *second_aux = airport.nacionality_head;
     while(aux->head_arrv->plane.head_passenger->next_passenger != NULL) {
         if (aux->head_arrv->plane.head_passenger->passenger.nacionality == home_nationality) {
             aux->head_arrv->plane.head_passenger = aux->head_arrv->plane.head_passenger->next_passenger;
         }
         else {
-            //while ()
-            //insert_tree_node(, aux->head_arrv->plane.head_passenger->passenger);
-            pass;
+            while (aux->head_arrv->plane.head_passenger->passenger.nacionality == second_aux->nacionality) {
+                insert_tree_node(linkedlist_AUX , aux->head_arrv->plane.head_passenger->passenger);
+            }
         }
         aux->head_arrv->plane.head_passenger = aux->head_arrv->plane.head_passenger->next_passenger;
     }
