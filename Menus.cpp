@@ -71,7 +71,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                             add_departing_plane(airport, fileData);
                         }
 
-                        if (airport.num_in_arrival <= 10 && !airport.emergency_state) {
+                        if (airport.num_in_arrival <= 10) {
                             init_plane(airport, fileData);
                         }
 
