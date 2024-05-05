@@ -25,14 +25,10 @@ int main(int argc, char *argv[]) {
 
     // loading Data files provided
     load_files_to_mem(fileData);
+    listSort(fileData.nacionalidade, fileData.nacionalidade_size);
 
     // initialize the airport regardless of args passed
-    Airport airport = init_airport();
-
-
-    airport.nacionality_head->nacionality = ' ';
-    airport.nacionality_head->next_nacionality = nullptr;
-    airport.nacionality_head->root_passenger = nullptr;
+    Airport airport = init_airport(fileData);
 
 
     // verify if any arg has been parsed

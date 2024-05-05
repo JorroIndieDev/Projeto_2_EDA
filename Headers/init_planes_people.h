@@ -12,5 +12,7 @@
 void init_passengers(Plane &plane, file_data &fileData,int num_of_passengers = 0);
 void init_plane(Airport &airport, file_data &fileData);
 
-Airport init_airport();
+Airport init_airport(file_data fileData);
+void populate_nacionalityList(Airport &airport, file_data fileData);
+
 #endif //PROJETO_2_INIT_PLANES_PEOPLE_H

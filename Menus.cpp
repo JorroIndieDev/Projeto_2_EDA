@@ -92,3 +92,37 @@ void dayCycle(Airport &airport, file_data fileData) {
         }
     }
 }
+// Joao
+void option(Airport &airport) {
+    int choice;
+    std::cout << "Mostrar todos os passageiros em pista (1), ordenados(2): \n"
+                 "Pesquisar passageiro nas chegadas e partidas (3)\n"
+                 "Editar nacionalidade de um passageiro num voo das chegadas (4)\n"
+                 "Escolha uma das opçoes anteriores: ";
+    std::cin >> choice;
+
+    switch (choice) {
+        case 2:
+            std::cout << "Ordenados alfabeticamente(1) ou arovere binaria(2): ";
+            std::cin >> choice;
+
+            if (choice == 1) {
+                Nacionality *aux_nacionality;
+                aux_nacionality = airport.nacionality_head;
+
+                while (aux_nacionality != nullptr) {
+                    std::cout << "Nacionalidade: ";
+                    std::cout << aux_nacionality->nacionality << std::endl;
+                    print_tree_leftrigt(aux_nacionality->root_passenger, 0);
+
+                    // travessiaInfixa(aux_nacionality->root_passenger);
+                    std::cout << std::endl << std::endl;
+                    aux_nacionality = aux_nacionality->next_nacionality;
+                    //std::cout << aux_nacionality->nacionality;
+                }
+            }
+
+            std::cout << "\n--------------- END ---------------";
+            break;
+    }
+}
