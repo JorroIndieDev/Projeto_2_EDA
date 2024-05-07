@@ -74,7 +74,7 @@ void init_passengers(Plane &plane , file_data &fileData, int num_of_passengers) 
     fileData.ticket_number = fileData.ticket_number + i;
 }
 
-Airport init_airport() {
+Airport init_airport(file_data fileData) {
 
     // function simply inits the airport to null values and sizes of the arrays
 
@@ -83,7 +83,9 @@ Airport init_airport() {
     airport.emergency_state = false;
 
     // Nacionality
-    airport.nacionality_head = new Nacionality;;
+    airport.nacionality_head = nullptr;
+    populate_nacionalityList(airport,fileData);
+    airport.nacionality_head->root_passenger = nullptr;
 
     // Arrival
     airport.head_arrv = nullptr;
@@ -102,4 +104,30 @@ Airport init_airport() {
 
     // return initiated airport
     return airport;
+}
+
+void populate_nacionalityList(Airport &airport, file_data fileData){
+
+    for (int i = 0; i < fileData.nacionalidade_size; ++i) {
+        if (fileData.nacionalidade[i] == "Portuguese")continue;
+
+        Nacionality * temp = new Nacionality;
+        temp->nacionality = fileData.nacionalidade[i];
+        temp->next_nacionality = nullptr;
+
+        if (airport.nacionality_head == NULL){
+            airport.nacionality_head = temp;
+            airport.nacionality_head->root_passenger = nullptr;
+        }
+        else{
+            Nacionality * aux = airport.nacionality_head;
+            while (aux->next_nacionality != NULL){
+                aux = aux->next_nacionality;
+            }
+            aux->next_nacionality = temp;
+            aux->next_nacionality->root_passenger = nullptr;
+        }
+
+    }
+
 }

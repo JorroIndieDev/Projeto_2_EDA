@@ -41,7 +41,7 @@ void remove_departing_plane(Airport &airport);
 void add_ramp_plane(Airport &airport, file_data &fileData);
 
 // Show lists
-// log functions simply laod the information of the pasengers in each list
+// log functions simply load the information of the pasengers in each list
 void log_departures_passengers(Airport &airport);
 void log_ramp_passengers(Airport &airport);
 void log_arrivals_passengers(Airport &airport);
@@ -70,7 +70,7 @@ void compressTree(Nacionality::Pass_tree * root, int num_of_nodes);
 
 Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root);
 
-void print2DUtil(Nacionality::Pass_tree* root, int space);
+void print_tree_leftrigt(Nacionality::Pass_tree* root, int space);
 
 Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string name);
 
@@ -84,5 +84,10 @@ void reverse_arrival(Airport &airport);
 void emergency_handler(Airport &airport,file_data &fileData);
 
 void remove_passengers(Airport &airport);
+
+// Joao - Changes
+void travessiaInfixa(Nacionality::Pass_tree *nacionality);
+void log_passenger(passenger *passageiro);
+void listSort(std::string list[], int list_size);
 
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

@@ -161,6 +161,13 @@ void log_ramp_passengers(Airport &airport) {
     }
 }
 
+void log_passenger(passenger *passageiro) {
+    std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
+    std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
+    std::cout << "Nacionalidade: " << passageiro->nacionality << std::endl;
+    std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
+}
+
 void log_arrivals_passengers(Airport &airport) {
     std::cout << "\n---------Ariving passengers----------\n";
     if (airport.head_arrv == NULL) {
@@ -571,12 +578,12 @@ Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::str
 }
 
 // Function to print the binary tree structure recursively
-void print2DUtil(Nacionality::Pass_tree* root, int level) {
+void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
     if (root == nullptr)
         return;
 
 
-    print2DUtil(root->right, level + 1);
+    print_tree_leftrigt(root->right, level + 1);
     std::cout << std::endl;
     for (int i = 0; i <level; ++i)
         std::cout << "   ";
@@ -587,5 +594,24 @@ void print2DUtil(Nacionality::Pass_tree* root, int level) {
     for (int i = 0; i < level; i++)
         std::cout << " ";
 
-    print2DUtil(root->left, level + 1);
+    print_tree_leftrigt(root->left, level + 1);
+}
+
+void listSort(std::string list[], int list_size) {
+    for (int i = 0; i < (list_size - 1); i++) {
+        int min = i; // sting.compare(string to compare to) = -1 0 1
+        for (int j = i + 1; j < list_size; j++){
+                if (list[j].compare(list[min]) < 0)
+                    min = j;
+        }
+        if (min != i)
+            swap(list[i], list[min]);
+    }
+}
+
+void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
+    if (nacionality == nullptr) return;
+    travessiaInfixa(nacionality->left);
+    log_passenger(&nacionality->passenger);
+    travessiaInfixa(nacionality->right);
 }
