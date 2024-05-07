@@ -79,7 +79,7 @@ void reverse_ramp(Airport &airport);
 void reverse_arrival(Airport &airport);
 
 void remove_passengers(Airport &airport);
-int binary_Search(string arr[], string x, int n);
+//int binary_Search(string arr[], string x, int n);
 passenger * search_passengers(Airport &airport);
 
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H

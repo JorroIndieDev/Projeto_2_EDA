@@ -483,48 +483,25 @@ void arriving_foreigners(Airport &airport) {
         aux->head_arrv->plane.head_passenger = aux->head_arrv->plane.head_passenger->next_passenger;
     }
 }
-//Simple binary search that afonso put here to find the passengers (still dont know if it works)
-int binary_Search(string arr[], string x, int n)
-{
-    int l = 0;
-    int r = n - 1;
-    // Loop to implement Binary Search
-    while (l <= r) {
-        // Calculatiing mid
-        int m = l + (r - l) / 2;
-        // Some random value assigned
-        // as 0 belongs to index
-        int res = -1000;
-        if (x == (arr[m]))
-            res = 0;
-        // Check if x is present at mid
-        if (res == 0)
-            return m;
-        // If x greater, ignore left half
-        if (x > (arr[m]))
-            l = m + 1;
-            // If x is smaller, ignore right half
-        else
-            r = m - 1;
-    }
-
-    return -1;
-}
 
 passenger * search_passengers(Airport &airport) {
     Airport * aux = new Airport;
     passenger * passenger_aux = new passenger;
     string passenger_name;
-    std::cout << "What's the passenger's first name? ";
+    std::cout << "Qual e o primeiro nome do passageiro?  ";
     std::cin >> passenger_name;
 
     while(aux->head_arrv->next != NULL) {
         for (int i = 0; i < aux->head_arrv->plane.capacity; i++) {
             if (passenger_aux->first_name == passenger_name) {
+                cout << "Passageiro encontrado..\n";
+                cout << passenger_aux->first_name <<
+                " " << passenger_aux->second_name <<
+                ", " << passenger_aux->nacionality <<
+                ", " << passenger_aux->ticket_num;
                 return passenger_aux;
             }
         }
-
         aux->head_arrv = aux->head_arrv->next;
     }
 }
