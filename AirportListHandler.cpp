@@ -128,9 +128,9 @@ void log_planes(llnode * list){
         llnode * rampNode = list;
 
         while (rampNode) {
-            std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
-            std::cout << "Model: " << rampNode->plane.model << ", ";
-            std::cout << "Origin: " << rampNode->plane.origin << ", ";
+            std::cout << "Plane: " << rampNode->plane.flight_name << ",\n";
+            std::cout << "Model: " << rampNode->plane.model << ",\n";
+            std::cout << "Origin: " << rampNode->plane.origin << ",\n";
             std::cout << "Destination: " << rampNode->plane.destination << "\n";
             log_passengers_in_plane(rampNode->plane);
             rampNode = rampNode->next;
@@ -491,4 +491,95 @@ void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
     travessiaInfixa(nacionality->left);
     log_passenger(&nacionality->passenger);
     travessiaInfixa(nacionality->right);
+}
+
+void arriving_foreigners(Airport &airport) {
+
+    std::string home_nationality = "Portuguese";
+
+    llnode * auxList = airport.head_arrv;
+
+    while (auxList != NULL){
+
+        if (auxList->plane.head_passenger->passenger.nacionality == home_nationality)
+            auxList->plane.head_passenger = auxList->plane.head_passenger->next_passenger;
+
+        else{
+            Nacionality * aux = airport.nacionality_head;
+
+            while (aux->next_nacionality != NULL){
+
+                if (auxList->plane.head_passenger->passenger.nacionality == aux->nacionality){
+                    insert_tree_node(airport.nacionality_head->root_passenger,auxList->plane.head_passenger->passenger);
+                    aux = aux->next_nacionality;
+                }
+            }
+        }
+    }
+}
+
+/*//Simple binary search that afonso put here to find the passengers (still dont know if it works)
+int binary_Search(string arr[], string x, int n)
+{
+    int l = 0;
+    int r = n - 1;
+    // Loop to implement Binary Search
+    while (l <= r) {
+        // Calculatiing mid
+        int m = l + (r - l) / 2;
+        // Some random value assigned
+        // as 0 belongs to index
+        int res = -1000;
+        if (x == (arr[m]))
+            res = 0;
+        // Check if x is present at mid
+        if (res == 0)
+            return m;
+        // If x greater, ignore left half
+        if (x > (arr[m]))
+            l = m + 1;
+            // If x is smaller, ignore right half
+        else
+            r = m - 1;
+    }
+
+    return -1;
+}*/
+
+passenger * search_passengers(llnode *list) {
+    llnode * aux = list;
+    passenger * passenger_aux = new passenger;
+    std::string passenger_name;
+    std::cout << "What's the passengers first name?  ";
+    std::cin >> passenger_name;
+
+    while(aux->next != NULL) {
+        for (int i = 0; i < aux->plane.capacity; i++) {
+            if (passenger_aux->first_name == passenger_name) {
+                std::cout << "Passenger found..\n";
+                std::cout << passenger_aux->first_name <<
+                     " " << passenger_aux->second_name <<
+                     ", " << passenger_aux->nacionality <<
+                     ", " << passenger_aux->ticket_num;
+                return passenger_aux;
+            }
+        }
+        aux = aux->next;
+    }
+}
+
+void change_nacionality(std::string newNationality, Airport &airport) {
+    int choice;
+    // facam com que o ulilizador escolha
+    std::cout << "Search by arrival or departure\n";
+    std::cin >> choice;
+    if (choice == 1) {
+        passenger *passengero = search_passengers(airport.head_arrv);
+        passengero->nacionality = newNationality;
+    }
+    if (choice == 2) {
+        passenger *passengero = search_passengers(airport.head_dep);
+        passengero->nacionality = newNationality;
+
+    }
 }

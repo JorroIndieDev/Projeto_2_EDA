@@ -83,4 +83,8 @@ void travessiaInfixa(Nacionality::Pass_tree *nacionality);
 void log_passenger(passenger *passageiro);
 void listSort(std::string list[], int list_size);
 
+void arriving_foreigners(Airport &airport);
+passenger * search_passengers(llnode *list);
+void change_nacionality(std::string newNationality, Airport &airport);
+
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H
