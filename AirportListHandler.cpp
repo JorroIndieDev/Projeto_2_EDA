@@ -98,69 +98,6 @@ void add_ramp_plane(Airport &airport, file_data &fileData) {
     delete temp;
 }
 
-void log_departures_passengers(Airport &airport) {
-    std::cout << "\n---------Departing passengers----------\n";
-    if (airport.head_dep == NULL) {
-        std::cout << "\nNo planes in departure.\n";
-        return;
-    }
-
-    // creates aux var to traverse linked list to not destroy it
-    llnode * depart_ptr = airport.head_dep;
-
-    while (depart_ptr != NULL) {
-        std::cout << "Departing Plane: " << depart_ptr->plane.flight_name << "\n";
-        std::cout << "Model: " << depart_ptr->plane.model << ", \n";
-        std::cout << "Origin: " << depart_ptr->plane.origin << ", \n";
-        std::cout << "Destination: " << depart_ptr->plane.destination << "\n";
-
-        // creates aux var to traverse linked list to not destroy it
-        Plane::passenger_in_plane * passNode = depart_ptr->plane.head_passenger;
-
-        if (!passNode) std::cout << "Departure Plane Empty\n";
-        std::cout << "Passenger: ";
-        while (passNode) {
-            std::cout << passNode->passenger.first_name << ", ";
-            passNode = passNode->next_passenger;
-        }
-
-        depart_ptr = depart_ptr->next;
-
-        std::cout << "\n|-------------------|\n";
-    }
-}
-
-void log_ramp_passengers(Airport &airport) {
-    std::cout << "\n----------Ramp passengers in Plane---------\n";
-    if (airport.head_ramp == NULL) {
-        std::cout << "\nNo planes in ramp.\n";
-        return;
-    }
-
-    // creates aux var to traverse linked list to not destroy it
-    llnode * ramp_ptr = airport.head_ramp;
-
-    while (ramp_ptr) {
-        std::cout << "Ramp Plane: " << ramp_ptr->plane.flight_name << "\n";
-        std::cout << "Model: " << ramp_ptr->plane.model << ", \n";
-        std::cout << "Origin: " << ramp_ptr->plane.origin << ", \n";
-        std::cout << "Destination: " << ramp_ptr->plane.destination << "\n";
-
-        // creates aux var to traverse linked list to not destroy it
-        Plane::passenger_in_plane *passNode = ramp_ptr->plane.head_passenger;
-        std::cout << "Passenger: ";
-        if (!passNode) std::cout << "Ramp Plane Empty\n";
-        while (passNode) {
-            std::cout << passNode->passenger.first_name << ", ";
-            passNode = passNode->next_passenger;
-        }
-
-        ramp_ptr = ramp_ptr->next;
-
-        std::cout << "\n-------------------\n";
-    }
-}
-
 void log_passenger(passenger *passageiro) {
     std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
     std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
@@ -168,99 +105,39 @@ void log_passenger(passenger *passageiro) {
     std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
 }
 
-void log_arrivals_passengers(Airport &airport) {
-    std::cout << "\n---------Ariving passengers----------\n";
-    if (airport.head_arrv == NULL) {
-        std::cout << "\nNo planes arriving.\n";
-        return;
-    }
 
+void log_passengers_in_plane(Plane plane){
     // creates aux var to traverse linked list to not destroy it
-    llnode * arr_ptr = airport.head_arrv;
-
-    while (arr_ptr) {
-        std::cout << "Ariving Plane: " << arr_ptr->plane.flight_name << "\n";
-        std::cout << "Model: " << arr_ptr->plane.model << ", \n";
-        std::cout << "Origin: " << arr_ptr->plane.origin << ", \n";
-        std::cout << "Destination: " << arr_ptr->plane.destination << "\n";
-
-        // creates aux var to traverse linked list to not destroy it
-        Plane::passenger_in_plane * passNode = arr_ptr->plane.head_passenger;
-        std::cout << "Passenger: ";
-        if (!passNode) std::cout << "Arrival Plane Empty\n";
-        while (passNode) {
-            std::cout << passNode->passenger.first_name << ", ";
-            passNode = passNode->next_passenger;
-        }
-
-        arr_ptr = arr_ptr->next;
-
-        std::cout << "\n-------------------\n";
+    Plane::passenger_in_plane * passNode = plane.head_passenger;
+    std::cout << "Passenger: ";
+    if (!passNode) std::cout << "Plane Empty\n";
+    while (passNode) {
+        std::cout << passNode->passenger.first_name << ", ";
+        passNode = passNode->next_passenger;
     }
+    std::cout << std::endl;
 }
 
-void log_ramp_planes(Airport &airport) {
 
-    if (airport.head_ramp) {
+void log_planes(llnode * list){
+    if (list != NULL) {
 
-        std::cout << "\nPlanes in Ramp:\n";
+        std::cout << "\nPlanes:\n";
 
         // creates aux var to traverse linked list to not destroy it
-        llnode * rampNode = airport.head_ramp;
+        llnode * rampNode = list;
 
         while (rampNode) {
             std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
             std::cout << "Model: " << rampNode->plane.model << ", ";
             std::cout << "Origin: " << rampNode->plane.origin << ", ";
             std::cout << "Destination: " << rampNode->plane.destination << "\n";
-            rampNode = rampNode->next;
-        }
-    } else {
-        std::cout << "\nNo planes in the ramp.\n";
-    }
-}
-
-void log_arrival_planes(Airport &airport) {
-
-    if (airport.head_arrv) {
-
-        std::cout << "\nPlanes ariving:\n";
-
-        // creates aux var to traverse linked list to not destroy it
-        llnode * rampNode = airport.head_arrv;
-
-        while (rampNode) {
-            std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
-            std::cout << "Model: " << rampNode->plane.model << ", ";
-            std::cout << "Origin: " << rampNode->plane.origin << ", ";
-            std::cout << "Destination: " << rampNode->plane.destination << "\n";
+            log_passengers_in_plane(rampNode->plane);
             rampNode = rampNode->next;
         }
     } else {
         std::cout << "\nNo planes ariving.\n";
     }
-}
-
-void log_departure_planes(Airport &airport) {
-
-    if (airport.head_dep) {
-
-        std::cout << "\nPlanes in departure:\n";
-
-        // creates aux var to traverse linked list to not destroy it
-        llnode *rampNode = airport.head_dep;
-
-        while (rampNode) {
-            std::cout << "Plane: " << rampNode->plane.flight_name << ", ";
-            std::cout << "Model: " << rampNode->plane.model << ", ";
-            std::cout << "Origin: " << rampNode->plane.origin << ", ";
-            std::cout << "Destination: " << rampNode->plane.destination << "\n";
-            rampNode = rampNode->next;
-        }
-    } else {
-        std::cout << "\nNo planes on departure\n";
-    }
-
 }
 
 void reverse_departing(Airport &airport) {

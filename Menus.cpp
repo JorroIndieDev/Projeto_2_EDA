@@ -12,15 +12,15 @@ void dayCycle(Airport &airport, file_data fileData) {
     while (isWorking) {
 
         std::cout << "\nLog Arrivals\n" << std::endl;
-//        log_arrival_planes(airport);
+        log_planes(airport.head_arrv);
         //log_arrivals_passengers(airport); // change passenger data when moving from list to list
         
         std::cout << "\nLog Ramp\n" << std::endl;
-//        log_ramp_planes(airport);
+        log_planes(airport.head_ramp);
         //log_ramp_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\nLog Depart\n" << std::endl;
-//        log_departure_planes(airport);
+        log_planes(airport.head_dep);
         //log_departures_passengers(airport); // change passenger data when moving from list to list
 
         std::cout << "\n(e)mergencias (o)pcoes (g)ravar (s)next day\n";
