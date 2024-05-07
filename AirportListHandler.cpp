@@ -493,7 +493,7 @@ void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
     travessiaInfixa(nacionality->right);
 }
 
-void arriving_foreigners(Airport &airport) {
+void arriving_foreigners(Airport &airport) { // TODO needs bug fixer
 
     std::string home_nationality = "Portuguese";
 
@@ -507,7 +507,7 @@ void arriving_foreigners(Airport &airport) {
         else{
             Nacionality * aux = airport.nacionality_head;
 
-            while (aux->next_nacionality != NULL){
+            while (aux != NULL){
 
                 if (auxList->plane.head_passenger->passenger.nacionality == aux->nacionality){
                     insert_tree_node(airport.nacionality_head->root_passenger,auxList->plane.head_passenger->passenger);

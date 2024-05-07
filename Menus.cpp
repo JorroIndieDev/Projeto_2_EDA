@@ -57,7 +57,9 @@ void dayCycle(Airport &airport, file_data fileData) {
                         }
 
                         add_ramp_plane(airport, fileData);
+                        arriving_foreigners(airport);
                         add_ramp_plane(airport, fileData);
+                        arriving_foreigners(airport);
 
                     }else {
 
@@ -74,7 +76,9 @@ void dayCycle(Airport &airport, file_data fileData) {
                         }
 
                         add_ramp_plane(airport, fileData);
+//                        arriving_foreigners(airport);
                     }
+
                 }else{
                     init_plane(airport, fileData);
                 }
