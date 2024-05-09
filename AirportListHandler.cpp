@@ -516,6 +516,7 @@ void arriving_foreigners(Airport &airport) { // TODO needs bug fixer
             }
         }
     }
+
 }
 
 /*//Simple binary search that afonso put here to find the passengers (still dont know if it works)
