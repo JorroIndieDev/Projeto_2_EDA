@@ -23,22 +23,24 @@ int main(int argc, char *argv[]) {
     // creating struct for holding all Data files
     file_data fileData = file_data();
 
-    // loading Data files provided
-    load_files_to_mem(fileData);
-    listSort(fileData.nacionalidade, fileData.nacionalidade_size);
-
     // initialize the airport regardless of args passed
-    Airport airport = init_airport(fileData);
-
+    Airport airport;
 
     // verify if any arg has been parsed
     if (argc > 1) {
 
         // loads the first argumment parsed aside from ./*.exe
         LoadFromFile(argv[1],airport);
+//        LoadFromFile(argv[2],fileData);
+        std::cout << ":";
+    }/* else { // if not proceed as normal
 
-    } else { // if not proceed as normal
-        
+        // loading Data files provided
+        load_files_to_mem(fileData);
+        listSort(fileData.nacionalidade, fileData.nacionalidade_size);
+
+        airport = init_airport(fileData);
+
         // first run of the program initial setup
         for (int i = 0; i < 10; ++i) {
             init_plane(airport, fileData);
@@ -46,8 +48,8 @@ int main(int argc, char *argv[]) {
 
     }
 
-    // initialize days / cylces of the airport
-    dayCycle(airport,fileData);
+    // initialize days / cylces of the airport*/
+//    dayCycle(airport,fileData);
 
     return 0;
 }

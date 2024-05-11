@@ -496,7 +496,7 @@ void arriving_foreigners(Airport &airport) {
 
 passenger * search_passengers(llnode *list) {
     if (list == NULL){
-        std::cout << "Chosen list is empty \n";
+        std::cout << "list is empty \n";
         return nullptr;
     }
     llnode * aux = list;

@@ -66,6 +66,8 @@ int max(int a,int b);
 
 
 void SaveToFile(std::string file_name, Airport &airport);
+void SaveToFile(std::string file_name, file_data &fileData);
 void LoadFromFile(std::string file_name, Airport &airport);
+void LoadFromFile(std::string file_name, file_data &fileData);
 
 #endif //PROJETO_2_AUX_FUNCTIONS_H

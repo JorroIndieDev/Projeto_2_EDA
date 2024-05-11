@@ -20,7 +20,7 @@ void dayCycle(Airport &airport, file_data fileData) {
         std::cout << "\nDepartures\n" << std::endl;
         log_planes(airport.head_dep);
 
-        std::cout << "\n(e)mergency (o)ptions (l)oad (s)next day\n";
+        std::cout << "\n(e)mergency (o)ptions (g)save (s)next day (q)uit program\n";
         std::cin >> choice;
 
         std::string name;
@@ -33,8 +33,9 @@ void dayCycle(Airport &airport, file_data fileData) {
             case 'o': // Options;
                 option(airport);
                 break;
-            case 'l': // Save;
+            case 'g': // Save;
                 SaveToFile("airport",airport);
+                SaveToFile("fileData",fileData);
                 break;
             // Skip day
             case 's':
@@ -104,7 +105,7 @@ void option(Airport &airport) {
         std::cout << "Choose a option \n"
                   << "(1) - Show the passengers on ramp \n"
                      "(2) - Show organized passengers \n"
-                     "(3) - Search passengers on arrivals or depart \n"
+                     "(3) - Search passengers on arrivals \n"
                      "(4) - Edit a passenger nationality in a arrival plane \n"
                      "(5) - Quit to menu\n";
         std::cin >> choice;
@@ -141,27 +142,11 @@ void option(Airport &airport) {
                 break;
 
             case 3:
-
-                std::cout << "Search by departure or arrival\n"
-                          << "(1) Departure  (2) Arrival";
-                std::cin >> choice;
-
-                if (choice == 1) {
-                    if (airport.head_dep == NULL) {
-                        std::cout << "No planes in departure\n";
-                        break;
-                    }
-                    search_passengers(airport.head_dep);
-
-                } else if (choice == 2) {
-                    if (airport.head_arrv == NULL) {
-                        std::cout << "No planes in Arrival\n";
-                        break;
-                    }
-                    search_passengers(airport.head_arrv);
-                } else
-                    std::cout << "Invalid choice\n";
-
+                if (airport.head_arrv == NULL) {
+                    std::cout << "No planes in Arrival\n";
+                    break;
+                }
+                search_passengers(airport.head_arrv);
                 break;
 
             case 4:

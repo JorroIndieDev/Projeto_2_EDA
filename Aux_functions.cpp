@@ -114,7 +114,18 @@ void SaveToFile(std::string file_name, Airport &airport) {
     }
 
     // write struct to file and close
-    outfile.write(reinterpret_cast <char *> (&input), sizeof(struct Airport));
+    outfile.write(reinterpret_cast <const char *> (&input), sizeof(struct Airport));
+
+    outfile.write(reinterpret_cast<const char*>(input.nacionality_head), sizeof(Nacionality));
+
+    outfile.write(reinterpret_cast<const char*>(input.nacionality_head->root_passenger), sizeof(Nacionality::Pass_tree));
+
+    outfile.write(reinterpret_cast<const char*>(input.head_dep), sizeof(llnode));
+
+    outfile.write(reinterpret_cast<const char*>(input.head_arrv), sizeof(llnode));
+
+    outfile.write(reinterpret_cast<const char*>(input.head_ramp), sizeof(llnode));
+
     outfile.close();
     outfile.clear();
 
@@ -142,8 +153,91 @@ void LoadFromFile(std::string file_name, Airport &airport){
         infile.clear();
         exit(1);
     }
+
     // read struct from file and close
     infile.read(reinterpret_cast <char *> (&airport), sizeof(struct Airport));
+
+    Nacionality* nacionality = new Nacionality;
+    infile.read(reinterpret_cast<char*>(nacionality), sizeof(Nacionality));
+    airport.nacionality_head = nacionality;
+
+    Nacionality::Pass_tree* root_passenger = new Nacionality::Pass_tree;
+    infile.read(reinterpret_cast<char*>(root_passenger), sizeof(Nacionality::Pass_tree));
+    airport.nacionality_head->root_passenger = root_passenger;
+
+    llnode* head_dep = new llnode;
+    infile.read(reinterpret_cast<char*>(head_dep), sizeof(llnode));
+    airport.head_dep = head_dep;
+
+    llnode* head_arrv = new llnode;
+    infile.read(reinterpret_cast<char*>(head_arrv), sizeof(llnode));
+    airport.head_arrv = head_arrv;
+
+    llnode* head_ramp = new llnode;
+    infile.read(reinterpret_cast<char*>(head_ramp), sizeof(llnode));
+    airport.head_ramp = head_ramp;
+
+    infile.close();
+    infile.clear();
+}
+void SaveToFile(std::string file_name, file_data &fileData) {
+
+    // initialize the file with fstream
+    std::ofstream outfile;
+
+    // auxiliary var to not destroy original
+    struct file_data input = fileData;
+
+    // adding file to the file PATH where airport data is stored
+    std::string FILE_PATH = "../AirportData/";
+
+    // ensure the file is .dat
+    file_name += ".dat";
+    FILE_PATH += file_name;
+
+    //open file
+    outfile.open(FILE_PATH); // by using FILE_PATH we ensure that the file is always oppened from the right dir
+
+
+    // if file is not valid cerr out and quit
+    if (!outfile.is_open()) {
+        std::cerr << "\nFile -> { " << file_name << " } Not found\n\n";
+        outfile.close();
+        outfile.clear();
+        exit(1);
+    }
+
+    // write struct to file and close
+    outfile.write(reinterpret_cast <char *> (&input), sizeof(struct file_data));
+    outfile.close();
+    outfile.clear();
+
+}
+
+void LoadFromFile(std::string file_name, file_data &fileData){
+
+    // initialize the file with fstream
+    std::ifstream infile;
+
+    // adding file to the file PATH where airport data is stored
+    std::string FILE_PATH = "../AirportData/";
+
+    // ensure the file is .dat
+    file_name += ".dat";
+    FILE_PATH += file_name;
+
+    // open file
+    infile.open(FILE_PATH); // by using FILE_PATH we ensure that the file is always oppened from the right dir
+
+    // if file is not valid cerr out and quit
+    if (!infile.is_open()) {
+        std::cerr << "\nFile -> { " << file_name << " } Not found\n\n";
+        infile.close();
+        infile.clear();
+        exit(1);
+    }
+    // read struct from file and close
+    infile.read(reinterpret_cast <char *> (&fileData), sizeof(struct file_data));
     infile.close();
     infile.clear();
 }
