@@ -3,6 +3,7 @@
 //
 
 #include "Headers/AirportListHandler.h"
+#include "Headers/init_planes_people.h"
 #include <bits/stdc++.h>
 
 void remove_departing_plane(Airport &airport) {
@@ -55,6 +56,8 @@ void add_departing_plane(Airport &airport, file_data &fileData) {
     new_depart->plane = temp->plane;
     new_depart->next = nullptr;
 
+    add_passengers(airport,new_depart->plane,fileData);
+
     if (airport.head_dep == NULL){
         airport.head_dep = new_depart;
 
@@ -66,8 +69,48 @@ void add_departing_plane(Airport &airport, file_data &fileData) {
         ptr->next = new_depart;
         airport.num_in_depart++;
     }
-
     delete temp;
+}
+
+void add_passengers(Airport &airport, Plane &plane, file_data &fileData){
+
+    Plane::passenger_in_plane * aux = plane.head_passenger;
+
+    int _cap = plane.capacity/2;
+
+    init_home_passengers(plane,fileData,_cap);
+
+    int remaining_cap = plane.capacity - _cap;
+
+    for (int i = 0; i < remaining_cap-1; ++i) {
+
+        Nacionality * auxN = airport.nacionality_head;
+        while (auxN->next_nacionality != NULL){
+            if (auxN->root_passenger == NULL){
+                auxN = auxN->next_nacionality;
+                continue;
+            }else{
+                Plane::passenger_in_plane * passengerInPlane = plane.head_passenger;
+                Plane::passenger_in_plane * passnode = new Plane::passenger_in_plane;
+                while (passengerInPlane->next_passenger != nullptr) {
+                    passengerInPlane = passengerInPlane->next_passenger;
+                }
+                passnode->passenger = auxN->root_passenger->passenger;
+                passnode->next_passenger = nullptr;
+                passengerInPlane->next_passenger = passnode;
+
+                auxN->root_passenger = delete_node(auxN->root_passenger,auxN->root_passenger->passenger.first_name);
+                auxN = auxN->next_nacionality;
+
+                break;
+            }
+        }
+        if (auxN->next_nacionality == NULL){
+            init_passengers(plane,fileData,remaining_cap);
+            break;
+        }
+
+    }
 }
 
 void add_ramp_plane(Airport &airport, file_data &fileData) {
@@ -81,6 +124,7 @@ void add_ramp_plane(Airport &airport, file_data &fileData) {
     // add to ramp
     llnode * new_arrival_to_ramp = new llnode;
     new_arrival_to_ramp->plane = temp->plane;
+    new_arrival_to_ramp->plane.head_passenger = nullptr;
     new_arrival_to_ramp->next = nullptr;
 
     if (airport.head_ramp == NULL){
@@ -99,12 +143,12 @@ void add_ramp_plane(Airport &airport, file_data &fileData) {
 }
 
 void log_passenger(passenger *passageiro) {
+    std::cout << std::endl;
     std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
     std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
     std::cout << "Nacionalidade: " << passageiro->nacionality << std::endl;
     std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
 }
-
 
 void log_passengers_in_plane(Plane plane){
     // creates aux var to traverse linked list to not destroy it
@@ -118,22 +162,23 @@ void log_passengers_in_plane(Plane plane){
     std::cout << std::endl;
 }
 
-
 void log_planes(llnode * list){
     if (list != NULL) {
 
-        std::cout << "\nPlanes:\n";
+        std::cout << "\n--------------\nPlanes:";
 
         // creates aux var to traverse linked list to not destroy it
-        llnode * rampNode = list;
+        llnode * node = list;
 
-        while (rampNode) {
-            std::cout << "Plane: " << rampNode->plane.flight_name << ",\n";
-            std::cout << "Model: " << rampNode->plane.model << ",\n";
-            std::cout << "Origin: " << rampNode->plane.origin << ",\n";
-            std::cout << "Destination: " << rampNode->plane.destination << "\n";
-            log_passengers_in_plane(rampNode->plane);
-            rampNode = rampNode->next;
+        while (node) {
+            std::cout << "\n";
+            std::cout << "Plane: " << node->plane.flight_name << ",\n";
+            std::cout << "Model: " << node->plane.model << ",\n";
+            std::cout << "Origin: " << node->plane.origin << ",\n";
+            std::cout << "Destination: " << node->plane.destination << "\n";
+            log_passengers_in_plane(node->plane);
+            node = node->next;
+            std::cout << "\n--------------\n";
         }
     } else {
         std::cout << "\nNo planes ariving.\n";
@@ -309,75 +354,6 @@ Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, st
 
 }
 
-int make_spine(Nacionality::Pass_tree  * root){
-
-    int count = 0;
-    Nacionality::Pass_tree * temp = root->right;
-
-    while (temp){
-
-        if (temp->left){
-
-            Nacionality::Pass_tree * OldTemp = temp;
-
-            temp = temp->left;
-
-            OldTemp->left = temp->right;
-            temp->right = OldTemp;
-
-            root->right = temp;
-
-        }else{
-            count++;
-            root = temp;
-            temp = temp->right;
-        }
-
-    }
-    return count;
-}
-
-void compressTree(Nacionality::Pass_tree * root, int num_of_nodes){
-    Nacionality::Pass_tree * temp = root->right;
-
-    for (int i = 0; i < num_of_nodes; ++i) {
-
-        Nacionality::Pass_tree * OldTemp = temp;
-
-        temp = temp->right;
-        root->right = temp;
-
-        OldTemp->right = temp->left;
-        temp->left = OldTemp;
-
-        root = temp;
-        temp = temp->right;
-    }
-}
-
-Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root){
-
-    Nacionality::Pass_tree * newRoot = new Nacionality::Pass_tree;
-    newRoot->left = NULL;
-    newRoot->right = NULL;
-
-    newRoot->right = root;
-
-    int numOfRot = make_spine(newRoot);
-
-    int height = log2(numOfRot + 1);
-
-    int num_nodes = pow(2,height) - 1;
-
-    compressTree(newRoot,numOfRot - num_nodes);
-
-    for ( num_nodes = num_nodes/2; num_nodes > 0 ; num_nodes /= 2) {
-        compressTree(newRoot,num_nodes);
-    }
-
-    return newRoot->right;
-}
-
 Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string name){
 
     if(root==NULL)return root;
@@ -459,7 +435,6 @@ void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
     if (root == nullptr)
         return;
 
-
     print_tree_leftrigt(root->right, level + 1);
     std::cout << std::endl;
     for (int i = 0; i <level; ++i)
@@ -467,7 +442,6 @@ void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
 
     std::cout<< level << " " << root->passenger.first_name << std::endl;
 
-    // Print vertical branches
     for (int i = 0; i < level; i++)
         std::cout << " ";
 
@@ -489,98 +463,84 @@ void listSort(std::string list[], int list_size) {
 void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
     if (nacionality == nullptr) return;
     travessiaInfixa(nacionality->left);
-    log_passenger(&nacionality->passenger);
+    std::cout << "Passsageiro: " << nacionality->passenger.first_name << std::endl;
     travessiaInfixa(nacionality->right);
 }
 
-void arriving_foreigners(Airport &airport) { // TODO needs bug fixer
+void arriving_foreigners(Airport &airport) {
 
     std::string home_nationality = "Portuguese";
+    Nacionality * auxN;
+    Plane::passenger_in_plane * passengerInPlane = airport.head_arrv->plane.head_passenger;
 
-    llnode * auxList = airport.head_arrv;
+    while (passengerInPlane->next_passenger != NULL){
 
-    while (auxList != NULL){
-
-        if (auxList->plane.head_passenger->passenger.nacionality == home_nationality)
-            auxList->plane.head_passenger = auxList->plane.head_passenger->next_passenger;
-
+        if (passengerInPlane->passenger.nacionality == home_nationality) {
+            passengerInPlane = passengerInPlane->next_passenger;
+            break;
+        }
         else{
-            Nacionality * aux = airport.nacionality_head;
-
-            while (aux != NULL){
-
-                if (auxList->plane.head_passenger->passenger.nacionality == aux->nacionality){
-                    insert_tree_node(airport.nacionality_head->root_passenger,auxList->plane.head_passenger->passenger);
-                    aux = aux->next_nacionality;
+            auxN = airport.nacionality_head;
+            while (auxN->next_nacionality != NULL){
+                if (passengerInPlane->passenger.nacionality == auxN->nacionality){
+                    auxN->root_passenger = insert_tree_node(auxN->root_passenger,passengerInPlane->passenger);
+                    break;
                 }
+                auxN = auxN->next_nacionality;
             }
         }
-    }
 
+        passengerInPlane = passengerInPlane->next_passenger;
+    }
 }
 
-/*//Simple binary search that afonso put here to find the passengers (still dont know if it works)
-int binary_Search(string arr[], string x, int n)
-{
-    int l = 0;
-    int r = n - 1;
-    // Loop to implement Binary Search
-    while (l <= r) {
-        // Calculatiing mid
-        int m = l + (r - l) / 2;
-        // Some random value assigned
-        // as 0 belongs to index
-        int res = -1000;
-        if (x == (arr[m]))
-            res = 0;
-        // Check if x is present at mid
-        if (res == 0)
-            return m;
-        // If x greater, ignore left half
-        if (x > (arr[m]))
-            l = m + 1;
-            // If x is smaller, ignore right half
-        else
-            r = m - 1;
-    }
-
-    return -1;
-}*/
-
 passenger * search_passengers(llnode *list) {
+    if (list == NULL){
+        std::cout << "Chosen list is empty \n";
+        return nullptr;
+    }
     llnode * aux = list;
-    passenger * passenger_aux = new passenger;
     std::string passenger_name;
     std::cout << "What's the passengers first name?  ";
     std::cin >> passenger_name;
 
-    while(aux->next != NULL) {
-        for (int i = 0; i < aux->plane.capacity; i++) {
-            if (passenger_aux->first_name == passenger_name) {
-                std::cout << "Passenger found..\n";
-                std::cout << passenger_aux->first_name <<
-                     " " << passenger_aux->second_name <<
-                     ", " << passenger_aux->nacionality <<
-                     ", " << passenger_aux->ticket_num;
-                return passenger_aux;
+    while (aux->next != NULL){
+
+        Plane::passenger_in_plane * aux_pass = aux->plane.head_passenger;
+
+        while (aux_pass->next_passenger != NULL){
+            if (aux_pass->passenger.first_name == passenger_name){
+
+                std::cout << "Passenger found..\n" << aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name << std::endl;
+
+                return &aux_pass->passenger;
             }
+            aux_pass = aux_pass->next_passenger;
         }
-        aux = aux->next;
+
+        aux=aux->next;
     }
+    std::cout << "Passager was not found.. \n";
+    return nullptr;
 }
 
 void change_nacionality(std::string newNationality, Airport &airport) {
     int choice;
     // facam com que o ulilizador escolha
-    std::cout << "Search by arrival or departure\n";
-    std::cin >> choice;
-    if (choice == 1) {
-        passenger *passengero = search_passengers(airport.head_arrv);
-        passengero->nacionality = newNationality;
-    }
-    if (choice == 2) {
-        passenger *passengero = search_passengers(airport.head_dep);
-        passengero->nacionality = newNationality;
-
+    while (true) {
+        std::cout << "Search by arrival (1) or departure (2)\n";
+        std::cin >> choice;
+        if (choice == 1) {
+            passenger *passengero = search_passengers(airport.head_arrv);
+            if (passengero == nullptr)return;
+            passengero->nacionality = newNationality;
+            break;
+        } else if (choice == 2) {
+            passenger *passengero = search_passengers(airport.head_dep);
+            if (passengero == nullptr)return;
+            passengero->nacionality = newNationality;
+            break;
+        } else
+            std::cout << "Chose a valid option\n";
     }
 }

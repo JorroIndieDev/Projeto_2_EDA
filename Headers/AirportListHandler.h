@@ -40,13 +40,13 @@ void remove_departing_plane(Airport &airport);
 // Add to ramp list FIFO
 void add_ramp_plane(Airport &airport, file_data &fileData);
 
-// Show lists
-// log functions simply load the information of the pasengers in each list
-void log_departures_passengers(Airport &airport);
-void log_ramp_passengers(Airport &airport);
-void log_arrivals_passengers(Airport &airport);
+// add passagers to the plane in departure
+void add_passengers(Airport &airport, Plane &plane, file_data &fileData);
 
+//show planes
 void log_planes(llnode * list);
+
+//show passengeres in the plane @param plane
 void log_passengers_in_plane(Plane plane);
 
 // tree handler functions
@@ -56,12 +56,6 @@ Nacionality::Pass_tree * new_tree_node(struct passenger &passenger);
 
 // insert node in tree
 Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger);
-
-int make_spine(Nacionality::Pass_tree * root);
-
-void compressTree(Nacionality::Pass_tree * root, int num_of_nodes);
-
-Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root);
 
 void print_tree_leftrigt(Nacionality::Pass_tree* root, int space);
 
@@ -78,7 +72,6 @@ void emergency_handler(Airport &airport,file_data &fileData);
 
 void remove_passengers(Airport &airport);
 
-// Joao - Changes
 void travessiaInfixa(Nacionality::Pass_tree *nacionality);
 void log_passenger(passenger *passageiro);
 void listSort(std::string list[], int list_size);

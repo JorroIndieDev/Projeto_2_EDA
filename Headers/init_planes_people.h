@@ -8,7 +8,7 @@
 #include "structs.h"
 #include <iostream>
 #include "Aux_functions.h"
-
+void init_home_passengers(Plane &plane , file_data &fileData, int num_of_passengers = 0);
 void init_passengers(Plane &plane, file_data &fileData,int num_of_passengers = 0);
 void init_plane(Airport &airport, file_data &fileData);
 

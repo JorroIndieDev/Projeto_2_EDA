@@ -1,7 +1,7 @@
 #include "Headers/Menus.h"
 #include "Headers/AirportListHandler.h"
 #include "Headers/init_planes_people.h"
-
+#include <limits>
 void dayCycle(Airport &airport, file_data fileData) {
 
 
@@ -56,10 +56,10 @@ void dayCycle(Airport &airport, file_data fileData) {
                             add_departing_plane(airport, fileData);
                         }
 
-                        add_ramp_plane(airport, fileData);
                         arriving_foreigners(airport);
                         add_ramp_plane(airport, fileData);
                         arriving_foreigners(airport);
+                        add_ramp_plane(airport, fileData);
 
                     }else {
 
@@ -75,8 +75,8 @@ void dayCycle(Airport &airport, file_data fileData) {
                             init_plane(airport, fileData);
                         }
 
+                        arriving_foreigners(airport);
                         add_ramp_plane(airport, fileData);
-//                        arriving_foreigners(airport);
                     }
 
                 }else{
@@ -98,63 +98,82 @@ void option(Airport &airport) {
 
     int choice;
     std::string newNationality;
-    std::cout <<"Choose a option \n"
-              << "(1) - Show the passengers on ramp \n"
-                 "(2) - Show organized passengers \n"
-                 "(3) - Search passengers on arrivals or depart \n"
-                 "(4) - Edit a passenger nationality in a arrival plane \n";
-    std::cin >> choice;
+    Nacionality *aux_nacionality;
 
-    switch (choice) {
-        case 1:
-            log_passengers_in_plane(airport.head_ramp->plane);
-            break;
-        case 2:
-            std::cout << "Ordered alphabetically (1) or Visually (2): ";
-            std::cin >> choice;
+    while (true) {
+        std::cout << "Choose a option \n"
+                  << "(1) - Show the passengers on ramp \n"
+                     "(2) - Show organized passengers \n"
+                     "(3) - Search passengers on arrivals or depart \n"
+                     "(4) - Edit a passenger nationality in a arrival plane \n"
+                     "(5) - Quit to menu\n";
+        std::cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > 5) {
+            std::cout << "Choose one of the previous choices\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        switch (choice) {
+            case 1:
+                aux_nacionality = airport.nacionality_head;
+                while (aux_nacionality != nullptr) {
+                    travessiaInfixa(aux_nacionality->root_passenger);
+                    aux_nacionality = aux_nacionality->next_nacionality;
+                }
+                break;
+            case 2:
 
-            if (choice == 1) {
-                Nacionality *aux_nacionality;
                 aux_nacionality = airport.nacionality_head;
 
                 while (aux_nacionality != nullptr) {
+                    if (aux_nacionality->root_passenger == nullptr) {
+                        aux_nacionality = aux_nacionality->next_nacionality;
+                        continue;
+                    }
                     std::cout << "Nationality: ";
                     std::cout << aux_nacionality->nacionality << std::endl;
                     print_tree_leftrigt(aux_nacionality->root_passenger, 0);
 
-                    // travessiaInfixa(aux_nacionality->root_passenger);
                     std::cout << std::endl << std::endl;
                     aux_nacionality = aux_nacionality->next_nacionality;
-                    //std::cout << aux_nacionality->nacionality;
                 }
-            }
 
-            std::cout << "\n--------------- END ---------------";
-            break;
+                break;
 
-        case 3:
+            case 3:
 
-            std::cout << "Search by departure or arrival\n"
-            << "(1) Departure  (2) Arrival";
-            std::cin >> choice;
+                std::cout << "Search by departure or arrival\n"
+                          << "(1) Departure  (2) Arrival";
+                std::cin >> choice;
 
-            if (choice == 1)
-                search_passengers(airport.head_arrv);
-            else if (choice == 2)
-                search_passengers(airport.head_dep);
-            else
-                std::cout << "Invalid choice\n";
+                if (choice == 1) {
+                    if (airport.head_dep == NULL) {
+                        std::cout << "No planes in departure\n";
+                        break;
+                    }
+                    search_passengers(airport.head_dep);
 
-            break;
+                } else if (choice == 2) {
+                    if (airport.head_arrv == NULL) {
+                        std::cout << "No planes in Arrival\n";
+                        break;
+                    }
+                    search_passengers(airport.head_arrv);
+                } else
+                    std::cout << "Invalid choice\n";
 
-        case 4:
-            std::cout << "Which Nationality to be inserted? ";
-            std::cin >> newNationality;
-            change_nacionality(newNationality,airport);
-            break;
+                break;
 
-        default:
-            std::cout << "Choose one of the previous choices\n";
-            break;
+            case 4:
+                std::cout << "Which Nationality to be inserted? ";
+                std::cin >> newNationality;
+                change_nacionality(newNationality, airport);
+                break;
+            case 5:
+                return;
+            default:
+                std::cout << "Choose one of the previous choices\n";
+                break;
+        }
     }
 }
