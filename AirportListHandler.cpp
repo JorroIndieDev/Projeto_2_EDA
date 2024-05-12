@@ -283,6 +283,7 @@ void emergency_handler(Airport &airport,file_data &fileData) {
         while (aux != NULL){
             if(plane_name == aux->plane.flight_name){
                 valid = true;
+                std::cout << "AAAA";
                 break;
             }
             aux2 = aux;
@@ -309,6 +310,8 @@ void emergency_handler(Airport &airport,file_data &fileData) {
     }
 
     temp = aux;
+
+    //TODO need to add the emergency plane on the ramp and add a new plane on the arrivals
 
 }
 

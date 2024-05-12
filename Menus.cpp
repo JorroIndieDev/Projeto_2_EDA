@@ -20,7 +20,8 @@ void dayCycle(Airport &airport, file_data fileData) {
         std::cout << "\nDepartures\n" << std::endl;
         log_planes(airport.head_dep);
 
-        std::cout << "\n(e)mergency (o)ptions (l)oad (s)next day\n";
+        std::cout << "\n(e)mergency | (c)lose airport | (o)ptions | (l)oad | (s)next day\n";
+
         std::cin >> choice;
 
         std::string name;
@@ -32,6 +33,10 @@ void dayCycle(Airport &airport, file_data fileData) {
                 break;
             case 'o': // Options;
                 option(airport);
+                break;
+
+            case 'c':
+
                 break;
             case 'l': // Save;
                 SaveToFile("airport",airport);
