@@ -8,6 +8,7 @@ void dayCycle(Airport &airport, file_data fileData) {
     bool isWorking = true;
 
     std::string choice;
+    int daysChoice;
 
     while (isWorking) {
 
@@ -20,7 +21,7 @@ void dayCycle(Airport &airport, file_data fileData) {
         std::cout << "\nDepartures\n" << std::endl;
         log_planes(airport.head_dep);
 
-        std::cout << "\n(e)mergency | (c)lose airport | (o)ptions | (l)oad | (s)next day\n";
+        std::cout << "\n(e)mergency | (c)lose airport | (o)ptions | (l)oad | (s)next day | (q)uit\n";
 
         std::cin >> choice;
 
@@ -34,9 +35,17 @@ void dayCycle(Airport &airport, file_data fileData) {
             case 'o': // Options;
                 option(airport);
                 break;
-
             case 'c':
-
+                airport.closed = true;
+                while(true){
+                    std::cout << "How many days?";
+                    std::cin >> daysChoice;
+                    if(daysChoice <= 5){
+                        airport.cycles_closed = daysChoice +1;
+                        break;
+                    }
+                    std::cout << "Please choose a number inferior to 5";
+                }
                 break;
             case 'l': // Save;
                 SaveToFile("airport",airport);
@@ -90,6 +99,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                 break;
 
             case 'q': // quit
+                std::cout <<"Thanks to choose us and see you soon! =)";
                 isWorking = false;
                 break;
             default:
@@ -108,10 +118,11 @@ void option(Airport &airport) {
     while (true) {
         std::cout << "Choose a option \n"
                   << "(1) - Show the passengers on ramp \n"
-                     "(2) - Show organized passengers \n"
+                     "(2) - Show organized visually passengers \n"
                      "(3) - Search passengers on arrivals or depart \n"
                      "(4) - Edit a passenger nationality in a arrival plane \n"
-                     "(5) - Quit to menu\n";
+                     "(5) - Invert the priority of ramp planes\n"
+                     "(6) - Quit to menu\n";
         std::cin >> choice;
         if (std::cin.fail() || choice < 1 || choice > 5) {
             std::cout << "Choose one of the previous choices\n";
@@ -127,7 +138,7 @@ void option(Airport &airport) {
                 }
                 break;
             case 2:
-
+                //TODO no enunciado fala para mostrar ALFABETICAMENTE ou VISUALMENTE
                 aux_nacionality = airport.nacionality_head;
 
                 while (aux_nacionality != nullptr) {
@@ -146,7 +157,7 @@ void option(Airport &airport) {
                 break;
 
             case 3:
-
+                // TODO need to show all passenger with the SAME NAME  =)
                 std::cout << "Search by departure or arrival\n"
                           << "(1) Departure  (2) Arrival";
                 std::cin >> choice;
@@ -166,15 +177,18 @@ void option(Airport &airport) {
                     search_passengers(airport.head_arrv);
                 } else
                     std::cout << "Invalid choice\n";
-
                 break;
 
             case 4:
+                //TODO tem que procurar apenas nos avioes que estao se aproximando
                 std::cout << "Which Nationality to be inserted? ";
                 std::cin >> newNationality;
                 change_nacionality(newNationality, airport);
                 break;
             case 5:
+                reverse_ramp(airport);
+                break;
+            case 6:
                 return;
             default:
                 std::cout << "Choose one of the previous choices\n";

@@ -185,28 +185,6 @@ void log_planes(llnode * list){
     }
 }
 
-void reverse_departing(Airport &airport) {
-
-    // aux vars to reverse the links
-    llnode * current_plane = airport.head_dep;
-    llnode * prev_plane = nullptr, * next_plane = nullptr;
-
-    // loop to "swap()"
-    while (current_plane != nullptr) {
-
-        next_plane = current_plane->next;
-        current_plane->next = prev_plane;
-
-        prev_plane = current_plane;
-        current_plane = next_plane;
-
-    }
-
-    // assign new head with links fixed to the actual head
-    airport.head_dep = prev_plane;
-
-}
-
 void reverse_ramp(Airport &airport) {
 
     // aux vars to reverse the links
@@ -229,26 +207,7 @@ void reverse_ramp(Airport &airport) {
 
 }
 
-void reverse_arrival(Airport &airport) {
 
-    // aux vars to reverse the links
-    llnode * current_plane = airport.head_arrv;
-    llnode * prev_plane = nullptr, * next_plane = nullptr;
-
-    // loop to "swap()"
-    while (current_plane != nullptr) {
-
-        next_plane = current_plane->next;
-        current_plane->next = prev_plane;
-
-        prev_plane = current_plane;
-        current_plane = next_plane;
-    }
-
-    // assign new head with links fixed to the actual head
-    airport.head_arrv = prev_plane;
-
-}
 
 void remove_passengers(Airport &airport) {
 
@@ -498,6 +457,7 @@ void arriving_foreigners(Airport &airport) {
 }
 
 passenger * search_passengers(llnode *list) {
+    // TODO need to show all passenger with the SAME NAME  =)
     if (list == NULL){
         std::cout << "Chosen list is empty \n";
         return nullptr;
@@ -523,7 +483,7 @@ passenger * search_passengers(llnode *list) {
 
         aux=aux->next;
     }
-    std::cout << "Passager was not found.. \n";
+    std::cout << "Passenger was not found.. \n";
     return nullptr;
 }
 
