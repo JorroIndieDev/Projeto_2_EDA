@@ -65,9 +65,22 @@ int random_range(int lower, int upper);
 int max(int a,int b);
 
 
-void SaveToFile(std::string file_name, Airport &airport);
-void SaveToFile(std::string file_name, file_data &fileData);
-void LoadFromFile(std::string file_name, Airport &airport);
-void LoadFromFile(std::string file_name, file_data &fileData);
+void SaveToFile(std::string file_name, Airport * airport);
+void SaveToFile(std::string file_name, file_data * fileData);
+void LoadFromFile(std::string file_name, Airport * airport);
+void LoadFromFile(std::string file_name, file_data * fileData);
+
+
+// Functions to serialize data:
+void serialize_llnode(int listSize,llnode *list, std::ofstream &outfile);
+void serialize_Nationality(int listSize, Nacionality * nacionality, std::ofstream &outfile);
+void serialize_tree(Nacionality::Pass_tree * root, std::ofstream &outfile);
+
+// Functions to deserialize data:
+void deserialize_llnode(llnode *&list ,std::ifstream &infile);
+void deserialize_Nationality(Nacionality*&nacionality,std::ifstream &infile);
+void deserialize_tree(Nacionality::Pass_tree *&root,std::ifstream &infile);
+
+void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &outfile);
 
 #endif //PROJETO_2_AUX_FUNCTIONS_H

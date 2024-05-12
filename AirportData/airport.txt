@@ -1,0 +1,117 @@
+9 6 4
+0 0 0
+9
+TK333 B737 MAX Istanbul Airport (IST) - Istanbul, Turkey AeroportoEDA 7
+Irish Daniel LEE TK.1000000000
+Swiss Benjamin WILLIAMS TK.1000000001
+Swiss Alexander GARCIA TK.1000000002
+Greek Benjamin THOMAS TK.1000000003
+Ukrainian Henry WILLIAMS TK.1000000004
+Dutch Olivia ANDERSON TK.1000000005
+Brazilian Harper LEWIS TK.1000000006
+AF131 B787-8 Auckland Airport (AKL) - Auckland, New Zealand AeroportoEDA 6
+Vietnamese Ethan ALLEN TK.1000000007
+Vietnamese Elizabeth HERNANDEZ TK.1000000008
+Moroccan Vanderlan MARTINEZ TK.1000000009
+Dutch Amelia YOUNG TK.1000000010
+Vietnamese Sa HALL TK.1000000011
+Brazilian Charlotte WHITE TK.1000000012
+NH040 B737 MAX 200 Cape Town International Airport (CPT) - Cape Town, South Africa AeroportoEDA 13
+Ukrainian Aziado WALKER TK.1000000013
+Australian Grace WHITE TK.1000000014
+Egyptian Lucas SMITH TK.1000000015
+Australian Noah KING TK.1000000016
+Nigerian Vanderlan ROBINSON TK.1000000017
+Lebanese Jackson LEE TK.1000000018
+Moroccan Noah HERNANDEZ TK.1000000019
+Ukrainian Mason YOUNG TK.1000000020
+Egyptian Lucas LEWIS TK.1000000021
+Cambodian Benjamin WILSON TK.1000000022
+Ukrainian Inchado MOORE TK.1000000023
+Peruvian Michael RODRIGUEZ TK.1000000024
+Jamaican Grace GARCIA TK.1000000025
+QF555 B737-900ER Domodedovo International Airport (DME) - Moscow, Russia AeroportoEDA 13
+Kenyan Grace HERNANDEZ TK.1000000026
+Lebanese Elizabeth ROBINSON TK.1000000027
+Vietnamese Vanderlan WHITE TK.1000000028
+Dutch Elijah HARRIS TK.1000000029
+Egyptian Jorro HALL TK.1000000030
+Malaysian Abigail MILLER TK.1000000031
+Dutch Ethan YOUNG TK.1000000032
+Ukrainian Jackson JACKSON TK.1000000033
+Peruvian Elizabeth THOMPSON TK.1000000034
+Australian Emily HALL TK.1000000035
+Finnish James ANDERSON TK.1000000036
+Greek Mason GARCIA TK.1000000037
+Greek Henry JOHNSON TK.1000000038
+KLM777 B777-8 King Fahd International Airport (DMM) - Dammam, Saudi Arabia AeroportoEDA 9
+Australian Noah WILSON TK.1000000039
+Greek Lucas RODRIGUEZ TK.1000000040
+Malaysian Henry WILLIAMS TK.1000000041
+Australian Amelia THOMAS TK.1000000042
+Portuguese Harper MARTIN TK.1000000043
+Malaysian Abigail WILSON TK.1000000044
+Brazilian William GARCIA TK.1000000045
+Moroccan Evelyn WALKER TK.1000000046
+Vietnamese Olivia JACKSON TK.1000000047
+S7A949 B737 MAX 200 Brussels Airport (BRU) - Brussels, Belgium AeroportoEDA 5
+Brazilian Liam WHITE TK.1000000048
+Icelandic Liam DAVIS TK.1000000049
+Brazilian Harper JONES TK.1000000050
+Egyptian Evelyn ROBINSON TK.1000000051
+Brazilian Evelyn RODRIGUEZ TK.1000000052
+AA424 B777-8 Madrid–Barajas Adolfo Suárez Airport (MAD) - Madrid, Spain AeroportoEDA 5
+Swiss Aziado TAYLOR TK.1000000053
+Irish Noah WALKER TK.1000000054
+Portuguese Olivia HERNANDEZ TK.1000000055
+Swiss Jackson LEWIS TK.1000000056
+Brazilian Inchado HARRIS TK.1000000057
+LX606 B777-9 Domodedovo International Airport (DME) - Moscow, Russia AeroportoEDA 8
+Dutch Sophia MILLER TK.1000000058
+Australian Daniel HARRIS TK.1000000059
+Egyptian Benjamin ROBINSON TK.1000000060
+Nigerian William GARCIA TK.1000000061
+Nigerian Ava RODRIGUEZ TK.1000000062
+Australian Michael RODRIGUEZ TK.1000000063
+Jamaican Vanderlan THOMPSON TK.1000000064
+Dutch Jacob SMITH TK.1000000065
+AY525 B767-300ER Berlin Brandenburg Airport (BER) - Berlin, Germany AeroportoEDA 6
+Cambodian Abigail JOHNSON TK.1000000066
+Nigerian Emma GARCIA TK.1000000067
+Australian Sa LEWIS TK.1000000068
+Vietnamese Emily JOHNSON TK.1000000069
+Egyptian Jacob ANDERSON TK.1000000070
+Peruvian Jackson TAYLOR TK.1000000071
+BA456 B737 MAX Melbourne Airport (MEL) - Melbourne, Australia AeroportoEDA 9
+Australian Vanderlan CLARK TK.1000000072
+Kenyan Ava RODRIGUEZ TK.1000000073
+Finnish Emma RODRIGUEZ TK.1000000074
+Malaysian Liam DAVIS TK.1000000075
+Jamaican Ethan HALL TK.1000000076
+Brazilian Liam JACKSON TK.1000000077
+Dutch James KING TK.1000000078
+Vietnamese Henry MARTINEZ TK.1000000079
+Mongolian Inchado GARCIA TK.1000000080
+0
+0
+20
+Australian
+Brazilian
+Cambodian
+Dutch
+Egyptian
+Finnish
+Greek
+Icelandic
+Irish
+Jamaican
+Kenyan
+Lebanese
+Malaysian
+Mongolian
+Moroccan
+Nigerian
+Peruvian
+Swiss
+Ukrainian
+Vietnamese

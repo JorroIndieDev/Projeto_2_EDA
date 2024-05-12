@@ -62,18 +62,19 @@ struct Airport{ // airport "Parent"
 
     // pool of passengers in ramp ordered by nacionality
     struct Nacionality * nacionality_head;
+    int nacionality_size;
 
     llnode * head_ramp;
     int ramp_cap;
     int num_in_ramp;
 
     // Max size -> 5
-   llnode * head_dep;
+    llnode * head_dep;
     int depart_cap;
     int num_in_depart;
 
     // Max size -> 10
-   llnode * head_arrv;
+    llnode * head_arrv;
     int arrival_cap;
     int num_in_arrival;
 

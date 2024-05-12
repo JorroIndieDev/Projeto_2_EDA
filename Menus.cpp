@@ -34,8 +34,10 @@ void dayCycle(Airport &airport, file_data fileData) {
                 option(airport);
                 break;
             case 'g': // Save;
-                SaveToFile("airport",airport);
-                SaveToFile("fileData",fileData);
+                SaveToFile("airport",&airport);
+                break;
+            case 'l': // Load;
+                LoadFromFile("airport",&airport);
                 break;
             // Skip day
             case 's':

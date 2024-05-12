@@ -151,7 +151,7 @@ Airport init_airport(file_data fileData) {
 }
 
 void populate_nacionalityList(Airport &airport, file_data fileData){
-
+    airport.nacionality_size = fileData.nacionalidade_size-1;
     for (int i = 0; i < fileData.nacionalidade_size; ++i) {
         if (fileData.nacionalidade[i] == "Portuguese")continue;
 

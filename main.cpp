@@ -30,10 +30,9 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
 
         // loads the first argumment parsed aside from ./*.exe
-        LoadFromFile(argv[1],airport);
-//        LoadFromFile(argv[2],fileData);
+
         std::cout << ":";
-    }/* else { // if not proceed as normal
+    }else { // if not proceed as normal
 
         // loading Data files provided
         load_files_to_mem(fileData);
@@ -48,8 +47,8 @@ int main(int argc, char *argv[]) {
 
     }
 
-    // initialize days / cylces of the airport*/
-//    dayCycle(airport,fileData);
+    // initialize days / cylces of the airport
+    dayCycle(airport,fileData);
 
     return 0;
 }
