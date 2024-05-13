@@ -247,63 +247,6 @@ void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &out
     Serialized_travessiaInfixa(root->right,outfile);
 }
 
-/*void serialize_llnode(int listSize, llnode * list, std::ofstream &outfile) {
-
-    size_t num_llnodes = listSize;
-    outfile.write(reinterpret_cast<const char*>(&num_llnodes), sizeof(size_t));
-
-    llnode *tempList = list;
-
-    // Write nodes
-    while (tempList != nullptr) {
-        Plane plane = tempList->plane;
-
-        // Write plane data
-        outfile.write(reinterpret_cast<const char*>(&plane), sizeof(Plane));
-
-        // Write passenger data for the plane
-        Plane::passenger_in_plane *tempPassengerList = plane.head_passenger;
-        while (tempPassengerList != nullptr) {
-            passenger tempPass = tempPassengerList->passenger;
-            outfile.write(reinterpret_cast<const char*>(&tempPass), sizeof(passenger));
-            tempPassengerList = tempPassengerList->next_passenger;
-        }
-
-        tempList = tempList->next;
-    }
-}
-
-void serialize_tree(Nacionality::Pass_tree * root, std::ofstream &outfile){
-    bool hasRoot = (root != nullptr);
-    outfile.write(reinterpret_cast<const char*>(&hasRoot), sizeof(bool));
-
-    if (hasRoot) {
-        outfile.write(reinterpret_cast<const char *>(root), sizeof(root));
-
-        serialize_tree(root->left, outfile);
-        serialize_tree(root->right, outfile);
-    }else return;
-}
-
-void serialize_Nationality(int listSize,Nacionality * nacionality, std::ofstream &outfile){
-
-    size_t num_llnodes = listSize;
-    outfile.write(reinterpret_cast<const char*>(&num_llnodes), sizeof(size_t));
-
-    Nacionality *tempList = nacionality;
-
-    // Write nodes
-    while (tempList != nullptr) {
-
-        outfile.write(reinterpret_cast<const char*>(nacionality),sizeof(nacionality));
-
-        serialize_tree(nacionality->root_passenger,outfile);
-
-        tempList = tempList->next_nacionality;
-    }
-}*/
-
-
 void LoadFromFile(std::string file_name, Airport * airport){
 
     // initialize the file with fstream
@@ -329,166 +272,126 @@ void LoadFromFile(std::string file_name, Airport * airport){
 
     // read struct from file and close
 
-    infile.close();
-    infile.clear();
-}
+    infile >> airport->arrival_cap >> airport->ramp_cap >> airport->depart_cap;
+    infile >> airport->emergency_state >> airport->closed>> airport->cycles_closed;
 
-/*
-void deserialize_llnode(llnode *&list ,std::ifstream &infile) {
 
-    size_t num_llnodes;
-    infile.read(reinterpret_cast<char*>(&num_llnodes), sizeof(size_t));
+    // size of Arrival List
+    infile >> airport->num_in_arrival;
 
-    llnode *tempList = new llnode;
-    tempList->next = nullptr;
-    llnode *auxList = tempList;
+    llnode * auxArr = airport->head_arrv;
 
-    for (size_t i = 0; i < num_llnodes; ++i) {
-        auxList->next = new llnode;  // Create a new node for the next plane
-        auxList = auxList->next;      // Move to the newly created node
+    // read each node
+    while (auxArr != NULL){
 
-        infile.read(reinterpret_cast<char*>(&auxList->plane), sizeof(Plane));
+        // write the contents of the plane
+        Plane plane = auxArr->plane;
+        outfile << plane.flight_name << " "
+                << plane.model << " "
+                << plane.origin << " "
+                << plane.destination << " "
+                << plane.capacity << "\n";
 
-        // Initialize head_passenger for the current plane
-        auxList->plane.head_passenger = new Plane::passenger_in_plane;
-        Plane::passenger_in_plane *tempPassengerList = auxList->plane.head_passenger;
+        // write the passengers in the plane
+        Plane::passenger_in_plane * tempPass = plane.head_passenger;
+        while (tempPass != NULL){
 
-        for (int j = 0; j < auxList->plane.capacity; ++j) {
-            tempPassengerList->next_passenger = new Plane::passenger_in_plane;  // Create a new passenger node
-            tempPassengerList = tempPassengerList->next_passenger;              // Move to the newly created node
+            // write the contents for each passenger
+            passenger auxPass = tempPass->passenger;
+            outfile << auxPass.nacionality << " "
+                    << auxPass.first_name << " "
+                    << auxPass.second_name << " "
+                    << auxPass.ticket_num << "\n";
 
-            passenger tempPass;
-            infile.read(reinterpret_cast<char*>(&tempPass), sizeof(passenger));
-
-            // Assign passenger data to the current node
-            tempPassengerList->passenger = tempPass;
-        }
-    }
-
-// After the loop, the last node's next should be nullptr
-    auxList->next = nullptr;
-
-   size_t num_llnodes;
-    infile.read(reinterpret_cast<char*>(&num_llnodes), sizeof(size_t));
-
-    llnode * tempList = new llnode;
-    tempList->next = nullptr;
-    llnode * auxList = tempList;
-
-    for (int i = 0; i < num_llnodes; ++i) {
-        auxList->next = nullptr;
-
-        infile.read(reinterpret_cast<char*>(&auxList->plane), sizeof(Plane));
-
-        auxList->plane.head_passenger = new Plane::passenger_in_plane;
-
-        Plane::passenger_in_plane *tempPassengerList = auxList->plane.head_passenger;
-        for (int j = 0; j < auxList->plane.capacity; ++j) {
-            tempPassengerList->next_passenger = nullptr;
-            passenger tempPass;
-            infile.read(reinterpret_cast<char*>(&tempPass), sizeof(passenger));
-            tempPassengerList->passenger = tempPass;
-            tempPassengerList = tempPassengerList->next_passenger;
+            tempPass = tempPass->next_passenger;
         }
 
-        auxList = auxList->next;
-//    }
-
-    if(list != nullptr){
-        list = nullptr;
-        list = tempList;
-    }else{
-        list = tempList;
-    }
-}
-
-void deserialize_tree(Nacionality::Pass_tree *&root,std::ifstream &infile){
-    if (root == NULL)return;
-
-    infile.read(reinterpret_cast<char*>(root),sizeof(root));
-
-    deserialize_tree(root->right,infile);
-    deserialize_tree(root->left,infile);
-}
-
-void deserialize_Nationality(Nacionality *&nacionality,std::ifstream &infile){
-
-    Nacionality *tempList = nacionality;
-
-    // Write nodes
-    while (tempList != nullptr) {
-
-        infile.read(reinterpret_cast<char*>(nacionality),sizeof(nacionality));
-
-        deserialize_tree(nacionality->root_passenger,infile);
-
-        tempList = tempList->next_nacionality;
-    }
-}
-*/
-
-void SaveToFile(std::string file_name, file_data &fileData) {
-
-    // initialize the file with fstream
-    std::ofstream outfile;
-
-    // auxiliary var to not destroy original
-    struct file_data input = fileData;
-
-    // adding file to the file PATH where airport data is stored
-    std::string FILE_PATH = "../AirportData/";
-
-    // ensure the file is .dat
-    file_name += ".txt";
-    FILE_PATH += file_name;
-
-    //open file
-    outfile.open(FILE_PATH); // by using FILE_PATH we ensure that the file is always oppened from the right dir
-
-
-    // if file is not valid cerr out and quit
-    if (!outfile.is_open()) {
-        std::cerr << "\nFile -> { " << file_name << " } Not found\n\n";
-        outfile.close();
-        outfile.clear();
-        exit(1);
+        auxArr = auxArr->next;
     }
 
+    // size of Ramp List
+    outfile << airport->num_in_ramp << "\n";
 
+    llnode * auxRamp = airport->head_ramp;
+
+    // write each node
+    while (auxRamp != NULL){
+
+        // write the contents of the plane
+        Plane plane = auxRamp->plane;
+        outfile << plane.flight_name << " "
+                << plane.model << " "
+                << plane.origin << " "
+                << plane.destination << " "
+                << plane.capacity << "\n";
+
+        // write the passengers in the plane
+        Plane::passenger_in_plane * tempPass = plane.head_passenger;
+        while (tempPass != NULL){
+
+            // write the contents for each passenger
+            passenger auxPass = tempPass->passenger;
+            outfile << auxPass.nacionality << " "
+                    << auxPass.first_name << " "
+                    << auxPass.second_name << " "
+                    << auxPass.ticket_num << "\n";
+
+            tempPass = tempPass->next_passenger;
+        }
+
+        auxRamp = auxRamp->next;
+    }
+
+    // size of Departure List
+    outfile << airport->num_in_depart << "\n";
+
+    llnode * auxDep = airport->head_dep;
+
+    // write each node
+    while (auxDep != NULL){
+
+        // write the contents of the plane
+        Plane plane = auxDep->plane;
+        outfile << plane.flight_name << " "
+                << plane.model << " "
+                << plane.origin << " "
+                << plane.destination << " "
+                << plane.capacity << "\n";
+
+        // write the passengers in the plane
+        Plane::passenger_in_plane * tempPass = plane.head_passenger;
+        while (tempPass != NULL){
+
+            // write the contents for each passenger
+            passenger auxPass = tempPass->passenger;
+            outfile << auxPass.nacionality << " "
+                    << auxPass.first_name << " "
+                    << auxPass.second_name << " "
+                    << auxPass.ticket_num << "\n";
+
+            tempPass = tempPass->next_passenger;
+        }
+
+        auxDep = auxDep->next;
+    }
+
+    // size of Nationality List
+    outfile << airport->nacionality_size << "\n";
+
+    Nacionality * auxll = airport->nacionality_head;
+
+    // write each node
+    while (auxll != NULL){
+
+        // write nationality
+        outfile << auxll->nacionality << "\n";
+        // write tree
+        Serialized_travessiaInfixa(auxll->root_passenger,outfile);
+        auxll = auxll->next_nacionality;
+    }
 
     outfile.close();
     outfile.clear();
-
-}
-
-void LoadFromFile(std::string file_name, file_data &fileData){
-
-    // initialize the file with fstream
-    std::ifstream infile;
-
-    // adding file to the file PATH where airport data is stored
-    std::string FILE_PATH = "../AirportData/";
-
-    // ensure the file is .dat
-    file_name += ".txt";
-    FILE_PATH += file_name;
-
-    // open file
-    infile.open(FILE_PATH); // by using FILE_PATH we ensure that the file is always oppened from the right dir
-
-    // if file is not valid cerr out and quit
-    if (!infile.is_open()) {
-        std::cerr << "\nFile -> { " << file_name << " } Not found\n\n";
-        infile.close();
-        infile.clear();
-        exit(1);
-    }
-
-    // read struct from file and close
-    infile.read(reinterpret_cast <char *> (&fileData), sizeof(struct file_data));
-
-    infile.close();
-    infile.clear();
 }
 
 int max(int a, int b){

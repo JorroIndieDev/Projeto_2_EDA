@@ -163,26 +163,21 @@ void log_passengers_in_plane(Plane plane){
 }
 
 void log_planes(llnode * list){
-    if (list != NULL) {
 
-        std::cout << "\n--------------\nPlanes:";
+    if (list == nullptr){
+        return;
+    }else
+        log_planes(list->next);
 
-        // creates aux var to traverse linked list to not destroy it
-        llnode * node = list;
 
-        while (node) {
-            std::cout << "\n";
-            std::cout << "Plane: " << node->plane.flight_name << ",\n";
-            std::cout << "Model: " << node->plane.model << ",\n";
-            std::cout << "Origin: " << node->plane.origin << ",\n";
-            std::cout << "Destination: " << node->plane.destination << "\n";
-            log_passengers_in_plane(node->plane);
-            node = node->next;
-            std::cout << "\n--------------\n";
-        }
-    } else {
-        std::cout << "\nNo planes ariving.\n";
-    }
+    std::cout << "\n";
+    std::cout << "Plane: " << list->plane.flight_name << ",\n";
+    std::cout << "Model: " << list->plane.model << ",\n";
+    std::cout << "Origin: " << list->plane.origin << ",\n";
+    std::cout << "Destination: " << list->plane.destination << "\n";
+    log_passengers_in_plane(list->plane);
+    std::cout << "\n--------------\n";
+
 }
 
 void reverse_departing(Airport &airport) {
