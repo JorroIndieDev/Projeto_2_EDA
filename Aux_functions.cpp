@@ -246,7 +246,12 @@ void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &out
             << root->passenger.ticket_num << "\n";
     Serialized_travessiaInfixa(root->right,outfile);
 }
+void DeSerialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ifstream &infile) {
+    if (root == nullptr) return;
 
+    
+
+}
 void LoadFromFile(std::string file_name, Airport * airport){
 
     // initialize the file with fstream
@@ -286,31 +291,34 @@ void LoadFromFile(std::string file_name, Airport * airport){
 
         // write the contents of the plane
         Plane plane = auxArr->plane;
-        outfile << plane.flight_name << " "
-                << plane.model << " "
-                << plane.origin << " "
-                << plane.destination << " "
-                << plane.capacity << "\n";
+        infile >> plane.flight_name
+                >> plane.model
+                >> plane.origin
+                >> plane.destination
+                >> plane.capacity;
 
         // write the passengers in the plane
         Plane::passenger_in_plane * tempPass = plane.head_passenger;
+        tempPass->next_passenger = NULL;
+
         while (tempPass != NULL){
 
             // write the contents for each passenger
             passenger auxPass = tempPass->passenger;
-            outfile << auxPass.nacionality << " "
-                    << auxPass.first_name << " "
-                    << auxPass.second_name << " "
-                    << auxPass.ticket_num << "\n";
+            infile >> auxPass.nacionality
+                    >> auxPass.first_name
+                    >> auxPass.second_name
+                    >> auxPass.ticket_num;
 
             tempPass = tempPass->next_passenger;
+            tempPass->next_passenger = NULL;
         }
 
         auxArr = auxArr->next;
     }
 
     // size of Ramp List
-    outfile << airport->num_in_ramp << "\n";
+    infile >> airport->num_in_ramp;
 
     llnode * auxRamp = airport->head_ramp;
 
@@ -319,31 +327,34 @@ void LoadFromFile(std::string file_name, Airport * airport){
 
         // write the contents of the plane
         Plane plane = auxRamp->plane;
-        outfile << plane.flight_name << " "
-                << plane.model << " "
-                << plane.origin << " "
-                << plane.destination << " "
-                << plane.capacity << "\n";
+        infile >> plane.flight_name
+               >> plane.model
+               >> plane.origin
+               >> plane.destination
+               >> plane.capacity;
 
         // write the passengers in the plane
         Plane::passenger_in_plane * tempPass = plane.head_passenger;
+        tempPass->next_passenger = NULL;
+
         while (tempPass != NULL){
 
             // write the contents for each passenger
             passenger auxPass = tempPass->passenger;
-            outfile << auxPass.nacionality << " "
-                    << auxPass.first_name << " "
-                    << auxPass.second_name << " "
-                    << auxPass.ticket_num << "\n";
+            infile >> auxPass.nacionality
+                   >> auxPass.first_name
+                   >> auxPass.second_name
+                   >> auxPass.ticket_num;
 
             tempPass = tempPass->next_passenger;
+            tempPass->next_passenger = NULL;
         }
 
-        auxRamp = auxRamp->next;
+        auxArr = auxArr->next;
     }
 
     // size of Departure List
-    outfile << airport->num_in_depart << "\n";
+    infile >> airport->num_in_depart;
 
     llnode * auxDep = airport->head_dep;
 
@@ -352,31 +363,34 @@ void LoadFromFile(std::string file_name, Airport * airport){
 
         // write the contents of the plane
         Plane plane = auxDep->plane;
-        outfile << plane.flight_name << " "
-                << plane.model << " "
-                << plane.origin << " "
-                << plane.destination << " "
-                << plane.capacity << "\n";
+        infile >> plane.flight_name
+               >> plane.model
+               >> plane.origin
+               >> plane.destination
+               >> plane.capacity;
 
         // write the passengers in the plane
         Plane::passenger_in_plane * tempPass = plane.head_passenger;
+        tempPass->next_passenger = NULL;
+
         while (tempPass != NULL){
 
             // write the contents for each passenger
             passenger auxPass = tempPass->passenger;
-            outfile << auxPass.nacionality << " "
-                    << auxPass.first_name << " "
-                    << auxPass.second_name << " "
-                    << auxPass.ticket_num << "\n";
+            infile >> auxPass.nacionality
+                   >> auxPass.first_name
+                   >> auxPass.second_name
+                   >> auxPass.ticket_num;
 
             tempPass = tempPass->next_passenger;
+            tempPass->next_passenger = NULL;
         }
 
-        auxDep = auxDep->next;
+        auxArr = auxArr->next;
     }
 
     // size of Nationality List
-    outfile << airport->nacionality_size << "\n";
+    infile >> airport->nacionality_size;
 
     Nacionality * auxll = airport->nacionality_head;
 
@@ -384,14 +398,14 @@ void LoadFromFile(std::string file_name, Airport * airport){
     while (auxll != NULL){
 
         // write nationality
-        outfile << auxll->nacionality << "\n";
+        infile >> auxll->nacionality;
         // write tree
-        Serialized_travessiaInfixa(auxll->root_passenger,outfile);
+        DeSerialized_travessiaInfixa(auxll->root_passenger,infile);
         auxll = auxll->next_nacionality;
     }
 
-    outfile.close();
-    outfile.clear();
+    infile.close();
+    infile.clear();
 }
 
 int max(int a, int b){
