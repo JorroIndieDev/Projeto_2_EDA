@@ -37,6 +37,7 @@ struct Plane{ // plane "object"
 struct Nacionality{ // linked list of nacionalities
 
     std::string nacionality;
+    int num_of_pass_in_tree;
 
     struct Pass_tree{ // tree of passengers
 
@@ -46,7 +47,6 @@ struct Nacionality{ // linked list of nacionalities
         Pass_tree * right;
 
     };
-
     Pass_tree * root_passenger;
 
     struct Nacionality * next_nacionality;

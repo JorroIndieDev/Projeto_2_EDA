@@ -1,117 +1,218 @@
 9 6 4
 0 0 0
 9
-TK333 B737 MAX Istanbul Airport (IST) - Istanbul, Turkey AeroportoEDA 7
-Irish Daniel LEE TK.1000000000
-Swiss Benjamin WILLIAMS TK.1000000001
-Swiss Alexander GARCIA TK.1000000002
-Greek Benjamin THOMAS TK.1000000003
-Ukrainian Henry WILLIAMS TK.1000000004
-Dutch Olivia ANDERSON TK.1000000005
-Brazilian Harper LEWIS TK.1000000006
-AF131 B787-8 Auckland Airport (AKL) - Auckland, New Zealand AeroportoEDA 6
-Vietnamese Ethan ALLEN TK.1000000007
-Vietnamese Elizabeth HERNANDEZ TK.1000000008
-Moroccan Vanderlan MARTINEZ TK.1000000009
-Dutch Amelia YOUNG TK.1000000010
-Vietnamese Sa HALL TK.1000000011
-Brazilian Charlotte WHITE TK.1000000012
-NH040 B737 MAX 200 Cape Town International Airport (CPT) - Cape Town, South Africa AeroportoEDA 13
-Ukrainian Aziado WALKER TK.1000000013
-Australian Grace WHITE TK.1000000014
-Egyptian Lucas SMITH TK.1000000015
-Australian Noah KING TK.1000000016
-Nigerian Vanderlan ROBINSON TK.1000000017
-Lebanese Jackson LEE TK.1000000018
-Moroccan Noah HERNANDEZ TK.1000000019
-Ukrainian Mason YOUNG TK.1000000020
-Egyptian Lucas LEWIS TK.1000000021
-Cambodian Benjamin WILSON TK.1000000022
-Ukrainian Inchado MOORE TK.1000000023
-Peruvian Michael RODRIGUEZ TK.1000000024
-Jamaican Grace GARCIA TK.1000000025
-QF555 B737-900ER Domodedovo International Airport (DME) - Moscow, Russia AeroportoEDA 13
-Kenyan Grace HERNANDEZ TK.1000000026
-Lebanese Elizabeth ROBINSON TK.1000000027
-Vietnamese Vanderlan WHITE TK.1000000028
-Dutch Elijah HARRIS TK.1000000029
-Egyptian Jorro HALL TK.1000000030
-Malaysian Abigail MILLER TK.1000000031
-Dutch Ethan YOUNG TK.1000000032
-Ukrainian Jackson JACKSON TK.1000000033
-Peruvian Elizabeth THOMPSON TK.1000000034
-Australian Emily HALL TK.1000000035
-Finnish James ANDERSON TK.1000000036
-Greek Mason GARCIA TK.1000000037
-Greek Henry JOHNSON TK.1000000038
-KLM777 B777-8 King Fahd International Airport (DMM) - Dammam, Saudi Arabia AeroportoEDA 9
-Australian Noah WILSON TK.1000000039
-Greek Lucas RODRIGUEZ TK.1000000040
-Malaysian Henry WILLIAMS TK.1000000041
-Australian Amelia THOMAS TK.1000000042
-Portuguese Harper MARTIN TK.1000000043
-Malaysian Abigail WILSON TK.1000000044
-Brazilian William GARCIA TK.1000000045
-Moroccan Evelyn WALKER TK.1000000046
-Vietnamese Olivia JACKSON TK.1000000047
-S7A949 B737 MAX 200 Brussels Airport (BRU) - Brussels, Belgium AeroportoEDA 5
-Brazilian Liam WHITE TK.1000000048
-Icelandic Liam DAVIS TK.1000000049
-Brazilian Harper JONES TK.1000000050
-Egyptian Evelyn ROBINSON TK.1000000051
-Brazilian Evelyn RODRIGUEZ TK.1000000052
-AA424 B777-8 Madrid–Barajas Adolfo Suárez Airport (MAD) - Madrid, Spain AeroportoEDA 5
-Swiss Aziado TAYLOR TK.1000000053
-Irish Noah WALKER TK.1000000054
-Portuguese Olivia HERNANDEZ TK.1000000055
-Swiss Jackson LEWIS TK.1000000056
-Brazilian Inchado HARRIS TK.1000000057
-LX606 B777-9 Domodedovo International Airport (DME) - Moscow, Russia AeroportoEDA 8
-Dutch Sophia MILLER TK.1000000058
-Australian Daniel HARRIS TK.1000000059
-Egyptian Benjamin ROBINSON TK.1000000060
-Nigerian William GARCIA TK.1000000061
-Nigerian Ava RODRIGUEZ TK.1000000062
-Australian Michael RODRIGUEZ TK.1000000063
-Jamaican Vanderlan THOMPSON TK.1000000064
-Dutch Jacob SMITH TK.1000000065
-AY525 B767-300ER Berlin Brandenburg Airport (BER) - Berlin, Germany AeroportoEDA 6
-Cambodian Abigail JOHNSON TK.1000000066
-Nigerian Emma GARCIA TK.1000000067
-Australian Sa LEWIS TK.1000000068
-Vietnamese Emily JOHNSON TK.1000000069
-Egyptian Jacob ANDERSON TK.1000000070
-Peruvian Jackson TAYLOR TK.1000000071
-BA456 B737 MAX Melbourne Airport (MEL) - Melbourne, Australia AeroportoEDA 9
-Australian Vanderlan CLARK TK.1000000072
-Kenyan Ava RODRIGUEZ TK.1000000073
-Finnish Emma RODRIGUEZ TK.1000000074
-Malaysian Liam DAVIS TK.1000000075
-Jamaican Ethan HALL TK.1000000076
-Brazilian Liam JACKSON TK.1000000077
-Dutch James KING TK.1000000078
-Vietnamese Henry MARTINEZ TK.1000000079
-Mongolian Inchado GARCIA TK.1000000080
+SQ464
+B767-2C
+Soekarno–Hatta International Airport (CGK) - Jakarta, Indonesia
+AeroportoEDA
+14
+Brazilian Ethan KING TK.1000000000
+Irish Daniel KING TK.1000000001
+Malaysian Elizabeth SMITH TK.1000000002
+Irish Elizabeth MOORE TK.1000000003
+Irish Ethan RODRIGUEZ TK.1000000004
+Peruvian Noah THOMPSON TK.1000000005
+Finnish Olivia KING TK.1000000006
+Dutch Benjamin DAVIS TK.1000000007
+Vietnamese Vanderlan JONES TK.1000000008
+Egyptian Emily JONES TK.1000000009
+Jamaican Amelia MOORE TK.1000000010
+Jamaican Scarlett KING TK.1000000011
+Malaysian Daniel WILLIAMS TK.1000000012
+Greek Jorro THOMPSON TK.1000000013
+TG242
+B777-8
+McCarran International Airport (LAS) - Las Vegas, Nevada, USA
+AeroportoEDA
+14
+Greek Grace ROBINSON TK.1000000014
+Vietnamese Isabella LEE TK.1000000015
+Dutch Grace WILLIAMS TK.1000000016
+Finnish William WALKER TK.1000000017
+Finnish Daniel YOUNG TK.1000000018
+Moroccan Ava LEE TK.1000000019
+Mongolian Ethan RODRIGUEZ TK.1000000020
+Australian Daniel HARRIS TK.1000000021
+Nigerian Isabella HALL TK.1000000022
+Ukrainian Grace JOHNSON TK.1000000023
+Moroccan Abigail HALL TK.1000000024
+Cambodian William WALKER TK.1000000025
+Icelandic Amelia KING TK.1000000026
+Peruvian Alexander WALKER TK.1000000027
+CZ636
+B737-800	
+Abu Dhabi International Airport (AUH) - Abu Dhabi, United Arab Emirates
+AeroportoEDA
+5
+Moroccan Sa RODRIGUEZ TK.1000000028
+Peruvian Michael GARCIA TK.1000000029
+Nigerian Lucas WHITE TK.1000000030
+Icelandic Jorro JONES TK.1000000031
+Finnish Amelia MOORE TK.1000000032
+BA515
+B787-8
+Ben Gurion Airport (TLV) - Tel Aviv, Israel
+AeroportoEDA
+10
+Greek Jorro ALLEN TK.1000000033
+Dutch Mason WALKER TK.1000000034
+Kenyan Daniel HALL TK.1000000035
+Irish Jorro GARCIA TK.1000000036
+Cambodian Benjamin WILSON TK.1000000037
+Kenyan Jacob JONES TK.1000000038
+Malaysian Jacob WHITE TK.1000000039
+Moroccan Vanderlan JONES TK.1000000040
+Portuguese Grace THOMPSON TK.1000000041
+Finnish Isabella TAYLOR TK.1000000042
+LH020
+B737 MAX 8
+Taipei Taoyuan International Airport (TPE) - Taipei, Taiwan
+AeroportoEDA
+11
+Swiss William LEE TK.1000000043
+Brazilian Abigail BROWN TK.1000000044
+Icelandic Jorro HERNANDEZ TK.1000000045
+Greek Jacob JACKSON TK.1000000046
+Malaysian Scarlett JOHNSON TK.1000000047
+Kenyan Elizabeth MARTIN TK.1000000048
+Irish Harper WHITE TK.1000000049
+Finnish Aziado JOHNSON TK.1000000050
+Cambodian Emma MILLER TK.1000000051
+Nigerian Abigail CLARK TK.1000000052
+Jamaican Elijah GARCIA TK.1000000053
+DL121
+A310
+Cape Town International Airport (CPT) - Cape Town, South Africa
+AeroportoEDA
+9
+Ukrainian Charlotte WILSON TK.1000000054
+Dutch Amelia LEE TK.1000000055
+Dutch Jorro MILLER TK.1000000056
+Icelandic James MARTINEZ TK.1000000057
+Australian Mason ROBINSON TK.1000000058
+Ukrainian Abigail LEWIS TK.1000000059
+Mongolian Sophia WALKER TK.1000000060
+Malaysian Alexander MARTINEZ TK.1000000061
+Ukrainian Michael ANDERSON TK.1000000062
+AY050
+A340
+Chhatrapati Shivaji Maharaj International Airport (BOM) - Mumbai, India
+AeroportoEDA
+13
+Dutch Isabella MILLER TK.1000000063
+Jamaican James CLARK TK.1000000064
+Ukrainian Daniel HALL TK.1000000065
+Swiss Jacob DAVIS TK.1000000066
+Greek Emma ROBINSON TK.1000000067
+Peruvian Sophia THOMPSON TK.1000000068
+Finnish Aziado WALKER TK.1000000069
+Malaysian Elijah YOUNG TK.1000000070
+Icelandic Elizabeth CLARK TK.1000000071
+Cambodian Amelia JOHNSON TK.1000000072
+Malaysian James MARTIN TK.1000000073
+Vietnamese Sophia RODRIGUEZ TK.1000000074
+Moroccan Noah TAYLOR TK.1000000075
+BA161
+B737 MAX
+King Fahd International Airport (DMM) - Dammam, Saudi Arabia
+AeroportoEDA
+6
+Moroccan Evelyn HALL TK.1000000076
+Finnish James SMITH TK.1000000077
+Dutch Evelyn ROBINSON TK.1000000078
+Lebanese James DAVIS TK.1000000079
+Dutch William JACKSON TK.1000000080
+Portuguese Jackson TAYLOR TK.1000000081
+DL757
+B777-8
+Melbourne Airport (MEL) - Melbourne, Australia
+AeroportoEDA
+14
+Icelandic Noah CLARK TK.1000000082
+Ukrainian Mason MARTIN TK.1000000083
+Vietnamese Jorro MARTINEZ TK.1000000084
+Dutch Amelia BROWN TK.1000000085
+Moroccan Sophia WILSON TK.1000000086
+Mongolian Evelyn CLARK TK.1000000087
+Australian Emily YOUNG TK.1000000088
+Malaysian Harper SMITH TK.1000000089
+Vietnamese Jackson MARTIN TK.1000000090
+Moroccan Liam SMITH TK.1000000091
+Egyptian Inchado THOMAS TK.1000000092
+Greek Evelyn THOMPSON TK.1000000093
+Irish Sophia MOORE TK.1000000094
+Cambodian Grace CLARK TK.1000000095
+AY888
+B747-8
+Guarulhos–Governador André Franco Montoro International Airport (GRU) - São Paulo, Brazil
+AeroportoEDA
+6
+Finnish Emily WILSON TK.1000000096
+Mongolian Emma WILSON TK.1000000097
+Mongolian William SMITH TK.1000000098
+Australian Emma DAVIS TK.1000000099
+Icelandic Jackson BROWN TK.1000000100
+Moroccan Alexander RODRIGUEZ TK.1000000101
 0
 0
 20
 Australian
+0
+skip
 Brazilian
+0
+skip
 Cambodian
+0
+skip
 Dutch
+0
+skip
 Egyptian
+0
+skip
 Finnish
+0
+skip
 Greek
+0
+skip
 Icelandic
+0
+skip
 Irish
+0
+skip
 Jamaican
+0
+skip
 Kenyan
+0
+skip
 Lebanese
+0
+skip
 Malaysian
+0
+skip
 Mongolian
+0
+skip
 Moroccan
+0
+skip
 Nigerian
+0
+skip
 Peruvian
+0
+skip
 Swiss
+0
+skip
 Ukrainian
+0
+skip
 Vietnamese
+0
+skip

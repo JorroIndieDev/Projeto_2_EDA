@@ -99,9 +99,9 @@ void add_passengers(Airport &airport, Plane &plane, file_data &fileData){
                 passnode->next_passenger = nullptr;
                 passengerInPlane->next_passenger = passnode;
 
+                auxN->num_of_pass_in_tree = auxN->num_of_pass_in_tree == 0 ? 0:auxN->num_of_pass_in_tree-1;
                 auxN->root_passenger = delete_node(auxN->root_passenger,auxN->root_passenger->passenger.first_name);
                 auxN = auxN->next_nacionality;
-
                 break;
             }
         }
@@ -405,7 +405,66 @@ Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string 
     return aux;
 
 }
+int make_spine(Nacionality::Pass_tree  * root){
 
+    int count = 0;
+    Nacionality::Pass_tree * temp = root->right;
+
+    while (temp){
+
+        if (temp->left){
+
+            Nacionality::Pass_tree * OldTemp = temp;
+            temp = temp->left;
+            OldTemp->left = temp->right;
+            temp->right = OldTemp;
+            root->right = temp;
+        }else{
+            count++;
+            root = temp;
+            temp = temp->right;
+        }
+
+    }
+    return count;
+}
+
+void compressTree(Nacionality::Pass_tree * root, int num_of_nodes){
+    Nacionality::Pass_tree * temp = root->right;
+
+    for (int i = 0; i < num_of_nodes; ++i) {
+        Nacionality::Pass_tree * OldTemp = temp;
+        temp = temp->right;
+        root->right = temp;
+        OldTemp->right = temp->left;
+        temp->left = OldTemp;
+        root = temp;
+        temp = temp->right;
+    }
+}
+
+Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root){
+
+    Nacionality::Pass_tree * newRoot = new Nacionality::Pass_tree;
+    newRoot->left = NULL;
+    newRoot->right = NULL;
+
+    newRoot->right = root;
+
+    int numOfRot = make_spine(newRoot);
+
+    int height = log2(numOfRot + 1);
+
+    int num_nodes = pow(2,height) - 1;
+
+    compressTree(newRoot,numOfRot - num_nodes);
+
+    for ( num_nodes = num_nodes/2; num_nodes > 0 ; num_nodes /= 2) {
+        compressTree(newRoot,num_nodes);
+    }
+
+    return newRoot->right;
+}
 Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::string name){
     if (root == NULL)return root;
 
@@ -478,6 +537,7 @@ void arriving_foreigners(Airport &airport) {
             auxN = airport.nacionality_head;
             while (auxN->next_nacionality != NULL){
                 if (passengerInPlane->passenger.nacionality == auxN->nacionality){
+                    ++auxN->num_of_pass_in_tree;
                     auxN->root_passenger = insert_tree_node(auxN->root_passenger,passengerInPlane->passenger);
                     break;
                 }

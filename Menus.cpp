@@ -37,7 +37,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                 SaveToFile("airport",&airport);
                 break;
             case 'l': // Load;
-                LoadFromFile("airport",&airport);
+                LoadFromFile("airport", airport,fileData);
                 break;
             // Skip day
             case 's':

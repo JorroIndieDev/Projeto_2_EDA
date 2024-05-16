@@ -67,7 +67,7 @@ int max(int a,int b);
 
 void SaveToFile(std::string file_name, Airport * airport);
 void SaveToFile(std::string file_name, file_data * fileData);
-void LoadFromFile(std::string file_name, Airport * airport);
+void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData);
 void LoadFromFile(std::string file_name, file_data * fileData);
 
 
@@ -82,5 +82,6 @@ void deserialize_Nationality(Nacionality*&nacionality,std::ifstream &infile);
 void deserialize_tree(Nacionality::Pass_tree *&root,std::ifstream &infile);
 
 void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &outfile);
+void DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile);
 
 #endif //PROJETO_2_AUX_FUNCTIONS_H

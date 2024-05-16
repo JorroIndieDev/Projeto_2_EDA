@@ -157,6 +157,7 @@ void populate_nacionalityList(Airport &airport, file_data fileData){
 
         Nacionality * temp = new Nacionality;
         temp->nacionality = fileData.nacionalidade[i];
+        temp->num_of_pass_in_tree = 0;
         temp->next_nacionality = nullptr;
 
         if (airport.nacionality_head == NULL){
