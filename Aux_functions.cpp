@@ -323,10 +323,9 @@ void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData){
     // size of Arrival List
     infile >> airport.num_in_arrival;
 
-
-    // read each node TODO Problems with accessing next nodes not properly added to the list
-    for (int i = 0; i < airport.num_in_arrival; ++i) {
-        llnode * auxArr = airport.head_arrv;
+    airport.head_arrv = nullptr;
+    // read each node
+    for (int i = 0; i < airport.num_in_arrival+1; ++i) {
 
         char dump;
         infile >> dump;
@@ -340,96 +339,7 @@ void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData){
         std::getline(infile,plane.destination);
         infile >> plane.capacity;
         // write the passengers in the plane
-
-        Plane::passenger_in_plane * tempPass = plane.head_passenger = NULL;
-        for (int j = 0; j < plane.capacity; ++j) {
-
-            // write the contents for each passenger
-            passenger auxPass;
-            infile >> auxPass.nacionality
-                    >> auxPass.first_name
-                    >> auxPass.second_name
-                    >> auxPass.ticket_num;
-
-            Plane::passenger_in_plane * aux = new Plane::passenger_in_plane;
-            aux->next_passenger = nullptr;
-            aux->passenger = auxPass;
-
-            if (tempPass == NULL){
-                tempPass = aux;
-                tempPass->next_passenger = nullptr;
-            }else{
-                Plane::passenger_in_plane * tempAux = tempPass;
-                while (tempAux != NULL){
-                    tempAux = tempAux->next_passenger;
-                }
-                tempAux = aux;
-                tempAux->next_passenger = nullptr;
-            }
-
-        }
-
-        llnode * aux = new llnode;
-        aux->plane = plane;
-        aux->next = nullptr;
-
-        if (auxArr == NULL){
-            auxArr = aux;
-            auxArr->next = nullptr;
-        }else{
-            llnode * auxLL = auxArr;
-            while (auxLL != NULL){
-                auxLL = auxLL->next;
-            }
-            auxLL = aux;
-            auxLL->next = nullptr;
-        }
-    }
-
-    // size of Ramp List
-    infile >> airport.num_in_ramp;
-
-    llnode * auxRamp = airport.head_ramp = new llnode;
-    auxRamp->next = new llnode;
-
-    // write each node
-    for (int i = 0; i < airport.num_in_ramp; ++i) {
-
-        // write the contents of the plane
-        Plane plane;
-        std::getline(infile,plane.flight_name);
-        std::getline(infile,plane.model);
-        std::getline(infile,plane.origin);
-        std::getline(infile,plane.destination);
-        infile >> plane.capacity;
-
         plane.head_passenger = nullptr;
-        auxRamp->plane = plane;
-        auxRamp = auxRamp->next;
-        auxRamp->next = new llnode;
-    }
-    auxRamp = nullptr;
-
-    // size of Departure List
-    infile >> airport.num_in_depart;
-
-    llnode * auxDep = airport.head_dep = new llnode;
-    auxDep->next = new llnode;
-
-    // write each node
-    for (int i = 0; i < airport.num_in_depart; ++i) {
-
-        // write the contents of the plane
-        Plane plane;
-        std::getline(infile,plane.flight_name);
-        std::getline(infile,plane.model);
-        std::getline(infile,plane.origin);
-        std::getline(infile,plane.destination);
-        infile >> plane.capacity;
-        // write the passengers in the plane
-        Plane::passenger_in_plane * tempPass = plane.head_passenger = new Plane::passenger_in_plane;
-        tempPass->next_passenger = new Plane::passenger_in_plane;
-
         for (int j = 0; j < plane.capacity; ++j) {
             // write the contents for each passenger
             passenger auxPass;
@@ -438,15 +348,145 @@ void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData){
                    >> auxPass.second_name
                    >> auxPass.ticket_num;
 
-            tempPass->passenger = auxPass;
-            tempPass = tempPass->next_passenger;
-            tempPass->next_passenger = new Plane::passenger_in_plane;
+            Plane::passenger_in_plane * newPass = new Plane::passenger_in_plane;
+            newPass->passenger = auxPass;
+            newPass->next_passenger = nullptr;
+
+            if (plane.head_passenger == NULL){
+                plane.head_passenger = newPass;
+            }else{
+                Plane::passenger_in_plane * auxPass = plane.head_passenger;
+                while (auxPass->next_passenger != NULL){
+                    auxPass = auxPass->next_passenger;
+                }
+                auxPass->next_passenger = newPass;
+            }
+
         }
-        auxDep->plane = plane;
-        auxDep = auxDep->next;
-        auxDep->next = new llnode;
+
+        llnode * new_arrv = new llnode;
+        new_arrv->plane = plane;
+        new_arrv->next = nullptr;
+
+        // if head NULL add at the head
+        if (airport.head_arrv == NULL){
+            airport.head_arrv = new_arrv;
+
+        }else { // else add at the end
+            llnode * ptr = airport.head_arrv;
+            while (ptr->next != NULL) {
+                ptr = ptr->next;
+            }
+            ptr->next = new_arrv;
+        }
     }
-    auxDep = nullptr;
+
+    // size of Ramp List
+    infile >> airport.num_in_ramp;
+    airport.head_ramp = nullptr;
+    for (int i = 0; i < airport.num_in_ramp+1; ++i) {
+
+        char dump;
+        infile >> dump;
+
+        // write the contents of the plane
+        Plane plane;
+        std::getline(infile,plane.flight_name);
+        plane.flight_name = dump + plane.flight_name;
+        std::getline(infile,plane.model);
+        std::getline(infile,plane.origin);
+        std::getline(infile,plane.destination);
+        infile >> plane.capacity;
+        // write the passengers in the plane
+        plane.head_passenger = nullptr;
+
+        llnode * new_arrv = new llnode;
+        new_arrv->plane = plane;
+        new_arrv->next = nullptr;
+
+        // if head NULL add at the head
+        if (airport.head_ramp == NULL){
+            airport.head_ramp = new_arrv;
+
+        }else { // else add at the end
+            llnode * ptr = airport.head_ramp;
+            while (ptr->next != NULL) {
+                ptr = ptr->next;
+            }
+            ptr->next = new_arrv;
+        }
+    }
+
+    // size of Departure List
+    infile >> airport.num_in_depart;
+    airport.head_dep = nullptr;
+
+    // write each node
+    for (int i = 0; i < airport.num_in_depart+1; ++i) {
+
+        char dump;
+        infile >> dump;
+
+        // write the contents of the plane
+        Plane plane;
+        std::getline(infile,plane.flight_name);
+        plane.flight_name = dump + plane.flight_name;
+        std::getline(infile,plane.model);
+        std::getline(infile,plane.origin);
+        std::getline(infile,plane.destination);
+        infile >> plane.capacity;
+        // write the passengers in the plane
+        plane.head_passenger = nullptr;
+        for (int j = 0; j < plane.capacity; ++j) {
+            // write the contents for each passenger
+            passenger auxPass;
+            infile >> auxPass.nacionality
+                   >> auxPass.first_name
+                   >> auxPass.second_name
+                   >> auxPass.ticket_num;
+
+            Plane::passenger_in_plane * newPass = new Plane::passenger_in_plane;
+            newPass->passenger = auxPass;
+            newPass->next_passenger = nullptr;
+
+            if (plane.head_passenger == NULL){
+                plane.head_passenger = newPass;
+            }else{
+                Plane::passenger_in_plane * auxPass = plane.head_passenger;
+                while (auxPass->next_passenger != NULL){
+                    auxPass = auxPass->next_passenger;
+                }
+                auxPass->next_passenger = newPass;
+            }
+
+        }
+
+        llnode * new_arrv = new llnode;
+        new_arrv->plane = plane;
+        new_arrv->next = nullptr;
+
+        // if head NULL add at the head
+        if (airport.head_dep == NULL){
+            airport.head_dep = new_arrv;
+
+        }else { // else add at the end
+            llnode * ptr = airport.head_dep;
+            while (ptr->next != NULL) {
+                ptr = ptr->next;
+            }
+            ptr->next = new_arrv;
+        }
+    }
+
+
+    /*TODO Nationality list is not loading correctly
+     * it loads the actually linked list however it lacks the roots
+     * perhaps the insertion is wrong
+     * but most likely its a lack of assigning to the original list
+     * .
+     * I have a breakpoint on line 286 but its not breaking there so it looks like the
+     * logic is wrong on the section bellow
+     */
 
     // size of Nationality List
     infile >> airport.nacionality_size;
@@ -455,6 +495,10 @@ void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData){
 
     // write each node
     while (auxll != NULL){
+        /* TODO Fix Logic:
+            * Something is missing in this logic it may be skipping something
+            * it seems to be reading correctly however it is skipping lines in the file
+        */
         std::string temp;
         // write nationality
         std::getline(infile,temp);
