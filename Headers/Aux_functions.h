@@ -82,6 +82,6 @@ void deserialize_Nationality(Nacionality*&nacionality,std::ifstream &infile);
 void deserialize_tree(Nacionality::Pass_tree *&root,std::ifstream &infile);
 
 void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &outfile);
-void DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile);
+Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile,int &lineNumTemp);
 
 #endif //PROJETO_2_AUX_FUNCTIONS_H

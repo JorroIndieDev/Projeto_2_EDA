@@ -82,7 +82,7 @@ void add_passengers(Airport &airport, Plane &plane, file_data &fileData){
 
     int remaining_cap = plane.capacity - _cap;
 
-    for (int i = 0; i < remaining_cap-1; ++i) {
+    for (int i = 0; i < remaining_cap; ++i) {
 
         Nacionality * auxN = airport.nacionality_head;
         while (auxN->next_nacionality != NULL){
