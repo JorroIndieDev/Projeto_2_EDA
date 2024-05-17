@@ -79,5 +79,8 @@ void listSort(std::string list[], int list_size);
 void arriving_foreigners(Airport &airport);
 passenger * search_passengers(llnode *list);
 void change_nacionality(std::string newNationality, Airport &airport);
+Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root);
+void compressTree(Nacionality::Pass_tree * root, int num_of_nodes);
+int make_spine(Nacionality::Pass_tree  * root);
 
 #endif //PROJETO_2_AIRPORTLISTHANDLER_H
