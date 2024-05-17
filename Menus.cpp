@@ -21,7 +21,6 @@ void dayCycle(Airport &airport, file_data fileData) {
         std::cout << "\nDepartures\n" << std::endl;
         log_planes(airport.head_dep);
 
-        std::cout << "\n(e)mergency (o)ptions (g)save (s)next day (q)uit program\n";
         std::cout << "\n(e)mergency | (c)lose airport | (o)ptions | (l)oad | (s)next day | (q)uit\n";
 
         std::cin >> choice;
@@ -122,8 +121,6 @@ void option(Airport &airport) {
     while (true) {
         std::cout << "Choose a option \n"
                   << "(1) - Show the passengers on ramp \n"
-                     "(2) - Show organized passengers \n"
-                     "(3) - Search passengers on arrivals \n"
                      "(2) - Show organized visually passengers \n"
                      "(3) - Search passengers on arrivals or depart \n"
                      "(4) - Edit a passenger nationality in a arrival plane \n"
