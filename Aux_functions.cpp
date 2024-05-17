@@ -7,6 +7,12 @@
 #include <fstream>
 #include "stdlib.h"
 
+/** Carrega os ficheiros que nos foram fornecidos no início do semestre para poderem ser utilizados
+ * nas diversas funções e carregar as suas informações para o projeto. Desta forma, todas as informações
+ * já foram carregadas ao dar run ao executável e não ser gasta mais memória ou tempo nesse passo.
+ *
+ * @param fileData - ficheiro de dados
+ * */
 void load_files_to_mem(file_data &fileData){
 
     // assigns the size of the arrays for the loading of the Data
@@ -23,7 +29,7 @@ void load_files_to_mem(file_data &fileData){
     fileData.segundo_nome = read_files("../Data_Files/segundo_nome.txt", fileData.segundo_nome_size);
     fileData.voo = read_files("../Data_Files/voo.txt", fileData.voo_size);
 
-    // loads the same divided seperatly duo to being differnt types of file (longer lines)
+    // loads the same divided separatly duo to being differnt types of file (longer lines)
     fileData.origem_size = count_lines("../Data_Files/origem.txt");
     fileData.origem = read_files("../Data_Files/origem.txt", fileData.origem_size);
     fileData.destino_size = count_lines("../Data_Files/destino.txt");
@@ -31,6 +37,12 @@ void load_files_to_mem(file_data &fileData){
 
 }
 
+/**
+ * Lê o conteúdo de um arquivo de texto e armazena num array de strings. O tamanho desse array é determinado pelo
+ * parametro size
+ * @param file_name - O nome do arquivo a ser lido.
+ * @param size - O tamanho do array de string a ser criado
+ */
 std::string * read_files(std::string file_name, int size){
 
     // create var file to aux read
@@ -58,6 +70,10 @@ std::string * read_files(std::string file_name, int size){
     return string_arr;
 }
 
+/**
+ * Conta o numero de linhas de um determinado arquivo de texto, especificado pelo parametro file_name
+ * @param file_name - O nome do arquivo a ser lido.
+ */
 int count_lines(std::string file_name){
 
     // create var file to aux read
@@ -81,11 +97,23 @@ int count_lines(std::string file_name){
     return num_of_lines;
 }
 
+/** Gera números de forma aleatória dentro do alcance especificado pelo utilizador
+ *
+ * @param lower - Alcance mínimo especificado
+ * @param upper - Alcance máximo especificado
+ **/
 int random_range(int lower, int upper){
     int num = (rand() % (upper - lower + 1)) + lower;
     return num;
 }
 
+/** Lê o ficheiro de nome file_name e verifica se encontrou o ficheiro, então vai ler as
+ * informações da struct aeroporto e carregar as suas informações para o ficheiro de nome
+ * passado pelo utilizador como parâmetro
+ *
+ * @param airport - passa um parâmetro do tipo Airport para poder manipulá-lo e percorrê-lo
+ * @param file_name - nome do ficheiro a passar para a função
+ * */
 void SaveToFile(std::string file_name, Airport &airport) {
 
     // initialize the file with fstream
@@ -120,6 +148,13 @@ void SaveToFile(std::string file_name, Airport &airport) {
 
 }
 
+/**
+ * Lê o ficheiro de nome file_name e verifica se encontrou o ficheiro, então vai lê-lo
+ * e carregar as suas informações para a struct aeroporto
+ *
+ * @param file_name
+ * @param airport
+ */
 void LoadFromFile(std::string file_name, Airport &airport){
 
     // initialize the file with fstream
@@ -148,6 +183,11 @@ void LoadFromFile(std::string file_name, Airport &airport){
     infile.clear();
 }
 
+/** Verifica qual o número máximo entre o alcance especificado pelo utilizador
+ *
+ * @param a
+ * @param b
+ */
 int max(int a, int b){
     return (a < b) ? a : b;
 }

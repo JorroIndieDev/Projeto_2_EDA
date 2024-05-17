@@ -1,9 +1,19 @@
 #include "Headers/Menus.h"
 #include "Headers/AirportListHandler.h"
 #include "Headers/init_planes_people.h"
+<<<<<<< Updated upstream
 
 void dayCycle(Airport &airport, file_data fileData) {
+=======
+#include <limits>
+>>>>>>> Stashed changes
 
+/**
+ * Simula um ciclo diário de um aeroporto, mostrando todos os aviões na chegada, pista e a descolar.
+ * @param airport - Referência para o objeto Airport
+ * @param fileData - Objeto contendo todas as informações relacionadas aos arquivos do airport
+ */
+void dayCycle(Airport &airport, file_data fileData) {
 
     bool isWorking = true;
 
@@ -92,7 +102,19 @@ void dayCycle(Airport &airport, file_data fileData) {
         }
     }
 }
+
 // Joao
+/** Age como o menu de diferentes opções que o usuário pode escolher para interagir com o
+ * programa, sendo que pode escolher respetivamente:
+ *  -Visualizar os passageiros na rampa;
+ *  -Apresentar árvore de passageiros ordenada do ponto de vista do utilizador;
+ *  -Procurar os passageiros quer nas chegadas, quer nas saídas pelo seu nome;
+ *  -Editar a nacionalidade de um passageiro num avião que esteja a chegar;
+ *  -Inverter a prioridade dos aviões que se encontram na rampa;
+ *  -Voltar ao menu principal;
+ *
+ * @param airport - passa um parâmetro do tipo Airport para poder manipulá-lo e percorrê-lo
+ * */
 void option(Airport &airport) {
     int choice;
     std::cout << "Mostrar todos os passageiros em pista (1), ordenados(2): \n"

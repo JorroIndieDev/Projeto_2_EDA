@@ -5,6 +5,10 @@
 #include "Headers/AirportListHandler.h"
 #include <bits/stdc++.h>
 
+/**
+ * Remove o primeiro avião da lista de partidas do aeroporto
+ * @param airport - Referência para o objeto Airport
+ */
 void remove_departing_plane(Airport &airport) {
     if (airport.head_dep == NULL)return; // if head is NULL list is empty
 
@@ -17,6 +21,11 @@ void remove_departing_plane(Airport &airport) {
     delete temp;
 }
 
+/**
+ * Adiciona o primeiro avião da lista de partidas do aeroporto
+ * @param airport - Referência para o objeto Airport
+ * @param plane -  Referência para o objeto Plane que representa o avião a ser adicionado à lista de chegadas
+ */
 void add_arriving_plane(Airport &airport, Plane &plane) {
 
     // create new Arrival node to add to list
@@ -38,6 +47,11 @@ void add_arriving_plane(Airport &airport, Plane &plane) {
     }
 }
 
+/**
+ * Move o primeiro avião da lista da rampa para a  lista de partidas do aeroporto
+ * @param airport - Referência para o objeto Airport
+ * @param fileData -  Referência para o objeto file_data
+ */
 void add_departing_plane(Airport &airport, file_data &fileData) {
     if (airport.head_ramp == NULL)return;
 
@@ -70,6 +84,61 @@ void add_departing_plane(Airport &airport, file_data &fileData) {
     delete temp;
 }
 
+<<<<<<< Updated upstream
+=======
+/** Adiciona os passageiros ao avião
+ *
+ * @param airport - passa um parâmetro do tipo Airport para poder manipulá-lo e percorrê-lo
+ * @param fileData - ficheiro de dados que permite guardar informações
+ * @param plane - passa um parâmetro do tipo Plane para poder manipulá-lo e percorrê-lo
+ * */
+void add_passengers(Airport &airport, Plane &plane, file_data &fileData){
+
+    Plane::passenger_in_plane * aux = plane.head_passenger;
+
+    int _cap = plane.capacity/2;
+
+    init_home_passengers(plane,fileData,_cap);
+
+    int remaining_cap = plane.capacity - _cap;
+
+    for (int i = 0; i < remaining_cap-1; ++i) {
+
+        Nacionality * auxN = airport.nacionality_head;
+        while (auxN->next_nacionality != NULL){
+            if (auxN->root_passenger == NULL){
+                auxN = auxN->next_nacionality;
+                continue;
+            }else{
+                Plane::passenger_in_plane * passengerInPlane = plane.head_passenger;
+                Plane::passenger_in_plane * passnode = new Plane::passenger_in_plane;
+                while (passengerInPlane->next_passenger != nullptr) {
+                    passengerInPlane = passengerInPlane->next_passenger;
+                }
+                passnode->passenger = auxN->root_passenger->passenger;
+                passnode->next_passenger = nullptr;
+                passengerInPlane->next_passenger = passnode;
+
+                auxN->root_passenger = delete_node(auxN->root_passenger,auxN->root_passenger->passenger.first_name);
+                auxN = auxN->next_nacionality;
+
+                break;
+            }
+        }
+        if (auxN->next_nacionality == NULL){
+            init_passengers(plane,fileData,remaining_cap);
+            break;
+        }
+
+    }
+}
+
+/**
+ * Move o primeiro avião da lista de chegada para a  lista da rampa do aeroporto
+ * @param airport - Referência para o objeto Airport
+ * @param fileData -  Referência para o objeto file_data
+ */
+>>>>>>> Stashed changes
 void add_ramp_plane(Airport &airport, file_data &fileData) {
     if (airport.head_arrv == NULL)return;
 
@@ -98,6 +167,7 @@ void add_ramp_plane(Airport &airport, file_data &fileData) {
     delete temp;
 }
 
+<<<<<<< Updated upstream
 void log_departures_passengers(Airport &airport) {
     std::cout << "\n---------Departing passengers----------\n";
     if (airport.head_dep == NULL) {
@@ -161,6 +231,12 @@ void log_ramp_passengers(Airport &airport) {
     }
 }
 
+=======
+/**
+ * Exibe as informações de um passageiro.
+ * @param passageiro -  Ponteiro para um passageiro
+ */
+>>>>>>> Stashed changes
 void log_passenger(passenger *passageiro) {
     std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
     std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
@@ -168,6 +244,7 @@ void log_passenger(passenger *passageiro) {
     std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
 }
 
+<<<<<<< Updated upstream
 void log_arrivals_passengers(Airport &airport) {
     std::cout << "\n---------Ariving passengers----------\n";
     if (airport.head_arrv == NULL) {
@@ -177,6 +254,34 @@ void log_arrivals_passengers(Airport &airport) {
 
     // creates aux var to traverse linked list to not destroy it
     llnode * arr_ptr = airport.head_arrv;
+=======
+/** Imprime os passageiros que se encontram no avião que foi passado como parâmetro
+ *
+ * @param plane - passa um parâmetro do tipo Plane para poder manipulá-lo e percorrê-lo
+ * */
+void log_passengers_in_plane(Plane plane){
+    // creates aux var to traverse linked list to not destroy it
+    Plane::passenger_in_plane * passNode = plane.head_passenger;
+    std::cout << "Passenger: ";
+    if (!passNode) std::cout << "Plane Empty\n";
+    while (passNode) {
+        std::cout << passNode->passenger.first_name << ", ";
+        passNode = passNode->next_passenger;
+    }
+    std::cout << std::endl;
+}
+/** Imprime os aviões que se encontram na lista ligada passada como parâmetro, assim
+ * imprime-os com as suas diferentes caraterísticas respetivamente:
+ *      -Avião;
+ *      -Modelo;
+ *      -Origem;
+ *      -Destino;
+ *
+ * @param list - passa uma lista ligada para poder manipulá-la e percorrê-la
+ * */
+void log_planes(llnode * list){
+    if (list != NULL) {
+>>>>>>> Stashed changes
 
     while (arr_ptr) {
         std::cout << "Ariving Plane: " << arr_ptr->plane.flight_name << "\n";
@@ -241,6 +346,7 @@ void log_arrival_planes(Airport &airport) {
     }
 }
 
+<<<<<<< Updated upstream
 void log_departure_planes(Airport &airport) {
 
     if (airport.head_dep) {
@@ -285,6 +391,12 @@ void reverse_departing(Airport &airport) {
 
 }
 
+=======
+/**
+ * Inverte a ordem dos aviões na rampa
+ * * @param airport - Referência para o objeto Airport
+ */
+>>>>>>> Stashed changes
 void reverse_ramp(Airport &airport) {
 
     // aux vars to reverse the links
@@ -307,6 +419,7 @@ void reverse_ramp(Airport &airport) {
 
 }
 
+<<<<<<< Updated upstream
 void reverse_arrival(Airport &airport) {
 
     // aux vars to reverse the links
@@ -328,6 +441,13 @@ void reverse_arrival(Airport &airport) {
 
 }
 
+=======
+/** Remove passageiros dos aviões que estão a chegar, e por consequência, se encontram
+ * nas chegadas.
+ *
+ * @param airport - Referência para o objeto Airport
+ * */
+>>>>>>> Stashed changes
 void remove_passengers(Airport &airport) {
 
     llnode * aux = new llnode;
@@ -343,6 +463,13 @@ void remove_passengers(Airport &airport) {
 
 }
 
+/** Pede ao usuário o avião que está em emergência e, de seguida, vai percorrer a lista de aviões
+ *  que está a chegar para aterrá-lo e colocá-lo na rampa se possível. Se a rampa estiver cheia,
+ *  algum avião irá descolar para dar lugar.
+ *
+ * @param airport - Referência para o objeto Airport
+ * @param fileData -  Referência para o objeto file_data
+ * */
 void emergency_handler(Airport &airport,file_data &fileData) {
 
     bool valid = false;
@@ -353,7 +480,7 @@ void emergency_handler(Airport &airport,file_data &fileData) {
 
     while(!valid) {
 
-        std::cout << "Wich Plane is in emergency? (q)uit\n";
+        std::cout << "Which Plane is in emergency? (q)uit\n";
         std::cin >> plane_name;
 
         if (plane_name == "q")return;
@@ -394,6 +521,10 @@ void emergency_handler(Airport &airport,file_data &fileData) {
  * Tree
  */
 
+/**
+ * Cria e inicializa um novo nodo para uma árvore de passageiros, associada a uma nacionalidade específica.
+ * @param passageiro -  Referencia para um passageiro
+ */
 Nacionality::Pass_tree * new_tree_node(struct passenger &passenger) {
 
     Nacionality::Pass_tree * tree_node = new Nacionality::Pass_tree;
@@ -407,6 +538,11 @@ Nacionality::Pass_tree * new_tree_node(struct passenger &passenger) {
 
 }
 
+/**
+ * Insere um novo passageiro na árvore de passageiros associada a uma nacionalidade específica.
+ * @param tree_node - Ponteiro para a raiz da arvore onde sera inserido o passageiro
+ * @param passageiro -  Referencia para um passageiro
+ */
 Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, struct passenger &passenger) {
 
     // if root is null add passenger to the root
@@ -432,6 +568,7 @@ Nacionality::Pass_tree * insert_tree_node(Nacionality::Pass_tree * tree_node, st
 
 }
 
+<<<<<<< Updated upstream
 int make_spine(Nacionality::Pass_tree  * root){
 
     int count = 0;
@@ -501,6 +638,13 @@ Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root){
     return newRoot->right;
 }
 
+=======
+/**
+ * Remove um passageiro na árvore de passageiros associada a uma nacionalidade específica.
+ * @param tree_node - Ponteiro para a raiz da arvore onde sera inserido o passageiro
+ * @param passageiro -  Referencia para um passageiro
+ */
+>>>>>>> Stashed changes
 Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string name){
 
     if(root==NULL)return root;
@@ -558,6 +702,12 @@ Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string 
 
 }
 
+/**
+ * Procura um passageiro na arvore de passageiros, através do primeiro nome, e retorna um endereço do passageiro
+ * se encontrado
+ * @param tree_node - Ponteiro para a raiz da arvore onde sera inserido o passageiro
+ * @param passageiro -  Referencia para um passageiro
+ */
 Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::string name){
     if (root == NULL)return root;
 
@@ -577,8 +727,12 @@ Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::str
 
 }
 
-// Function to print the binary tree structure recursively
-void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
+/**
+ * Imprime os nós de uma árvore de passageiros em ordem decrescente de nível, da direita para a esquerda.
+ * @param root - Ponteiro para a raiz da arvore
+ * @param level -  Nivel atual do nodo na arvore
+ */
+ void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
     if (root == nullptr)
         return;
 
@@ -597,6 +751,11 @@ void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
     print_tree_leftrigt(root->left, level + 1);
 }
 
+/**
+ * Organiza uma lista de strings por ordem alfabetica, atraves do algoritmo de ordenaçao (selection sort).
+ * @param list - Array de string
+ * @param list_size - O tamanho do array
+ */
 void listSort(std::string list[], int list_size) {
     for (int i = 0; i < (list_size - 1); i++) {
         int min = i; // sting.compare(string to compare to) = -1 0 1
@@ -609,9 +768,127 @@ void listSort(std::string list[], int list_size) {
     }
 }
 
+/** Imprime uma árvore passada como parâmetro utilizando o método Travessia Infixa que
+ *  irá imprimi-la a partir da esquerda para a direita
+ *
+ * @param nacionality - passa um parâmetro de árvore binária de nacionalidades
+ * */
 void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
     if (nacionality == nullptr) return;
     travessiaInfixa(nacionality->left);
     log_passenger(&nacionality->passenger);
     travessiaInfixa(nacionality->right);
+<<<<<<< Updated upstream
+=======
+}
+
+/** Irá comparar a nacionalidade dos passageiros a chegar com a nacionalidade definida dentro da
+ *  função. Se esta for diferente então os passageiros serão introduzidos numa árvore binária onde
+ *  cada nodo é uma nacionalidade diferente.
+ *
+ * @param airport - Referência para o objeto airport
+ * */
+void arriving_foreigners(Airport &airport) {
+
+    std::string home_nationality = "Portuguese";
+    Nacionality * auxN;
+    Plane::passenger_in_plane * passengerInPlane = airport.head_arrv->plane.head_passenger;
+
+    while (passengerInPlane->next_passenger != NULL){
+
+        if (passengerInPlane->passenger.nacionality == home_nationality) {
+            passengerInPlane = passengerInPlane->next_passenger;
+            break;
+        }
+        else{
+            auxN = airport.nacionality_head;
+            while (auxN->next_nacionality != NULL){
+                if (passengerInPlane->passenger.nacionality == auxN->nacionality){
+                    auxN->root_passenger = insert_tree_node(auxN->root_passenger,passengerInPlane->passenger);
+                    break;
+                }
+                auxN = auxN->next_nacionality;
+            }
+        }
+
+        passengerInPlane = passengerInPlane->next_passenger;
+    }
+}
+
+/** Irá pedir ao utilizador para fornecer o primeiro e último nome de um passageiro e percorrerá
+ *  a lista passada como parâmetro para encontrá-lo.
+ *
+ * @param list - Lista ligada a ser percorrida
+ * */
+passenger * search_passengers(llnode *list) {
+    if (list == NULL){
+        std::cout << "Chosen list is empty \n";
+        return nullptr;
+    }
+    llnode * aux = list;
+    std::string passenger_first_name;
+    std::string passenger_second_name;
+    std::cout << "What's the passengers first name?  ";
+    std::cin >> passenger_first_name;
+    std::cout << "What's the passengers last name?  ";
+    std::cin >> passenger_second_name;
+
+    while (aux->next != NULL){
+
+        Plane::passenger_in_plane * aux_pass = aux->plane.head_passenger;
+
+        while (aux_pass->next_passenger != NULL){
+            if (aux_pass->passenger.first_name == passenger_first_name
+            && aux_pass->passenger.second_name == passenger_second_name){
+
+                std::cout << "Passenger found..\n" << aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name << std::endl;
+                return &aux_pass->passenger;
+            }
+            aux_pass = aux_pass->next_passenger;
+        }
+
+        aux=aux->next;
+    }
+    std::cout << "Passenger was not found.. \n";
+    return nullptr;
+}
+
+/** Irá pedir ao utilizador para fornecer o primeiro e último nome de um passageiro, irá encontrá-lo
+ *  após percorrer o aeroporto e mudar a sua nacionalidade atual para aquela passada como parâmetro
+ *
+ * @param newNationality - Nova nacionalidade a ser introduzida
+ * @param airport - Referência para o objeto airport
+ * */
+void change_nacionality(std::string newNationality, Airport &airport) {
+    int choice;
+    // facam com que o ulilizador escolha
+    while (true) {
+        std::cout << "Search by departure (1) or arrival(2)\n";
+        std::cin >> choice;
+        if (choice == 1) {
+            passenger *passengero = search_passengers(airport.head_arrv);
+            passenger * temp = new passenger;
+
+            if (passengero == nullptr)return;
+
+            temp->nacionality = passengero->nacionality;
+            passengero->nacionality = newNationality;
+            std::cout << "Nationality successfully changed..\n" <<
+            "Old nationality: " << temp->nacionality << std:: endl <<
+            "New nationality: " << passengero->nacionality << std::endl << std::endl;
+            break;
+        } else if (choice == 2) {
+            passenger *passengero = search_passengers(airport.head_dep);
+            passenger * temp = new passenger;
+            if (passengero == nullptr)return;
+            temp->nacionality = passengero->nacionality;
+            passengero->nacionality = newNationality;
+            std::cout << "Nationality successfully changed..\n" <<
+                      "Old nationality: " << temp->nacionality << std:: endl <<
+                      "New nationality: " << passengero->nacionality << std::endl << std:: endl;
+            break;
+        } else
+            std::cout << "Chose a valid option\n";
+    }
+>>>>>>> Stashed changes
 }

@@ -5,8 +5,11 @@
 #include "Headers/init_planes_people.h"
 #include "Headers/AirportListHandler.h"
 
-
-
+/**
+ * Inicializa um novo avião, com as informaçoes contidas no fileData, e adiciona-o à lista de chegadas do aeroporto.
+ * @param airport - Referência para o objeto Airport
+ * @param fileData - Referência para o objeto file_data
+ */
 void init_plane(Airport &airport, file_data &fileData ) {
 
     // create new plane to add to the list of arrivals
@@ -30,6 +33,66 @@ void init_plane(Airport &airport, file_data &fileData ) {
 
 }
 
+<<<<<<< Updated upstream
+=======
+/**
+ * Inicializa os passageiros do aviao e adiciona-os à lista de passageiros do aviao
+ * @param plane - Referência para o objeto Plane, onde os passageiros serao adicionados no aviao
+ * @param fileData - Referência para o objeto file_data
+ * @param num_of_passengers - Numero de passageiros a serem incializados
+ */
+void init_home_passengers(Plane &plane , file_data &fileData, int num_of_passengers) {
+    int i;
+    if (num_of_passengers == 0) num_of_passengers=plane.capacity;
+    for (i = 0; i < num_of_passengers; ++i) {
+
+        // create a passenger to be added to the plane passenger list
+        passenger newPassenger;
+
+        // init passenger
+        newPassenger.ticket_num = (fileData.Ticket + std::to_string(fileData.ticket_number + i));
+        newPassenger.first_name = fileData.primeiro_nome[random_range(0,fileData.primeiro_nome_size-1)];
+        newPassenger.second_name = fileData.segundo_nome[random_range(0,fileData.segundo_nome_size-1)];
+        newPassenger.nacionality = "Portuguese";
+
+        // init a node to the passengers in the plane
+        Plane::passenger_in_plane *passNode = new Plane::passenger_in_plane;
+
+        // since its a linked list we add the passenger to its ::passenger
+        passNode->passenger = newPassenger;
+        // then init ::next to null
+        passNode->next_passenger = NULL;
+
+        // if "head" is null we add to the head
+        if (plane.head_passenger == NULL) {
+            plane.head_passenger = passNode;
+        } // else we loop and add at the end of the list
+        else {
+
+            // new aux var to traverse the list without destroying it
+            Plane::passenger_in_plane * temp_passenger_in_plane = plane.head_passenger;
+
+            // loop until null
+            while (temp_passenger_in_plane->next_passenger != NULL) {
+                temp_passenger_in_plane = temp_passenger_in_plane->next_passenger;
+            }
+            // add node to the list
+            if (temp_passenger_in_plane != NULL) {
+                temp_passenger_in_plane->next_passenger = passNode;
+            }
+        }
+    }
+    fileData.ticket_number = fileData.ticket_number + i;
+}
+
+/** Inicializa passageiros no avião passado como parâmetro com todas as suas caraterísticas a partir
+ *  do file_data também ele passado no parâmetro.
+ *
+ * @param plane - Referência para o objeto Plane, onde os passageiros serao adicionados no aviao
+ * @param fileData - Referência para o objeto file_data
+ * @param num_of_passengers - Número de passageiros passado quando a função é chamada
+ * */
+>>>>>>> Stashed changes
 void init_passengers(Plane &plane , file_data &fileData, int num_of_passengers) {
     int i;
     if (num_of_passengers == 0) num_of_passengers=plane.capacity;
@@ -74,6 +137,10 @@ void init_passengers(Plane &plane , file_data &fileData, int num_of_passengers) 
     fileData.ticket_number = fileData.ticket_number + i;
 }
 
+/**
+ * Inicializa o airport com valores nulos e inicializa os tamanhos dos arrays associados.
+ * @param fileData - Referência para o objeto file_data
+ */
 Airport init_airport(file_data fileData) {
 
     // function simply inits the airport to null values and sizes of the arrays
@@ -106,6 +173,11 @@ Airport init_airport(file_data fileData) {
     return airport;
 }
 
+/**
+ * Popula a lista de nacionalidades do aeroporto com base nos dados fornecidos pelo arquivo, exceto nacionalidade portuguesa
+ * @param airport - Referência para o objeto Airport
+ * @param fileData - Referência para o objeto file_data
+ */
 void populate_nacionalityList(Airport &airport, file_data fileData){
 
     for (int i = 0; i < fileData.nacionalidade_size; ++i) {
@@ -129,5 +201,4 @@ void populate_nacionalityList(Airport &airport, file_data fileData){
         }
 
     }
-
 }
