@@ -1,395 +1,384 @@
+1000000451 38
 9 6 4
 0 0 0
 9
-EK505
-B747-8
+CZ313
+A320
+Berlin Brandenburg Airport (BER) - Berlin, Germany
+AeroportoEDA
+9
+Dutch Jacob THOMPSON TK.1000000317
+Dutch Mia WALKER TK.1000000318
+Icelandic Benjamin CLARK TK.1000000319
+Malaysian Jorro GARCIA TK.1000000320
+Australian James MARTIN TK.1000000321
+Ukrainian Ava JONES TK.1000000322
+Irish Emily RODRIGUEZ TK.1000000323
+Icelandic Mason HALL TK.1000000324
+Portuguese Scarlett DAVIS TK.1000000325
+AY414
+B787-8
+Ben Gurion Airport (TLV) - Tel Aviv, Israel
+AeroportoEDA
+12
+Malaysian Noah RODRIGUEZ TK.1000000329
+Nigerian Evelyn MOORE TK.1000000330
+Dutch Harper WHITE TK.1000000331
+Lebanese Ava WALKER TK.1000000332
+Icelandic Jacob ROBINSON TK.1000000333
+Icelandic Vanderlan JACKSON TK.1000000334
+Jamaican Aziado ANDERSON TK.1000000335
+Icelandic Ethan CLARK TK.1000000336
+Egyptian Sophia WILLIAMS TK.1000000337
+Nigerian Jorro MOORE TK.1000000338
+Egyptian Benjamin DAVIS TK.1000000339
+Jamaican Liam CLARK TK.1000000340
+BA515
+B777-200ER
+San Francisco International Airport (SFO) - San Francisco, California, USA
+AeroportoEDA
+14
+Malaysian Jackson RODRIGUEZ TK.1000000344
+Nigerian Alexander ALLEN TK.1000000345
+Dutch Jorro WHITE TK.1000000346
+Kenyan James RODRIGUEZ TK.1000000347
+Dutch Vanderlan JONES TK.1000000348
+Ukrainian Evelyn ANDERSON TK.1000000349
+Brazilian Grace SMITH TK.1000000350
+Icelandic Jackson ROBINSON TK.1000000351
+Peruvian Michael HERNANDEZ TK.1000000352
+Peruvian Vanderlan KING TK.1000000353
+Icelandic Inchado KING TK.1000000354
+Kenyan Jorro ROBINSON TK.1000000355
+Jamaican Mia ROBINSON TK.1000000356
+Jamaican Jacob WHITE TK.1000000357
+UA616
+﻿A380
+Abu Dhabi International Airport (AUH) - Abu Dhabi, United Arab Emirates
+AeroportoEDA
+5
+Cambodian Elijah WALKER TK.1000000360
+Australian James WALKER TK.1000000361
+Cambodian Inchado MILLER TK.1000000362
+Peruvian Amelia TAYLOR TK.1000000363
+Brazilian Ethan JACKSON TK.1000000364
+AF717
+B777-200ER
+Domodedovo International Airport (DME) - Moscow, Russia
+AeroportoEDA
+7
+Portuguese Ava JACKSON TK.1000000370
+Moroccan Scarlett WHITE TK.1000000371
+Greek Daniel ROBINSON TK.1000000372
+Egyptian Olivia WILSON TK.1000000373
+Kenyan Ethan JOHNSON TK.1000000374
+Swiss Emily CLARK TK.1000000375
+Vietnamese Emily RODRIGUEZ TK.1000000376
+SQ818
+A340
+Cape Town International Airport (CPT) - Cape Town, South Africa
+AeroportoEDA
+8
+Malaysian Liam MARTIN TK.1000000381
+Portuguese Lucas THOMAS TK.1000000382
+Icelandic Evelyn LEWIS TK.1000000383
+Egyptian Scarlett WALKER TK.1000000384
+Greek Emma WALKER TK.1000000385
+Swiss Scarlett WILSON TK.1000000386
+Vietnamese Sa JACKSON TK.1000000387
+Egyptian Jorro JONES TK.1000000388
+QR919
+B737 MAX 200
+Chhatrapati Shivaji Maharaj International Airport (BOM) - Mumbai, India
+AeroportoEDA
+9
+Brazilian Vanderlan LEWIS TK.1000000395
+Icelandic Evelyn WILSON TK.1000000396
+Finnish Michael WALKER TK.1000000397
+Irish Sophia RODRIGUEZ TK.1000000398
+Vietnamese Vanderlan MILLER TK.1000000399
+Irish Elizabeth MOORE TK.1000000400
+Vietnamese Evelyn GARCIA TK.1000000401
+Kenyan Evelyn YOUNG TK.1000000402
+Egyptian Emma WILSON TK.1000000403
+LH020
+B787-10
+Dallas/Fort Worth International Airport (DFW) - Dallas/Fort Worth, Texas, USA
+AeroportoEDA
+13
+Icelandic Sa WALKER TK.1000000407
+Cambodian Liam ROBINSON TK.1000000408
+Irish Olivia DAVIS TK.1000000409
+Finnish Elizabeth DAVIS TK.1000000410
+Peruvian Sa JONES TK.1000000411
+Ukrainian Olivia ANDERSON TK.1000000412
+Mongolian Benjamin GARCIA TK.1000000413
+Ukrainian Evelyn SMITH TK.1000000414
+Nigerian Jorro CLARK TK.1000000415
+Portuguese Elizabeth DAVIS TK.1000000416
+Egyptian Vanderlan HALL TK.1000000417
+Australian Noah WILSON TK.1000000418
+Swiss Ethan MILLER TK.1000000419
+DL121
+B737-700
+Soekarno–Hatta International Airport (CGK) - Jakarta, Indonesia
+AeroportoEDA
+8
+Jamaican Michael GARCIA TK.1000000426
+Australian Vanderlan CLARK TK.1000000427
+Lebanese Ava JACKSON TK.1000000428
+Irish Scarlett CLARK TK.1000000429
+Brazilian Michael THOMAS TK.1000000430
+Lebanese Emma MARTINEZ TK.1000000431
+Mongolian Abigail JACKSON TK.1000000432
+Egyptian Mason MILLER TK.1000000433
+EY222
+B737-800	
+Hong Kong International Airport (HKG) - Hong Kong
+AeroportoEDA
+14
+Mongolian Mia WILSON TK.1000000437
+Malaysian Charlotte ALLEN TK.1000000438
+Swiss Alexander BROWN TK.1000000439
+Jamaican Benjamin HERNANDEZ TK.1000000440
+Icelandic Jorro MARTIN TK.1000000441
+Swiss Liam WHITE TK.1000000442
+Australian Isabella DAVIS TK.1000000443
+Malaysian Mason HERNANDEZ TK.1000000444
+Greek Harper MARTIN TK.1000000445
+Australian James THOMPSON TK.1000000446
+Egyptian Vanderlan MILLER TK.1000000447
+Vietnamese Elizabeth HERNANDEZ TK.1000000448
+Ukrainian Elizabeth WHITE TK.1000000449
+Brazilian Amelia LEE TK.1000000450
+6
+LX606
+B777 Freighter
+Melbourne Airport (MEL) - Melbourne, Australia
+AeroportoEDA
+12
+IB707
+A350
+Hamad International Airport (DOH) - Doha, Qatar
+AeroportoEDA
+11
+CA808
+B787-9
+King Fahd International Airport (DMM) - Dammam, Saudi Arabia
+AeroportoEDA
+15
+NH909
+A319
+Madrid–Barajas Adolfo Suárez Airport (MAD) - Madrid, Spain
+AeroportoEDA
+9
+TG010
+B777-200LR.8
+Oslo Airport (OSL) - Oslo, Norway
+AeroportoEDA
+12
+SK111
+B777-8
+Guarulhos–Governador André Franco Montoro International Airport (GRU) - São Paulo, Brazil
+AeroportoEDA
+7
+VN212
+B777-200ER
 Taipei Taoyuan International Airport (TPE) - Taipei, Taiwan
 AeroportoEDA
 15
-Nigerian Vanderlan TAYLOR TK.1000000271
-Finnish Inchado SMITH TK.1000000272
-Greek Charlotte TAYLOR TK.1000000273
-Dutch Henry KING TK.1000000274
-Dutch Michael ALLEN TK.1000000275
-Malaysian Jackson ALLEN TK.1000000276
-Peruvian Inchado KING TK.1000000277
-Irish Ava SMITH TK.1000000278
-Moroccan Ava DAVIS TK.1000000279
-Peruvian Grace MILLER TK.1000000280
-Malaysian Olivia CLARK TK.1000000281
-Finnish Amelia WILLIAMS TK.1000000282
-Portuguese Sophia HARRIS TK.1000000283
-Greek Ava THOMPSON TK.1000000284
-Egyptian Scarlett ANDERSON TK.1000000285
-KLM777
-B777-200LR.8
-Cape Town International Airport (CPT) - Cape Town, South Africa
-AeroportoEDA
-12
-Nigerian Jorro HARRIS TK.1000000288
-Brazilian William WILLIAMS TK.1000000289
-Irish Ava THOMPSON TK.1000000290
-Lebanese Jorro CLARK TK.1000000291
-Swiss Vanderlan MARTIN TK.1000000292
-Malaysian Sa WILLIAMS TK.1000000293
-Lebanese Mia ROBINSON TK.1000000294
-Swiss Henry LEWIS TK.1000000295
-Kenyan Charlotte TAYLOR TK.1000000296
-Australian Emily DAVIS TK.1000000297
-Brazilian Harper LEWIS TK.1000000298
-Cambodian Daniel WALKER TK.1000000299
-IB707
-A350
-Cape Town International Airport (CPT) - Cape Town, South Africa
-AeroportoEDA
-10
-Ukrainian Grace GARCIA TK.1000000307
-Irish Michael ANDERSON TK.1000000308
-Swiss Harper THOMAS TK.1000000309
-Peruvian Inchado HERNANDEZ TK.1000000310
-Brazilian Jackson ROBINSON TK.1000000311
-Kenyan Sophia WALKER TK.1000000312
-Nigerian Scarlett HERNANDEZ TK.1000000313
-Australian Evelyn MOORE TK.1000000314
-Swiss Evelyn ROBINSON TK.1000000315
-Egyptian Jorro JACKSON TK.1000000316
-BA161
-B777-300ER
-Oslo Airport (OSL) - Oslo, Norway
-AeroportoEDA
-13
-Ukrainian Charlotte ROBINSON TK.1000000322
-Lebanese James BROWN TK.1000000323
-Malaysian Harper JOHNSON TK.1000000324
-Vietnamese Scarlett TAYLOR TK.1000000325
-Vietnamese Jackson TAYLOR TK.1000000326
-Greek Henry MOORE TK.1000000327
-Kenyan Michael SMITH TK.1000000328
-Ukrainian Lucas ALLEN TK.1000000329
-Greek Grace ALLEN TK.1000000330
-Portuguese Aziado YOUNG TK.1000000331
-Mongolian Grace RODRIGUEZ TK.1000000332
-Portuguese Liam WHITE TK.1000000333
-Brazilian Harper ALLEN TK.1000000334
-SK343
-A350
-King Fahd International Airport (DMM) - Dammam, Saudi Arabia
-AeroportoEDA
-7
-Lebanese Lucas BROWN TK.1000000342
-Egyptian Benjamin LEE TK.1000000343
-Icelandic Aziado MILLER TK.1000000344
-Irish Emily WALKER TK.1000000345
-Mongolian Lucas KING TK.1000000346
-Swiss Lucas BROWN TK.1000000347
-Ukrainian Vanderlan LEWIS TK.1000000348
-KE404
-B787-8
-Brussels Airport (BRU) - Brussels, Belgium
-AeroportoEDA
-15
-Irish Ethan MARTIN TK.1000000352
-Jamaican Noah YOUNG TK.1000000353
-Lebanese James MARTIN TK.1000000354
-Jamaican Lucas HARRIS TK.1000000355
-Swiss Jorro ALLEN TK.1000000356
-Kenyan Grace WILLIAMS TK.1000000357
-Moroccan Vanderlan THOMAS TK.1000000358
-Icelandic Jackson WILLIAMS TK.1000000359
-Lebanese Alexander TAYLOR TK.1000000360
-Peruvian Vanderlan DAVIS TK.1000000361
-Lebanese Lucas MOORE TK.1000000362
-Greek Amelia DAVIS TK.1000000363
-Icelandic Harper ANDERSON TK.1000000364
-Peruvian Ava THOMAS TK.1000000365
-Moroccan Emily LEWIS TK.1000000366
-DL030
-B787-8
-Berlin Brandenburg Airport (BER) - Berlin, Germany
-AeroportoEDA
-13
-Icelandic Jacob DAVIS TK.1000000374
-Finnish Jackson KING TK.1000000375
-Greek Inchado WILSON TK.1000000376
-Nigerian Daniel MILLER TK.1000000377
-Egyptian Sophia RODRIGUEZ TK.1000000378
-Cambodian Sa JACKSON TK.1000000379
-Mongolian Michael HALL TK.1000000380
-Greek Sa GARCIA TK.1000000381
-Kenyan Evelyn HARRIS TK.1000000382
-Kenyan Harper JACKSON TK.1000000383
-Mongolian Scarlett HALL TK.1000000384
-Vietnamese Sophia LEE TK.1000000385
-Peruvian Charlotte LEWIS TK.1000000386
-AC202
-B777-300ER
-Vancouver International Airport (YVR) - Vancouver, Canada
-AeroportoEDA
-5
-Peruvian Inchado JONES TK.1000000392
-Nigerian Isabella THOMAS TK.1000000393
-Egyptian Isabella DAVIS TK.1000000394
-Brazilian Alexander HARRIS TK.1000000395
-Greek Ava GARCIA TK.1000000396
-CZ666
-A320
-Ben Gurion Airport (TLV) - Tel Aviv, Israel
-AeroportoEDA
-11
-Brazilian Emily SMITH TK.1000000404
-Ukrainian Daniel JONES TK.1000000405
-Egyptian Ethan BROWN TK.1000000406
-Jamaican Vanderlan KING TK.1000000407
-Brazilian Daniel KING TK.1000000408
-Dutch Aziado THOMPSON TK.1000000409
-Brazilian Ava GARCIA TK.1000000410
-Jamaican Jorro HALL TK.1000000411
-Icelandic Sa WHITE TK.1000000412
-Cambodian Emily CLARK TK.1000000413
-Irish Emma KING TK.1000000414
-UA252
-﻿A380
-Soekarno–Hatta International Airport (CGK) - Jakarta, Indonesia
-AeroportoEDA
-10
-Finnish Henry LEE TK.1000000418
-Portuguese Benjamin ANDERSON TK.1000000419
-Irish Jorro WALKER TK.1000000420
-Icelandic Amelia TAYLOR TK.1000000421
-Irish Jackson HERNANDEZ TK.1000000422
-Australian Alexander RODRIGUEZ TK.1000000423
-Jamaican Lucas YOUNG TK.1000000424
-Peruvian Charlotte ALLEN TK.1000000425
-Dutch Emily MARTIN TK.1000000426
-Finnish Michael ROBINSON TK.1000000427
-6
-DL757
-A320
-San Francisco International Airport (SFO) - San Francisco, California, USA
-AeroportoEDA
-15
-DL101
-B737 MAX 8
-Vancouver International Airport (YVR) - Vancouver, Canada
-AeroportoEDA
-9
-CZ313
-B787-9
-Abu Dhabi International Airport (AUH) - Abu Dhabi, United Arab Emirates
-AeroportoEDA
-11
-BA828
-B767-2C
-Dallas/Fort Worth International Airport (DFW) - Dallas/Fort Worth, Texas, USA
-AeroportoEDA
-11
-QR890
-B787-8
-Hong Kong International Airport (HKG) - Hong Kong
-AeroportoEDA
-15
-AY525
-B737 MAX 200
-Brussels Airport (BRU) - Brussels, Belgium
-AeroportoEDA
-15
-BA161
-B787-9
-Melbourne Airport (MEL) - Melbourne, Australia
-AeroportoEDA
-15
 4
-QR555
-B787-9
+S7A101
+B777-200ER
 AeroportoEDA
-Changi Airport (SIN) - Singapore
+Jorge Chávez International Airport (LIM) - Lima, Peru
+9
+Portuguese Scarlett ROBINSON TK.1000000377
+Portuguese Mia YOUNG TK.1000000378
+Portuguese Henry JACKSON TK.1000000379
+Portuguese Inchado DAVIS TK.1000000380
+Irish Scarlett JOHNSON TK.1000000218
+Kenyan Emma MOORE TK.1000000018
+Kenyan Jorro BROWN TK.1000000088
+Kenyan Lucas RODRIGUEZ TK.1000000129
+Kenyan Charlotte BROWN TK.1000000090
+AC202
+B777-8
+AeroportoEDA
+Amsterdam Airport Schiphol (AMS) - Amsterdam, Netherlands
+12
+Portuguese Elijah MILLER TK.1000000389
+Portuguese Noah MILLER TK.1000000390
+Portuguese Jorro KING TK.1000000391
+Portuguese Olivia SMITH TK.1000000392
+Portuguese Jorro SMITH TK.1000000393
+Portuguese Olivia MOORE TK.1000000394
+Finnish Lucas HALL TK.1000000245
+Greek Alexander MARTIN TK.1000000248
+Irish Elizabeth THOMPSON TK.1000000241
+Jamaican Emma HARRIS TK.1000000242
+Kenyan Daniel TAYLOR TK.1000000194
+Kenyan Jacob JOHNSON TK.1000000244
+AI303
+B767-300ER
+AeroportoEDA
+Charles de Gaulle Airport (CDG) - Paris, France
 6
-Portuguese Benjamin MOORE TK.1000000349
-Portuguese Inchado KING TK.1000000350
-Portuguese James HERNANDEZ TK.1000000351
-Jamaican Jacob JONES TK.1000000155
-Jamaican Amelia WILSON TK.1000000163
-Kenyan Sa HERNANDEZ TK.1000000016
-BA151
-B777-200LR.8
-AeroportoEDA
-Los Angeles International Airport (LAX) - Los Angeles, California, USA
-15
-Portuguese Sa ROBINSON TK.1000000367
-Portuguese Jorro LEE TK.1000000368
-Portuguese Daniel BROWN TK.1000000369
-Portuguese Sophia SMITH TK.1000000370
-Portuguese Vanderlan LEE TK.1000000371
-Portuguese Inchado YOUNG TK.1000000372
-Portuguese Ethan HERNANDEZ TK.1000000373
-Australian James LEE TK.1000000186
-Brazilian William MARTIN TK.1000000183
-Cambodian Mason MARTIN TK.1000000184
-Icelandic Sa YOUNG TK.1000000181
-Irish Jackson JONES TK.1000000179
-Kenyan Noah BROWN TK.1000000099
-Kenyan Benjamin WILSON TK.1000000143
-Lebanese Sophia SMITH TK.1000000015
-EY858
+Portuguese Ava HARRIS TK.1000000404
+Portuguese Liam TAYLOR TK.1000000405
+Portuguese Isabella WILLIAMS TK.1000000406
+Dutch Abigail HARRIS TK.1000000259
+Egyptian Abigail ROBINSON TK.1000000258
+Egyptian Michael MOORE TK.1000000261
+KE404
 B787-10
 AeroportoEDA
+Narita International Airport (NRT) - Tokyo, Japan
+12
+Portuguese Jorro WALKER TK.1000000420
+Portuguese Benjamin THOMAS TK.1000000421
+Portuguese Sa WILSON TK.1000000422
+Portuguese Sa WILLIAMS TK.1000000423
+Portuguese Grace BROWN TK.1000000424
+Portuguese Emily ANDERSON TK.1000000425
+Brazilian Lucas ANDERSON TK.1000000276
+Brazilian Charlotte LEE TK.1000000277
+Egyptian Lucas SMITH TK.1000000273
+Icelandic Scarlett DAVIS TK.1000000260
+Irish Liam MARTINEZ TK.1000000272
+Kenyan Alexander WALKER TK.1000000118
+EK505
+B737 MAX
+AeroportoEDA
 Heathrow Airport (LHR) - London, United Kingdom
-11
-Portuguese Daniel WALKER TK.1000000387
-Portuguese Grace MARTIN TK.1000000388
-Portuguese Emma LEE TK.1000000389
-Portuguese Jackson WILLIAMS TK.1000000390
-Portuguese Elizabeth GARCIA TK.1000000391
-Finnish Scarlett WALKER TK.1000000196
-Irish Abigail ROBINSON TK.1000000195
-Lebanese Emily WILSON TK.1000000073
-Lebanese Lucas HERNANDEZ TK.1000000104
-Lebanese Noah GARCIA TK.1000000119
-Lebanese Olivia GARCIA TK.1000000115
-BA456
-B777 Freighter
-AeroportoEDA
-Beijing Capital International Airport (PEK) - Beijing, China
-14
-Portuguese Ethan KING TK.1000000397
-Portuguese Olivia HERNANDEZ TK.1000000398
-Portuguese Benjamin JONES TK.1000000399
-Portuguese Vanderlan GARCIA TK.1000000400
-Portuguese William MARTIN TK.1000000401
-Portuguese Emma LEE TK.1000000402
-Portuguese Amelia ANDERSON TK.1000000403
-Australian Alexander LEE TK.1000000212
-Brazilian Scarlett THOMPSON TK.1000000215
-Brazilian Elijah WILLIAMS TK.1000000217
-Egyptian William HARRIS TK.1000000219
-Finnish Elizabeth YOUNG TK.1000000211
-Greek Grace JOHNSON TK.1000000210
-Jamaican Amelia MILLER TK.1000000220
-UA252
-A319
-AeroportoEDA
-Incheon International Airport (ICN) - Seoul, South Korea
-6
-Portuguese Ava JONES TK.1000000415
-Portuguese Sophia DAVIS TK.1000000416
-Portuguese James ROBINSON TK.1000000417
-Brazilian Elizabeth WALKER TK.1000000231
-Brazilian Mason THOMPSON TK.1000000234
-Cambodian Alexander JACKSON TK.1000000236
+7
+Portuguese Lucas MARTIN TK.1000000434
+Portuguese Harper WHITE TK.1000000435
+Portuguese Inchado THOMAS TK.1000000436
+Lebanese James THOMPSON TK.1000000054
+Lebanese Michael DAVIS TK.1000000096
+Lebanese Noah RODRIGUEZ TK.1000000081
+Lebanese Sa WHITE TK.1000000069
 20
 Australian
-1
-Australian Elijah RODRIGUEZ TK.1000000259
+0
 skip
 Brazilian
-0
+1
+Brazilian Scarlett MARTIN TK.1000000304
 skip
 Cambodian
-2
-Cambodian Sophia WILLIAMS TK.1000000255
-Cambodian Inchado KING TK.1000000258
+0
 skip
 Dutch
-1
+0
 skip
 Egyptian
-2
-Egyptian Isabella YOUNG TK.1000000235
-Egyptian Jackson JOHNSON TK.1000000237
+0
 skip
 Finnish
-0
+1
+Finnish Mia KING TK.1000000301
 skip
 Greek
-0
+2
+Greek Mia HERNANDEZ TK.1000000305
 skip
 Icelandic
-0
+2
+Icelandic Isabella YOUNG TK.1000000309
+Icelandic Alexander THOMPSON TK.1000000311
 skip
 Irish
-3
-Irish William WILSON TK.1000000251
-Irish Emily YOUNG TK.1000000253
-Irish Elijah ROBINSON TK.1000000256
+2
 skip
 Jamaican
-2
+1
+Jamaican Noah YOUNG TK.1000000303
 skip
 Kenyan
-2
+1
+Kenyan Benjamin ANDERSON TK.1000000300
 skip
 Lebanese
-5
-Lebanese Amelia LEE TK.1000000074
-Lebanese Elizabeth MARTIN TK.1000000088
-Lebanese Lucas MARTINEZ TK.1000000249
+2
+Lebanese Inchado HARRIS TK.1000000143
 skip
 Malaysian
-5
-Malaysian Jorro JACKSON TK.1000000039
-Malaysian Aziado DAVIS TK.1000000090
-Malaysian Jacob THOMPSON TK.1000000120
-Malaysian Inchado WALKER TK.1000000154
+17
+Malaysian James RODRIGUEZ TK.1000000016
+Malaysian Evelyn ROBINSON TK.1000000021
+Malaysian Charlotte MILLER TK.1000000024
+Malaysian Aziado HARRIS TK.1000000140
+Malaysian Elijah JOHNSON TK.1000000077
+Malaysian Ethan ANDERSON TK.1000000302
+Malaysian Isabella JONES TK.1000000023
+Malaysian Harper THOMPSON TK.1000000120
+Malaysian Mason JACKSON TK.1000000037
+Malaysian Lucas THOMPSON TK.1000000299
+Malaysian Olivia ANDERSON TK.1000000246
+Malaysian Sophia JONES TK.1000000307
 skip
 Mongolian
-16
-Mongolian Scarlett WILSON TK.1000000001
-Mongolian Emily TAYLOR TK.1000000044
-Mongolian Abigail WILLIAMS TK.1000000122
-Mongolian Elijah WHITE TK.1000000209
-Mongolian Charlotte MILLER TK.1000000233
-Mongolian Henry MARTIN TK.1000000110
-Mongolian Evelyn WALKER TK.1000000124
-Mongolian James GARCIA TK.1000000142
-Mongolian Mason ALLEN TK.1000000177
-Mongolian Vanderlan KING TK.1000000038
-Mongolian Sophia HARRIS TK.1000000071
-Mongolian William SMITH TK.1000000057
+4
+Mongolian Alexander HALL TK.1000000002
+Mongolian Benjamin KING TK.1000000020
+Mongolian Vanderlan MOORE TK.1000000217
 skip
 Moroccan
-7
-Moroccan James ROBINSON TK.1000000081
-Moroccan Harper KING TK.1000000135
-Moroccan Elizabeth GARCIA TK.1000000141
-Moroccan Daniel WHITE TK.1000000185
-Moroccan Grace MOORE TK.1000000232
-Moroccan Sophia DAVIS TK.1000000180
-Moroccan Jorro SMITH TK.1000000221
+11
+Moroccan William HALL TK.1000000038
+Moroccan Ava BROWN TK.1000000042
+Moroccan Amelia THOMAS TK.1000000056
+Moroccan Alexander MOORE TK.1000000068
+Moroccan Elijah DAVIS TK.1000000058
+Moroccan Daniel TAYLOR TK.1000000083
+Moroccan Charlotte GARCIA TK.1000000131
+Moroccan Liam MILLER TK.1000000104
+Moroccan Sophia RODRIGUEZ TK.1000000146
 skip
 Nigerian
-6
-Nigerian Mia BROWN TK.1000000056
-Nigerian Ava THOMAS TK.1000000089
-Nigerian Amelia THOMPSON TK.1000000151
-Nigerian Henry TAYLOR TK.1000000252
-Nigerian Jorro GARCIA TK.1000000257
-Nigerian Michael WHITE TK.1000000078
+7
+Nigerian Michael HARRIS TK.1000000006
+Nigerian Elizabeth ROBINSON TK.1000000014
+Nigerian Ava MOORE TK.1000000099
+Nigerian Henry JONES TK.1000000121
+Nigerian Jacob ANDERSON TK.1000000226
 skip
 Peruvian
-8
-Peruvian Emma THOMAS TK.1000000061
-Peruvian Daniel TAYLOR TK.1000000105
-Peruvian Emily DAVIS TK.1000000214
-Peruvian Lucas MARTIN TK.1000000072
-Peruvian Jorro SMITH TK.1000000139
-Peruvian James LEWIS TK.1000000168
-Peruvian Jackson WHITE TK.1000000218
-Peruvian William HARRIS TK.1000000260
+13
+Peruvian Evelyn JOHNSON TK.1000000000
+Peruvian Benjamin HALL TK.1000000051
+Peruvian Abigail HERNANDEZ TK.1000000053
+Peruvian Amelia MOORE TK.1000000208
+Peruvian Daniel MARTIN TK.1000000102
+Peruvian Sa JONES TK.1000000036
+Peruvian Grace HERNANDEZ TK.1000000060
+Peruvian Harper ALLEN TK.1000000082
+Peruvian Olivia GARCIA TK.1000000274
+Peruvian Noah LEE TK.1000000306
+Peruvian William MARTINEZ TK.1000000040
+Peruvian Vanderlan JOHNSON TK.1000000275
 skip
 Swiss
-4
-Swiss Ethan MARTINEZ TK.1000000083
-Swiss Daniel LEE TK.1000000222
-Swiss Evelyn RODRIGUEZ TK.1000000108
-Swiss Jacob HERNANDEZ TK.1000000116
+9
+Swiss Mia HERNANDEZ TK.1000000007
+Swiss Jacob WILLIAMS TK.1000000064
+Swiss Emily MILLER TK.1000000071
+Swiss Alexander BROWN TK.1000000072
+Swiss Elijah MOORE TK.1000000290
+Swiss Evelyn MOORE TK.1000000142
+Swiss Isabella GARCIA TK.1000000209
+Swiss Scarlett ROBINSON TK.1000000150
 skip
 Ukrainian
-5
-Ukrainian Sophia YOUNG TK.1000000067
-Ukrainian Amelia ALLEN TK.1000000098
-Ukrainian Ava WHITE TK.1000000164
-Ukrainian Sa ROBINSON TK.1000000182
-Ukrainian Liam TAYLOR TK.1000000254
+8
+Ukrainian Aziado MOORE TK.1000000010
+Ukrainian James JONES TK.1000000039
+Ukrainian Elijah WILSON TK.1000000055
+Ukrainian Evelyn GARCIA TK.1000000216
+Ukrainian Liam YOUNG TK.1000000087
+Ukrainian Sa BROWN TK.1000000107
 skip
 Vietnamese
 0

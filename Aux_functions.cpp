@@ -31,6 +31,7 @@ void load_files_to_mem(file_data &fileData){
     fileData.destino_size = count_lines("../Data_Files/destino.txt");
     fileData.destino = read_files("../Data_Files/destino.txt", fileData.destino_size);
 
+    fileData.current_index_name = 0;
 }
 
 std::string * read_files(std::string file_name, int size){
@@ -88,7 +89,7 @@ int random_range(int lower, int upper){
     return num;
 }
 
-void SaveToFile(std::string file_name, Airport * airport) {
+void SaveToFile(std::string file_name, Airport * airport, file_data & fileData) {
 
     // initialize the file with fstream
     std::ofstream outfile;
@@ -114,6 +115,10 @@ void SaveToFile(std::string file_name, Airport * airport) {
         outfile.clear();
         exit(1);
     }
+
+    // write data from the fileData
+
+    outfile << fileData.ticket_number << " " << fileData.current_index_name << "\n";
 
     // write struct to file and close
 
@@ -277,7 +282,8 @@ Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_
     return balance_tree(tempTree);
 
 }
-void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData){
+
+void LoadFromFile(std::string file_name, Airport & Oairport,file_data &fileData){
 
     int lineNumTemp=0;
     std::string LastReadItem;
@@ -305,6 +311,9 @@ void LoadFromFile(std::string file_name, Airport & Oairport,file_data fileData){
 
     Airport airport = init_airport(fileData);
 
+    // read data from the fileData
+
+    infile >> fileData.ticket_number >> fileData.current_index_name;
     // read struct from file and close
 
     infile >> airport.arrival_cap >> airport.ramp_cap >> airport.depart_cap;
