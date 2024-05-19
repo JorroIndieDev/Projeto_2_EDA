@@ -11,10 +11,11 @@ void init_plane(Airport &airport, file_data &fileData ) {
 
     // create new plane to add to the list of arrivals
     Plane newPlane;
-
+    int test = fileData.current_index_name;
     // init the plane with default params
+    fileData.current_index_name = fileData.current_index_name == fileData.voo_size ? 0 : fileData.current_index_name;
     newPlane.flight_name = fileData.voo[fileData.current_index_name];
-    fileData.current_index_name = fileData.current_index_name == fileData.voo_size ? 0 : fileData.current_index_name + 1;
+    fileData.current_index_name = fileData.current_index_name + 1;
     newPlane.model = fileData.modelo[random_range(0, fileData.modelo_size - 1)];
     newPlane.origin = fileData.origem[random_range(0, fileData.origem_size - 1)];
     newPlane.capacity = random_range(5, 15);
