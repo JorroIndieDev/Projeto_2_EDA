@@ -30,7 +30,7 @@ void dayCycle(Airport &airport, file_data fileData) {
 
         switch (choice[0]) {
             case 'e': // Emergency;
-                emergency_handler(airport,fileData);
+                emergency_handler(&airport,fileData);
                 break;
             case 'o': // Options;
                 option(airport);
@@ -73,9 +73,9 @@ void dayCycle(Airport &airport, file_data fileData) {
                             add_departing_plane(airport, fileData);
                         }
 
-                        arriving_foreigners(airport);
+                        arriving_foreigners(airport, airport.head_arrv->plane);
                         add_ramp_plane(airport, fileData);
-                        arriving_foreigners(airport);
+                        arriving_foreigners(airport, airport.head_arrv->plane);
                         add_ramp_plane(airport, fileData);
 
                     }else {
@@ -92,7 +92,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                             init_plane(airport, fileData);
                         }
 
-                        arriving_foreigners(airport);
+                        arriving_foreigners(airport, airport.head_arrv->plane);
                         add_ramp_plane(airport, fileData);
                     }
 

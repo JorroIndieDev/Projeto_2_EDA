@@ -68,7 +68,7 @@ void reverse_departing(Airport &airport);
 void reverse_ramp(Airport &airport);
 void reverse_arrival(Airport &airport);
 
-void emergency_handler(Airport &airport,file_data &fileData);
+void emergency_handler(Airport * airport,file_data &fileData);
 
 void remove_passengers(Airport &airport);
 
@@ -76,7 +76,7 @@ void travessiaInfixa(Nacionality::Pass_tree *nacionality);
 void log_passenger(passenger *passageiro);
 void listSort(std::string list[], int list_size);
 
-void arriving_foreigners(Airport &airport);
+void arriving_foreigners(Airport &airport , Plane & plane);
 passenger * search_passengers(llnode *list);
 void change_nacionality(std::string newNationality, Airport &airport);
 Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root);

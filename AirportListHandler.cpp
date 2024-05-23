@@ -219,54 +219,73 @@ void remove_passengers(Airport &airport) {
 
 }
 
-void emergency_handler(Airport &airport,file_data &fileData) {
+void emergency_handler(Airport * airport,file_data &fileData) {
 
     bool valid = false;
 
     std::string plane_name;
-    llnode * aux = airport.head_arrv;
-    llnode * aux2;
+    llnode * aux_current = NULL, * aux_previous = NULL;
 
     while(!valid) {
-
+        aux_current = airport->head_arrv;
         std::cout << "Wich Plane is in emergency? (q)uit\n";
         std::cin >> plane_name;
 
         if (plane_name == "q")return;
 
-        while (aux != NULL){
-            if(plane_name == aux->plane.flight_name){
+        while (aux_current != NULL){
+            if(plane_name == aux_current->plane.flight_name){
                 valid = true;
-                std::cout << "AAAA";
+                std::cout << "Plane Found\n";
                 break;
             }
-            aux2 = aux;
-            aux = aux->next;
-            if(aux == NULL){
+            aux_current = aux_current->next;
+            if(aux_current == NULL){
                 std::cout << "Invalid option\n";
             }
         }
     }
 
-    if(airport.ramp_cap >= 6 ) {
-        add_departing_plane(airport, fileData); //remove plane from ramp to depart
+    llnode * tempNode = new llnode;
+
+    // delete node from arrival
+    llnode * tempDel = aux_current;
+    airport->num_in_arrival--;
+
+
+    if(airport->num_in_ramp >= 6 ) {
+        add_departing_plane(*airport, fileData); //remove plane from ramp to depart
     }
 
-    aux2->next = aux->next; // aux ta livre
-    aux->next = NULL;
+    llnode * temp = airport->head_ramp; // new temp to run the ramp
 
-    if (airport.head_ramp == NULL) airport.head_ramp = aux;
+    if (temp == NULL) { // add new plane to the ramp
 
-    llnode * temp = airport.head_ramp;
+        tempNode->plane = tempDel->plane;
+        tempNode->next = nullptr;
+        arriving_foreigners(*airport,aux_current->plane);
+        tempNode->plane.head_passenger = nullptr;
+        airport->head_ramp = tempNode;
+        *aux_current = *aux_current->next;
+        init_plane(*airport,fileData);
+        return;
+    }
 
-    while (temp != NULL){
+
+    while (temp->next != NULL){
         temp = temp->next;
     }
+    // add plane to ramp
+    tempNode->plane = tempDel->plane;
+    tempNode->next = nullptr;
+    arriving_foreigners(*airport,aux_current->plane);
+    tempNode->plane.head_passenger = nullptr;
+    temp->next = tempNode;
+    *aux_current = *aux_current->next;
 
-    temp = aux;
-
-    //TODO need to add the emergency plane on the ramp and add a new plane on the arrivals
-
+    // now add new plane to arrivals
+    init_plane(*airport,fileData);
+    
 }
 
 /*
@@ -483,11 +502,11 @@ void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
     travessiaInfixa(nacionality->right);
 }
 
-void arriving_foreigners(Airport &airport) {
+void arriving_foreigners(Airport &airport, Plane &plane) {
 
     std::string home_nationality = "Portuguese";
     Nacionality * auxN;
-    Plane::passenger_in_plane * passengerInPlane = airport.head_arrv->plane.head_passenger;
+    Plane::passenger_in_plane * passengerInPlane = plane.head_passenger;
 
     while (passengerInPlane->next_passenger != NULL){
 
