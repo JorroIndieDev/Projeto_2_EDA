@@ -2,11 +2,10 @@
 #include "Headers/AirportListHandler.h"
 #include "Headers/init_planes_people.h"
 #include <limits>
+
 void dayCycle(Airport &airport, file_data fileData) {
 
-
     bool isWorking = true;
-
     std::string choice;
     int daysChoice;
 
@@ -33,7 +32,7 @@ void dayCycle(Airport &airport, file_data fileData) {
                 emergency_handler(&airport,fileData);
                 break;
             case 'o': // Options;
-                option(airport);
+                option(airport,fileData);
                 break;
             case 'c':
                 airport.closed = true;
@@ -83,24 +82,19 @@ void dayCycle(Airport &airport, file_data fileData) {
                         if (airport.num_in_depart > 3) {
                             remove_departing_plane(airport);
                         }
-
                         if (airport.num_in_ramp >= 6) {
                             add_departing_plane(airport, fileData);
                         }
-
                         if (airport.num_in_arrival <= 10) {
                             init_plane(airport, fileData);
                         }
-
                         arriving_foreigners(airport, airport.head_arrv->plane);
                         add_ramp_plane(airport, fileData);
                     }
-
                 }else{
                     init_plane(airport, fileData);
                 }
                 break;
-
             case 'q': // quit
                 std::cout <<"Thanks to choose us and see you soon! =)";
                 isWorking = false;
@@ -111,16 +105,16 @@ void dayCycle(Airport &airport, file_data fileData) {
         }
     }
 }
-// Joao
-void option(Airport &airport) {
+
+void option(Airport &airport , file_data & fileData) {
 
     int choice;
-    std::string newNationality;
+    int newNationality;
     Nacionality *aux_nacionality;
 
     while (true) {
         std::cout << "Choose a option \n"
-                  << "(1) - Show the passengers on ramp \n"
+                  << "(1) - Show the passengers on ramp alphabetically \n"
                      "(2) - Show organized visually passengers \n"
                      "(3) - Search passengers on arrivals or depart \n"
                      "(4) - Edit a passenger nationality in a arrival plane \n"
@@ -141,7 +135,6 @@ void option(Airport &airport) {
                 }
                 break;
             case 2:
-                //TODO no enunciado fala para mostrar ALFABETICAMENTE ou VISUALMENTE
                 aux_nacionality = airport.nacionality_head;
 
                 while (aux_nacionality != nullptr) {
@@ -160,7 +153,6 @@ void option(Airport &airport) {
                 break;
 
             case 3:
-                // TODO need to show all passenger with the SAME NAME  =)
                 std::cout << "Search by departure or arrival\n"
                           << "(1) Departure  (2) Arrival";
                 std::cin >> choice;
@@ -181,12 +173,26 @@ void option(Airport &airport) {
                 } else
                     std::cout << "Invalid choice\n";
                 break;
-
             case 4:
-                //TODO tem que procurar apenas nos avioes que estao se aproximando
-                std::cout << "Which Nationality to be inserted? ";
-                std::cin >> newNationality;
-                change_nacionality(newNationality, airport);
+                while(true) {
+                    std::cout << "Nationalities available :";
+                    for(int i = 0; i < fileData.nacionalidade_size ; i++){
+                        std::cout << "[" << i << "] " << fileData.nacionalidade[i] << " ";
+                        if (i%2==0) std::cout << std::endl;
+                    }
+
+                    std::cout << "Which Nationality to be inserted? ";
+                    std::cin >> newNationality;
+
+                    if (newNationality < 0 || newNationality > fileData.nacionalidade_size) {
+                        std::cout <<"Please insert a valid Nationality";
+                        continue;
+                    }
+                    else {
+                        change_nacionality(fileData.nacionalidade[newNationality], airport);
+                        break;
+                    }
+                }
                 break;
             case 5:
                 reverse_ramp(airport);

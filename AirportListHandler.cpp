@@ -142,13 +142,13 @@ void add_ramp_plane(Airport &airport, file_data &fileData) {
     delete temp;
 }
 
-void log_passenger(passenger *passageiro) {
-    std::cout << std::endl;
-    std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
-    std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
-    std::cout << "Nacionalidade: " << passageiro->nacionality << std::endl;
-    std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
-}
+//void log_passenger(passenger *passageiro) {
+//    std::cout << std::endl;
+//    std::cout << "Primeiro Nome: " << passageiro->first_name << std::endl;
+//    std::cout << "Segundo Nome: " << passageiro->second_name << std::endl;
+//    std::cout << "Nacionalidade: " << passageiro->nacionality << std::endl;
+//    std::cout << "Numero ticket: " << passageiro->ticket_num << std::endl;
+//}
 
 void log_passengers_in_plane(Plane plane){
     // creates aux var to traverse linked list to not destroy it
@@ -202,22 +202,20 @@ void reverse_ramp(Airport &airport) {
 
 }
 
-
-
-void remove_passengers(Airport &airport) {
-
-    llnode * aux = new llnode;
-
-    aux->plane.head_passenger = airport.head_arrv->plane.head_passenger;
-
-    while (aux->plane.head_passenger != NULL) {
-
-        aux->plane.head_passenger = aux->plane.head_passenger->next_passenger;
-
-    }
-    airport.head_arrv->plane.head_passenger = aux->plane.head_passenger;
-
-}
+//void remove_passengers(Airport &airport) {
+//
+//    llnode * aux = new llnode;
+//
+//    aux->plane.head_passenger = airport.head_arrv->plane.head_passenger;
+//
+//    while (aux->plane.head_passenger != NULL) {
+//
+//        aux->plane.head_passenger = aux->plane.head_passenger->next_passenger;
+//
+//    }
+//    airport.head_arrv->plane.head_passenger = aux->plane.head_passenger;
+//
+//}
 
 void emergency_handler(Airport * airport,file_data &fileData) {
 
@@ -386,6 +384,7 @@ Nacionality::Pass_tree * delete_node(Nacionality::Pass_tree * root, std::string 
     return aux;
 
 }
+
 int make_spine(Nacionality::Pass_tree  * root){
 
     int count = 0;
@@ -446,6 +445,7 @@ Nacionality::Pass_tree * balance_tree(Nacionality::Pass_tree * root){
 
     return newRoot->right;
 }
+
 Nacionality::Pass_tree * search_namesTree(Nacionality::Pass_tree * root,std::string name){
     if (root == NULL)return root;
 
@@ -475,24 +475,12 @@ void print_tree_leftrigt(Nacionality::Pass_tree* root, int level) {
     for (int i = 0; i <level; ++i)
         std::cout << "   ";
 
-    std::cout<< level << " " << root->passenger.first_name << std::endl;
+    std::cout<< level << " " << root->passenger.first_name << " " << root->passenger.second_name << std::endl;
 
     for (int i = 0; i < level; i++)
         std::cout << " ";
 
     print_tree_leftrigt(root->left, level + 1);
-}
-
-void listSort(std::string list[], int list_size) {
-    for (int i = 0; i < (list_size - 1); i++) {
-        int min = i; // sting.compare(string to compare to) = -1 0 1
-        for (int j = i + 1; j < list_size; j++){
-                if (list[j].compare(list[min]) < 0)
-                    min = j;
-        }
-        if (min != i)
-            swap(list[i], list[min]);
-    }
 }
 
 void travessiaInfixa(Nacionality::Pass_tree *nacionality) {
@@ -531,13 +519,13 @@ void arriving_foreigners(Airport &airport, Plane &plane) {
 }
 
 passenger * search_passengers(llnode *list) {
-    // TODO need to show all passenger with the SAME NAME  =)
+
     if (list == NULL){
         std::cout << "list is empty \n";
         return nullptr;
     }
     llnode * aux = list;
-    std::string passenger_name;
+    std::string passenger_name, passenger_s_name;
     std::cout << "What's the passengers first name?  ";
     std::cin >> passenger_name;
 
@@ -547,14 +535,26 @@ passenger * search_passengers(llnode *list) {
 
         while (aux_pass->next_passenger != NULL){
             if (aux_pass->passenger.first_name == passenger_name){
+                std::cout<< aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name << " " << aux_pass->passenger.ticket_num << std::endl;
+            }
+            aux_pass = aux_pass->next_passenger;
+        }
+        aux=aux->next;
+    }
+    aux = list;
+    while (aux->next != NULL){
+        std::cout << "What's the passengers second name? ";
+        std::cin >> passenger_s_name;
+        Plane::passenger_in_plane * aux_pass = aux->plane.head_passenger;
 
-                std::cout << "Passenger found..\n" << aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name << std::endl;
-
+        while (aux_pass->next_passenger != NULL){
+            if ((aux_pass->passenger.first_name == passenger_name) && (aux_pass->passenger.second_name == passenger_s_name)){
+                std::cout << "Passenger found..\n";
+                std::cout<< aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name << std::endl;
                 return &aux_pass->passenger;
             }
             aux_pass = aux_pass->next_passenger;
         }
-
         aux=aux->next;
     }
     std::cout << "Passenger was not found.. \n";
@@ -562,22 +562,60 @@ passenger * search_passengers(llnode *list) {
 }
 
 void change_nacionality(std::string newNationality, Airport &airport) {
-    int choice;
-    // facam com que o ulilizador escolha
-    while (true) {
-        std::cout << "Search by arrival (1) or departure (2)\n";
-        std::cin >> choice;
-        if (choice == 1) {
-            passenger *passengero = search_passengers(airport.head_arrv);
-            if (passengero == nullptr)return;
-            passengero->nacionality = newNationality;
-            break;
-        } else if (choice == 2) {
-            passenger *passengero = search_passengers(airport.head_dep);
-            if (passengero == nullptr)return;
-            passengero->nacionality = newNationality;
-            break;
-        } else
-            std::cout << "Chose a valid option\n";
+    passenger * passengero;
+    passenger * passengeroT;
+    Plane::passenger_in_plane * aux_pass;
+    llnode * aux = airport.head_arrv;
+    std::string passenger_name, ticket_num;
+    int founded=0;
+    bool valid = false;
+    while (!valid) {
+        std::cout << "What's the passengers first name?  ";
+        std::cin >> passenger_name;
+
+        while (aux != NULL) {
+
+            aux_pass = aux->plane.head_passenger;
+
+            while (aux_pass->next_passenger != NULL) {
+                if (aux_pass->passenger.first_name == passenger_name) {
+                    std::cout << aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name << " "
+                              << aux_pass->passenger.ticket_num << " " << aux_pass->passenger.nacionality << std::endl;
+                    founded++;
+                }
+                aux_pass = aux_pass->next_passenger;
+            }
+            aux = aux->next;
+        }
+        if (founded != 0)valid = true;
     }
+    valid = false;
+    aux = airport.head_arrv;
+    while (!valid) {
+
+        std::cout << "Please specify the ticket number start with TK.**** ";
+        std::cin >> ticket_num;
+
+        while (aux->next != NULL) {
+
+            aux_pass = aux->plane.head_passenger;
+
+            while (aux_pass->next_passenger != NULL) {
+                if ((aux_pass->passenger.first_name == passenger_name) &&
+                    (aux_pass->passenger.ticket_num == ticket_num)) {
+                    std::cout << "Passenger found..\n";
+                    std::cout << aux_pass->passenger.first_name << " " << aux_pass->passenger.second_name
+                              << aux_pass->passenger.ticket_num << std::endl << std::endl;
+                    passengero = &aux_pass->passenger;
+                    passengeroT = &aux_pass->passenger;
+                    valid = true;
+                    break;
+                }
+                aux_pass = aux_pass->next_passenger;
+            }
+            aux = aux->next;
+        }
+    }
+    passengero->nacionality = newNationality;
+
 }

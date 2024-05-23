@@ -237,7 +237,7 @@ void SaveToFile(std::string file_name, Airport * airport, file_data & fileData) 
         outfile << auxll->nacionality << "\n";
         // write tree
         outfile << auxll->num_of_pass_in_tree << "\n";
-        Serialized_travessiaInfixa(auxll->root_passenger,outfile);
+        Serialized_tree(auxll->root_passenger,outfile);
         outfile << "skip\n";
         auxll = auxll->next_nacionality;
     }
@@ -246,16 +246,17 @@ void SaveToFile(std::string file_name, Airport * airport, file_data & fileData) 
     outfile.clear();
 }
 
-void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &outfile) {
+void Serialized_tree(Nacionality::Pass_tree *root, std::ofstream &outfile) {
     if (root == nullptr) return;
     outfile << root->passenger.nacionality << " "
             << root->passenger.first_name << " "
             << root->passenger.second_name << " "
             << root->passenger.ticket_num << "\n";
-    Serialized_travessiaInfixa(root->left,outfile);
-    Serialized_travessiaInfixa(root->right,outfile);
+    Serialized_tree(root->left,outfile);
+    Serialized_tree(root->right,outfile);
 }
-Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile,int &lineNumTemp) {
+
+Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile) {
     if (n == 0)return nullptr;
 
     std::string tempLine;
@@ -266,8 +267,6 @@ Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_
     int x = 0;
     for (x; x < n; ++x) {
         infile >> tempLine;
-//        std::getline(infile,tempLine);
-        lineNumTemp++;
         if (tempLine == "skip")break;
         // treat the new array as sequential data for the passager struct
         passenger tempPass;
@@ -285,7 +284,6 @@ Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_
 
 void LoadFromFile(std::string file_name, Airport & Oairport,file_data &fileData){
 
-    int lineNumTemp=0;
     std::string LastReadItem;
 
     // initialize the file with fstream
@@ -318,12 +316,12 @@ void LoadFromFile(std::string file_name, Airport & Oairport,file_data &fileData)
 
     infile >> airport.arrival_cap >> airport.ramp_cap >> airport.depart_cap;
     infile >> airport.emergency_state >> airport.closed>> airport.cycles_closed;
-    lineNumTemp++;
-    lineNumTemp++;
+    
+    
 
     // size of Arrival List
     infile >> airport.num_in_arrival;
-lineNumTemp++;
+
     airport.head_arrv = nullptr;
     // read each node
     for (int i = 0; i < airport.num_in_arrival+1; ++i) {
@@ -335,15 +333,15 @@ lineNumTemp++;
         Plane plane;
         std::getline(infile,plane.flight_name);
         plane.flight_name = dump + plane.flight_name;
-        lineNumTemp++;
+        
         std::getline(infile,plane.model);
-        lineNumTemp++;
+        
         std::getline(infile,plane.origin);
-        lineNumTemp++;
+        
         std::getline(infile,plane.destination);
-        lineNumTemp++;
+        
         infile >> plane.capacity;
-        lineNumTemp++;
+        
         // write the passengers in the plane
         plane.head_passenger = nullptr;
         for (int j = 0; j < plane.capacity; ++j) {
@@ -353,7 +351,7 @@ lineNumTemp++;
                    >> auxPass.first_name
                    >> auxPass.second_name
                    >> auxPass.ticket_num;
-            lineNumTemp++;
+            
             LastReadItem = auxPass.nacionality +
                            " " + auxPass.first_name +
                            " " + auxPass.second_name +
@@ -396,7 +394,7 @@ lineNumTemp++;
 
     // size of Ramp List
     infile >> airport.num_in_ramp;
-    lineNumTemp++;
+    
     airport.head_ramp = nullptr;
     for (int i = 0; i < airport.num_in_ramp+1; ++i) {
 
@@ -407,15 +405,15 @@ lineNumTemp++;
         Plane plane;
         std::getline(infile,plane.flight_name);
         plane.flight_name = dump + plane.flight_name;
-        lineNumTemp++;
+        
         std::getline(infile,plane.model);
-        lineNumTemp++;
+        
         std::getline(infile,plane.origin);
-        lineNumTemp++;
+        
         std::getline(infile,plane.destination);
-        lineNumTemp++;
+        
         infile >> plane.capacity;
-        lineNumTemp++;
+        
         LastReadItem = plane.flight_name +
                        " " + plane.model +
                        " " + plane.origin +
@@ -445,7 +443,7 @@ lineNumTemp++;
 
     // size of Departure List
     infile >> airport.num_in_depart;
-    lineNumTemp++;
+    
     airport.head_dep = nullptr;
     // write each node
     for (int i = 0; i < airport.num_in_depart+1; ++i) {
@@ -457,15 +455,15 @@ lineNumTemp++;
         Plane plane;
         std::getline(infile,plane.flight_name);
         plane.flight_name = dump + plane.flight_name;
-        lineNumTemp++;
+        
         std::getline(infile,plane.model);
-        lineNumTemp++;
+        
         std::getline(infile,plane.origin);
-        lineNumTemp++;
+        
         std::getline(infile,plane.destination);
-        lineNumTemp++;
+        
         infile >> plane.capacity;
-        lineNumTemp++;
+        
         // write the passengers in the plane
         plane.head_passenger = nullptr;
         for (int j = 0; j < plane.capacity; ++j) {
@@ -475,7 +473,7 @@ lineNumTemp++;
                    >> auxPass.first_name
                    >> auxPass.second_name
                    >> auxPass.ticket_num;
-            lineNumTemp++;
+            
             LastReadItem = auxPass.nacionality +
                     " " + auxPass.first_name +
                     " " + auxPass.second_name +
@@ -515,52 +513,32 @@ lineNumTemp++;
 
     std::cout << LastReadItem << std::endl;
 
-    /*TODO Nationality list is not loading correctly
-     * it loads the actually linked list however it lacks the roots
-     * perhaps the insertion is wrong
-     * but most likely its a lack of assigning to the original list
-     * .
-     * I have a breakpoint on line 286 but its not breaking there so it looks like the
-     * logic is wrong on the section bellow
-     * .
-     * New findings:
-     * -The problem seems to occur  before nationality is read,
-     * -the line counter LineNumTemp is reaching line 225 in the code bellow which is not correct
-     * -the readings seem to be all over the place, the LastReadItem is giving now empty string when doing the for-loop
-     *  -1 from the capacity
-     * - i had to put -1 because i want to see the changes that are needed or where needed, instead of starting i or j in 1
-     */
-
     // size of Nationality List
     int size;
     infile >> size;
-    lineNumTemp++;
+    
     airport.nacionality_size = size;
 
     Nacionality * auxll = airport.nacionality_head;
 
     // write each node
     while (auxll != NULL){
-        /* TODO Fix Logic:
-            * Something is missing in this logic it may be skipping something
-            * it seems to be reading correctly however it is skipping lines in the file
-        */
         std::string temp;
         // write nationality
 //        std::getline(infile,temp);
         infile >> temp;
-        lineNumTemp++;
+        
         int res = temp.compare("skip");
         if (res == 0){
             infile >> temp;
-            lineNumTemp++;
+            
         }else{
             auxll->nacionality = temp;
         }
         // write tree
         infile >> auxll->num_of_pass_in_tree;
-        lineNumTemp++;
-        auxll->root_passenger = DeSerialized_travessiaInfixa(auxll->num_of_pass_in_tree,auxll->root_passenger,infile,lineNumTemp);
+        
+        auxll->root_passenger = DeSerialized_travessiaInfixa(auxll->num_of_pass_in_tree,auxll->root_passenger,infile);
         auxll = auxll->next_nacionality;
     }
 
@@ -570,6 +548,14 @@ lineNumTemp++;
     Oairport = airport;
 }
 
-int max(int a, int b){
-    return (a < b) ? a : b;
+void listSort(std::string list[], int list_size) {
+    for (int i = 0; i < (list_size - 1); i++) {
+        int min = i; // sting.compare(string to compare to) = -1 0 1
+        for (int j = i + 1; j < list_size; j++){
+            if (list[j].compare(list[min]) < 0)
+                min = j;
+        }
+        if (min != i)
+            swap(list[i], list[min]);
+    }
 }
