@@ -20,6 +20,7 @@ struct file_data{
     std::string * segundo_nome;
     std::string * voo;
 
+    int current_index_name;
     int destino_size;
     int modelo_size;
     int nacionalidade_size;
@@ -47,12 +48,6 @@ struct file_data{
 
 };
 
-struct customer {
-    char  fname[20],lname[20];
-    int   acct_num;
-    float acct_balance;
-};
-
 // reads and loads all the files to memory
 void load_files_to_mem(file_data &fileData);
 // read file and return sring array
@@ -65,7 +60,10 @@ int random_range(int lower, int upper);
 int max(int a,int b);
 
 
-void SaveToFile(std::string file_name, Airport &airport);
-void LoadFromFile(std::string file_name, Airport &airport);
+void SaveToFile(std::string file_name, Airport * airport, file_data  &fileData);
+void LoadFromFile(std::string file_name, Airport & Oairport,file_data &fileData);
+
+void Serialized_travessiaInfixa(Nacionality::Pass_tree *root, std::ofstream &outfile);
+Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile,int &lineNumTemp);
 
 #endif //PROJETO_2_AUX_FUNCTIONS_H
