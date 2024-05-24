@@ -7,6 +7,17 @@
 
 #include <iostream>
 
+/**
+ *
+ * As structs abaixo foram feitas pelo grupo e alteradas ao longo do tempo comforme foi necessario
+ *
+ * Foi feito substructs para poder manter uma organizacao perante o grupo,
+ * como houve confusao na interpretacao do enunciado.
+ *
+ */
+
+
+
 struct passenger{ // passenger "object"
 
     std::string ticket_num;

@@ -6,13 +6,14 @@
 
 #include "structs.h"
 #include "Aux_functions.h"
-/**
+/** Feito por: grupo. \n
  * Simula um ciclo diário de um aeroporto, mostrando todos os aviões na chegada, pista e a descolar.
  * @param airport - Referência para o objeto Airport
  * @param fileData - Objeto contendo todas as informações relacionadas aos arquivos do airport
  */
 void dayCycle(Airport &airport, file_data fileData);
-/** Age como o menu de diferentes opções que o usuário pode escolher para interagir com o
+/** Feito por: grupo\n
+ * Age como o menu de diferentes opções que o usuário pode escolher para interagir com o
  * programa, sendo que pode escolher respetivamente:
  *  -Visualizar os passageiros na rampa;
  *  -Apresentar árvore de passageiros ordenada do ponto de vista do utilizador;

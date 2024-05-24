@@ -7,7 +7,7 @@
 #include <iostream>
 #include "structs.h"
 
-/**
+/** Feito por: grupo. \n
  * File structure to keep the data in memory for the process of the program
  */
 struct file_data{
@@ -51,7 +51,7 @@ struct file_data{
 
 };
 
-/**
+/**Feito por: Joao Oliveira\n
  * Function loads the files from Data_Files, which are necessary for the function of the airport, these files contain
  * the information of planes and passangers
  *
@@ -59,7 +59,7 @@ struct file_data{
  * */
 void load_files_to_mem(file_data &fileData);
 
-/**
+/** Feito por: Joao Oliveira\n
  * Lê o conteúdo de um arquivo de texto e armazena num array de strings. O tamanho desse array é determinado pelo
  * parametro size
  * @param file_name - O nome do arquivo a ser lido sem extencao
@@ -67,20 +67,22 @@ void load_files_to_mem(file_data &fileData);
  */
 std::string* read_files(std::string file_name,int size);
 
-/**
+/**Feito por: Joao Olivera\n
  * Conta o numero de linhas de um determinado arquivo de texto, especificado pelo parametro file_name
  * @param file_name - O nome do arquivo a ser lido.
  */
 int count_lines(std::string file_name);
 
-/** Gera números de forma aleatória dentro do alcance especificado pelo utilizador
+/** Feito por: grupo.\n
+ * Gera números de forma aleatória dentro do alcance especificado pelo utilizador
  *
  * @param lower - Alcance mínimo especificado
  * @param upper - Alcance máximo especificado
  **/
 int random_range(int lower, int upper);
 
-/** Lê o ficheiro de nome file_name e verifica se encontrou o ficheiro, então vai ler as
+/** Feito por: Joao Oliveira, Vanderlan\n
+ * Lê o ficheiro de nome file_name e verifica se encontrou o ficheiro, então vai ler as
  * informações da struct aeroporto e carregar as suas informações para o ficheiro de nome
  * passado pelo utilizador como parâmetro
  *
@@ -90,7 +92,7 @@ int random_range(int lower, int upper);
  * */
 void SaveToFile(std::string file_name, Airport * airport, file_data  &fileData);
 
-/**
+/** Feito por: Joao Oliveira, Vanderlan\n
  * Lê o ficheiro de nome file_name e verifica se encontrou o ficheiro, então vai lê-lo
  * e carregar as suas informações para a struct aeroporto
  *
@@ -100,14 +102,14 @@ void SaveToFile(std::string file_name, Airport * airport, file_data  &fileData);
  */
 void LoadFromFile(std::string file_name, Airport & Oairport,file_data &fileData);
 
-/**
+/** Feito por: Joao Oliveira\n
  * Function is an Auxiliary function to SaveToFile it saves the tree of type Nacionality::Pass_tree
  * @param root root of the tree to be saved
  * @param outfile file to be written to
  */
 void Serialized_tree(Nacionality::Pass_tree *root, std::ofstream &outfile);
 
-/**
+/** Feito por: Joao Oliveira\n
  * Function is an Auxiliary function to LoadFromFile it Loads the tree of type Nacionality::Pass_tree
  * @param root root of the tree to be saved
  * @param n number of passengers in the tree
@@ -116,7 +118,7 @@ void Serialized_tree(Nacionality::Pass_tree *root, std::ofstream &outfile);
  */
 Nacionality::Pass_tree * DeSerialized_travessiaInfixa(int &n, Nacionality::Pass_tree *root, std::ifstream &infile);
 
-/**
+/** Feito por: Joao Oliveira \n
  * Organiza uma lista de strings por ordem alfabetica, atraves do algoritmo de ordenaçao (selection sort).
  * @param list - Array de string
  * @param list_size - O tamanho do array

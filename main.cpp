@@ -1,10 +1,4 @@
 
-/*
- * NOTES:
- * (watch video explaining and leave notes here)
- *
- */
-
 #include <iostream>
 #include "Headers/structs.h"
 #include "Headers/AirportListHandler.h"
@@ -13,6 +7,14 @@
 #include "Headers/Aux_functions.h"
 
 
+/**
+ * main Function is responsible for only initiating the data needed to run the airport, it takes an argument:
+ *  -the name of a file that holds the content for the state of a previous airport that was saved
+ *      this argument is the name of the file example: "airport" (without quotes and no extention ex: .txt, .dat, etc..)
+ */
+
+
+/*Grupo 19: João Freitas 2058422; João Oliveira 2044423; João Vieira 2103823; José Afonso 2042919; Vanderlan Bezerra 2019523.*/
 int main(int argc, char *argv[]) {
 
     srand(time(0));
