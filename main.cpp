@@ -1,4 +1,17 @@
 
+
+
+
+/**
+ * Foi usado os seguintes programas para a producao deste projeto:
+ *  -Obsidian - tomar notas explicar ideias
+ *  -GitHubDesktop / GitHub.com - Version controll
+ *  -ChatGPT - foi usado para ajudar na clarificacao sobre alguns dos conceitos usados, nomeadamente salvar / ler ficheiros
+ *              com estruturas e arvores
+ *  -GeekForGeeks - utilizado novamente um site para a clarificacao de conceitos.
+ *
+ */
+
 #include <iostream>
 #include "Headers/structs.h"
 #include "Headers/AirportListHandler.h"
@@ -6,11 +19,10 @@
 #include "Headers/init_planes_people.h"
 #include "Headers/Aux_functions.h"
 
-
 /**
- * main Function is responsible for only initiating the data needed to run the airport, it takes an argument:
- *  -the name of a file that holds the content for the state of a previous airport that was saved
- *      this argument is the name of the file example: "airport" (without quotes and no extention ex: .txt, .dat, etc..)
+ * \n \main Function is responsible for only initiating the data needed to run the airport, it takes an argument:\n
+ *  \n - the name of a file that holds the content for the state of a previous airport that was saved.\n
+ *      This argument is the name of the file example: "airport" (without quotes and no extention ex: .txt, .dat, etc..)
  */
 
 

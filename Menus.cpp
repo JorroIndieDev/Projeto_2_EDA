@@ -20,7 +20,7 @@ void dayCycle(Airport &airport, file_data fileData) {
         std::cout << "\nDepartures\n" << std::endl;
         log_planes(airport.head_dep);
 
-        std::cout << "\n(e)mergency | (c)lose airport | (o)ptions | (l)oad | (s)next day | (q)uit\n";
+        std::cout << "\n(e)mergency | (c)lose airport | (o)ptions | (g) to save state | (l)oad | (s)next day | (q)uit\n";
 
         std::cin >> choice;
 
@@ -50,7 +50,16 @@ void dayCycle(Airport &airport, file_data fileData) {
                 SaveToFile("airport",&airport,fileData);
                 break;
             case 'l': // Load;
-                LoadFromFile("airport", airport,fileData);
+                while (true){
+                    std::cout << "Any unsaved progress will be lost are you sure you want to Load a File? y/n";
+                    std::cin >> choice;
+                    if (choice == "y" ||choice == "Y"){
+                        LoadFromFile("airport", airport,fileData);
+                        break;
+                    }else if (choice == "n" ||choice == "N")break;
+                    else std::cerr << "Please use a valid input\n";
+                }
+
                 break;
             // Skip day
             case 's':
